@@ -12,12 +12,12 @@
         >
         <EditText
             android:id="@+id/sammlungen_input"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:hint="@string/editText_name_of_sammlungen"
             android:layout_weight=".6"
             android:singleLine="true"
-            android:focusable="false"
+            android:textCursorDrawable="@null"
             android:textColor="@color/weiss"/>
         <Button
             android:id="@+id/todo_edit_button"

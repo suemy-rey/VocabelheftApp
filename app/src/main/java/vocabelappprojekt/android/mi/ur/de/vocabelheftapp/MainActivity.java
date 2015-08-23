@@ -21,14 +21,15 @@ public class MainActivity extends AppCompatActivity{
     private Button button_three;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(false);
+
 
         initUI();
         
@@ -68,11 +69,12 @@ public class MainActivity extends AppCompatActivity{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+       // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        return super.onCreateOptionsMenu(menu);
+       // MenuItem searchItem = menu.findItem(R.id.action_search);
+       // SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+       // return super.onCreateOptionsMenu(menu);
+        return true;
     }
 
     @Override
@@ -84,8 +86,6 @@ public class MainActivity extends AppCompatActivity{
 
         //noinspection SimplifiableIfStatement
         switch (id) {
-
-
             case R.id.action_settings:
                 return true;
             case R.id.action_add:
@@ -105,11 +105,8 @@ public class MainActivity extends AppCompatActivity{
 
 
     private void addVocable() {
-
-        Intent i = new Intent(getApplicationContext(),EditVocable.class);
-        startActivity(i);
-
-
+        Intent addNewVoc = new Intent (getApplicationContext(), EditVocable.class);
+        startActivity(addNewVoc);
 
     }
 }

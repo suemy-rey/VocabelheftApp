@@ -15,7 +15,7 @@ public class DetailCategories extends Activity {
 
        // ActionBar actionBar = getSupportActionBar();
        // actionBar.setDisplayHomeAsUpEnabled(true);
-       // actionBar.setDisplayUseLogoEnabled(true);
+
 
 
 

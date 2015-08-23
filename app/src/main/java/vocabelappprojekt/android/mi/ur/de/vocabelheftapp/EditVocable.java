@@ -6,7 +6,9 @@ package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
 import java.util.ArrayList;
 import java.util.List;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -16,9 +18,10 @@ import android.widget.Toast;
 
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
-public class EditVocable extends Activity{
+public class EditVocable extends AppCompatActivity{
 
     private Spinner spinner1, spinner2;
+    private Button button_sammlungen, button_speichern;
 
 
     @Override
@@ -26,45 +29,27 @@ public class EditVocable extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_vocable);
 
-        addItemsOnSpinner2();
-        addListenerOnButton();
-        addListenerOnSpinnerItemSelection();
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(false);
+
+        initUI();
+       // initDB();
     }
 
-    // add items into spinner dynamically
-    public void addItemsOnSpinner2() {
+    private void initUI() {
+        button_sammlungen = (Button) findViewById(R.id.button_category);
+        button_speichern = (Button) findViewById(R.id.button_save);
 
-        spinner1 = (Spinner) findViewById(R.id.language1);
-        List<String> list = new ArrayList<String>();
-        list.add("list 1");
-        list.add("list 2");
-        list.add("list 3");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, list);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner2.setAdapter(dataAdapter);
+        button_sammlungen.setClickable(false);
+
+        button_speichern.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MyVocableList.class);
+                startActivity(i);
+            }
+        });
     }
 
-    public void addListenerOnSpinnerItemSelection() {
-        spinner1 = (Spinner) findViewById(R.id.language1);
-      //  spinner1.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-    }
 
-    // get the selected dropdown list value
-    public void addListenerOnButton() {
-
-        spinner1 = (Spinner) findViewById(R.id.language1);
-        spinner2 = (Spinner) findViewById(R.id.language2);
-
-
-
-
-
-
-}
-
-   // private class CustomOnItemSelectedListener implements android.widget.AdapterView.OnItemSelectedListener {
-
-
-    //}
 }

@@ -5,6 +5,6 @@
     <color name="material_blue_grey_800">#ff2a3846</color>
     <color name="editTextHint">#aaaaaa</color>
     <color name="background_color">#009688</color>
-
+    <color name="actionbarcolor">#004D40</color>
     <color name="weiss">#F3E5F5</color>
 </resources>
