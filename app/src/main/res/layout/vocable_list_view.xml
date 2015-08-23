@@ -12,7 +12,8 @@
             android:padding="10dp"
             android:gravity="center_vertical"
             android:id="@+id/textView_language1"
-            android:text="Hallo motherfuckers"
+            android:text="ah bu ben kendimi "
+
             />
 
 

@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/material_deep_teal_500">
 
+    <ListView
+        android:id="@+id/list_of_one"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:animateLayoutChanges="true"
+        android:layout_weight=".9"
+        android:padding="10dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="@string/button_add_sammlungen"
+        android:textSize="20dp"
+        android:layout_weight=".1"
+        android:id="@+id/button"
+        android:background="@color/material_deep_teal_200"
+        android:layout_height="0dp"/>
 </LinearLayout>

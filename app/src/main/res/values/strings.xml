@@ -3,11 +3,22 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="action_add">Add</string>
+
+    <string name="button_vokabeln">Meine Vokabeln</string>
+    <string name="button_sammlungen">Meine Sammlungen</string>
+    <string name="button_test">Testen</string>
+    <string name="editText_name_of_sammlungen">Name Ihrer Sammlungen</string>
+    <string name="button_add">ADD</string>
+    <string name="button_add_sammlungen">Sammlungen hinzufügen</string>
+
     <string name="add_voc">ADD Vocable</string>
     <string name="translate_voc">Translation</string>
     <string name="edit_notes">Notes</string>
     <string name="category_button">zur Sammlung hinzufügen</string>
     <string name="save_button">Speichern</string>
+
+    <string name="action_search"> </string>
 
     <string name="country_prompt">Choose a country</string>
 
