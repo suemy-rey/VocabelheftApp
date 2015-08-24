@@ -10,5 +10,6 @@
         android:layout_height="0dp"
         android:animateLayoutChanges="true"
         android:layout_weight=".9"
-        android:padding="10dp" />/>
+        android:padding="10dp" />
+/>
 </LinearLayout>
