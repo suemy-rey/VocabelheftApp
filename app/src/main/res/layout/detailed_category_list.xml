@@ -10,14 +10,5 @@
         android:layout_height="0dp"
         android:animateLayoutChanges="true"
         android:layout_weight=".9"
-        android:padding="10dp" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:text="@string/button_add_sammlungen"
-        android:textSize="20dp"
-        android:layout_weight=".1"
-        android:id="@+id/button"
-        android:background="@color/material_deep_teal_200"
-        android:layout_height="0dp"/>
+        android:padding="10dp" />/>
 </LinearLayout>
