@@ -88,7 +88,6 @@ public class MyCategories extends AppCompatActivity{
             category_adapter.notifyDataSetChanged();
         }
 
-
     }
 
     private void initList() {

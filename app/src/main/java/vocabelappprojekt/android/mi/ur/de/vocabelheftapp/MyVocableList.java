@@ -8,11 +8,20 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 /**
  * Created by S�meyye on 18.08.2015.
  */
-public class MyVocableList extends ActionBarActivity {
+public class MyVocableList extends AppCompatActivity {
+
+    private ArrayList<VocItem> vocNames;
+    private VocAdapter voc_adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,9 +30,44 @@ public class MyVocableList extends ActionBarActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        initList();
+        initUI();
 
 
 
+    }
+
+    private void initList() {
+            vocNames = new ArrayList<VocItem>();
+    }
+
+    private void initUI() {
+       // initButton();
+        initListView();
+        initListAdapter();
+    }
+
+    private void initButton() {
+        Button save_button = (Button) findViewById(R.id.button_save);
+    }
+
+    private void initListAdapter() {
+        ListView list = (ListView) findViewById(R.id.listViewOfMyVoc);
+        voc_adapter = new VocAdapter(this, vocNames);
+        list.setAdapter(voc_adapter);
+
+    }
+
+    private void initListView() {
+        ListView list = (ListView) findViewById(R.id.listViewOfMyVoc);
+        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view,
+                                           int position, long id) {
+
+                return false;
+            }
+        });
     }
 
     @Override
