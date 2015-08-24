@@ -18,44 +18,59 @@
         </activity>
 
         <activity
+
             android:name=".EditVocableActivity"
-            android:label="@string/app_name">
+            android:label="@string/add_vocabels">
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MyVocableListActivity"/>
 
         </activity>
+
         <activity android:name=".MyVocableListActivity"
-            android:label="@string/app_name">
+            android:label="Meine Vokabelliste">
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
         <activity
+
+
             android:name=".DetailVocableListActivity"
-            android:label="@string/app_name">
+            android:label="Vokabeln ändern">
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MyVocableListActivity"/>
         </activity>
+
+
         <activity android:name=".MyCategoriesActivity"
-            android:label="@string/app_name">
+            android:label="Meine Sammlungen">
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
 
         <activity
+
+
             android:name=".DetailCategoriesActivity"
-            android:label="@string/app_name">
+            android:label="Sammlung">
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MyCategoriesActivity"/>
         </activity>
 
         <activity
+
             android:name=".TestActivity"
-            android:label="@string/app_name">
+            android:label="Vokabeln abfragen">
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
