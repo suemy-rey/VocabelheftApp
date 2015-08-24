@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -37,7 +38,7 @@ public class CategoryAdapter extends ArrayAdapter<CategoryItem>  {
                 v = inflater.inflate(R.layout.my_category_list_item,null);
             }
 
-            TextView nameOfGenus = (TextView)v.findViewById(R.id.tv_1);
+            Button nameOfGenus = (Button)v.findViewById(R.id.button_category_list_item);
 
 
             nameOfGenus.setText(categoryList.get(position).getName());

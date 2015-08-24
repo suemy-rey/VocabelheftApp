@@ -19,7 +19,7 @@ public class VocAdapter extends ArrayAdapter<VocItem> {
         private Context context;
 
         public VocAdapter(Context context, ArrayList < VocItem > vocItems) {
-        super(context, R.layout.vocable_list_view, vocItems);
+        super(context, R.layout.my_vocable_list_item, vocItems);
 
         this.context = context;
         this.vocList = vocItems;
@@ -32,7 +32,7 @@ public class VocAdapter extends ArrayAdapter<VocItem> {
 
         if(v == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inflater.inflate(R.layout.vocable_list_view,null);
+            v = inflater.inflate(R.layout.my_vocable_list_item,null);
         }
 
         TextView nameOfGenus = (TextView)v.findViewById(R.id.textView_language1);

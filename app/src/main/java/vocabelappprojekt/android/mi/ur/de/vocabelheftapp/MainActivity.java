@@ -1,24 +1,19 @@
 package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.SearchView;
 
 
 public class MainActivity extends AppCompatActivity{
 
-    private Button button_one;
-    private Button button_two;
-    private Button button_three;
+    private Button button_vocable;
+    private Button button_categories;
+    private Button button_test;
 
 
 
@@ -37,11 +32,11 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void initUI() {
-        button_one = (Button) findViewById(R.id.button_vokabeln);
-        button_two = (Button) findViewById(R.id.button_sammlungen);
-        button_three = (Button) findViewById(R.id.button_testen);
+        button_vocable = (Button) findViewById(R.id.button_vokabeln);
+        button_categories = (Button) findViewById(R.id.button_sammlungen);
+        button_test = (Button) findViewById(R.id.button_testen);
 
-        button_one.setOnClickListener(new View.OnClickListener() {
+        button_vocable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), MyVocableList.class);
@@ -49,7 +44,7 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        button_two.setOnClickListener(new View.OnClickListener() {
+        button_categories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), MyCategories.class);
@@ -57,7 +52,7 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        button_three.setOnClickListener(new View.OnClickListener() {
+        button_test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), TestClass.class);
