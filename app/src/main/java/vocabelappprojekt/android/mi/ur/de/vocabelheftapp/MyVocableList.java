@@ -1,6 +1,7 @@
 package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
@@ -81,6 +82,14 @@ public class MyVocableList extends AppCompatActivity {
         int id = item.getItemId();
 
         switch (id) {
+            case R.id.action_settings:
+                return true;
+            case R.id.action_add:
+                addVocable();
+                return true;
+            case R.id.action_search:
+                searchForVocable();
+                return true;
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
@@ -89,4 +98,14 @@ public class MyVocableList extends AppCompatActivity {
         }
     }
 
+
+    private void searchForVocable() {
+    }
+
+
+    private void addVocable() {
+        Intent addNewVoc = new Intent (getApplicationContext(), EditVocable.class);
+        startActivity(addNewVoc);
+
+    }
 }
