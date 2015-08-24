@@ -7,7 +7,7 @@ import android.support.v7.app.ActionBar;
 /**
  * Created by S�meyye on 18.08.2015.
  */
-public class DetailCategories extends Activity {
+public class DetailCategoriesActivity extends Activity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,11 +1,9 @@
 package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,7 +17,7 @@ import java.util.ArrayList;
 /**
  * Created by S�meyye on 18.08.2015.
  */
-public class MyVocableList extends AppCompatActivity {
+public class MyVocableListActivity extends AppCompatActivity {
 
     private ArrayList<VocItem> vocNames;
     private VocAdapter voc_adapter;
@@ -104,7 +102,7 @@ public class MyVocableList extends AppCompatActivity {
 
 
     private void addVocable() {
-        Intent addNewVoc = new Intent (getApplicationContext(), EditVocable.class);
+        Intent addNewVoc = new Intent (getApplicationContext(), EditVocableActivity.class);
         startActivity(addNewVoc);
 
     }

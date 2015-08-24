@@ -3,22 +3,14 @@ package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
 /**
  * Created by S�meyye on 18.08.2015.
  */
-import java.util.ArrayList;
-import java.util.List;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
-
-public class EditVocable extends AppCompatActivity{
+public class EditVocableActivity extends AppCompatActivity{
 
     private Spinner spinner1, spinner2;
     private Button button_sammlungen, button_speichern;
@@ -45,7 +37,7 @@ public class EditVocable extends AppCompatActivity{
         button_speichern.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MyVocableList.class);
+                Intent i = new Intent(getApplicationContext(), MyVocableListActivity.class);
                 startActivity(i);
             }
         });

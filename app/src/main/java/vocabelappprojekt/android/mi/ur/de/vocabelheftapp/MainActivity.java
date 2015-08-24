@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity{
         button_vocable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MyVocableList.class);
+                Intent i = new Intent(getApplicationContext(), MyVocableListActivity.class);
                 startActivity(i);
             }
         });
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity{
         button_categories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MyCategories.class);
+                Intent i = new Intent(getApplicationContext(), MyCategoriesActivity.class);
                 startActivity(i);
             }
         });
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity{
         button_test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), TestClass.class);
+                Intent i = new Intent(getApplicationContext(), TestActivity.class);
                 startActivity(i);
             }
         });
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity{
 
 
     private void addVocable() {
-        Intent addNewVoc = new Intent (getApplicationContext(), EditVocable.class);
+        Intent addNewVoc = new Intent (getApplicationContext(), EditVocableActivity.class);
         startActivity(addNewVoc);
 
     }

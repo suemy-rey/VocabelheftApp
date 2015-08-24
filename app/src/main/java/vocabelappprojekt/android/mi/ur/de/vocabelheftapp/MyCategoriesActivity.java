@@ -17,7 +17,7 @@ import java.util.ArrayList;
 /**
  * Created by S�meyye on 18.08.2015.
  */
-public class MyCategories extends AppCompatActivity{
+public class MyCategoriesActivity extends AppCompatActivity{
 
     private ArrayList<CategoryItem> categoryNames;
     private CategoryAdapter category_adapter;

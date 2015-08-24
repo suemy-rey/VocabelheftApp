@@ -18,27 +18,27 @@
         </activity>
 
         <activity
-            android:name=".EditVocable"
+            android:name=".EditVocableActivity"
             android:label="@string/app_name">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MyVocableList"/>
+                android:value=".MyVocableListActivity"/>
 
         </activity>
-        <activity android:name=".MyVocableList"
+        <activity android:name=".MyVocableListActivity"
             android:label="@string/app_name">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
         <activity
-            android:name=".DetailVocableList"
+            android:name=".DetailVocableListActivity"
             android:label="@string/app_name">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MyVocableList"/>
+                android:value=".MyVocableListActivity"/>
         </activity>
-        <activity android:name=".MyCategories"
+        <activity android:name=".MyCategoriesActivity"
             android:label="@string/app_name">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -46,15 +46,15 @@
         </activity>
 
         <activity
-            android:name=".DetailCategories"
+            android:name=".DetailCategoriesActivity"
             android:label="@string/app_name">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MyCategories"/>
+                android:value=".MyCategoriesActivity"/>
         </activity>
 
         <activity
-            android:name=".TestClass"
+            android:name=".TestActivity"
             android:label="@string/app_name">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -9,7 +9,7 @@ import android.view.MenuItem;
 /**
  * Created by Sümeyye on 23.08.2015.
  */
-public class TestClass extends AppCompatActivity{
+public class TestActivity extends AppCompatActivity{
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

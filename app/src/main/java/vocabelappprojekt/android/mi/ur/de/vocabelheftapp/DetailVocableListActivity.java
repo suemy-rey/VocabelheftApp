@@ -10,7 +10,7 @@ import android.view.MenuItem;
 /**
  * Created by S�meyye on 18.08.2015.
  */
-public class DetailVocableList extends AppCompatActivity {
+public class DetailVocableListActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
