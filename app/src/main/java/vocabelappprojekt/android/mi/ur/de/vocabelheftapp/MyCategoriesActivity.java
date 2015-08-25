@@ -34,7 +34,6 @@ public class MyCategoriesActivity extends AppCompatActivity{
 
         initList();
         initUI();
-        toDetail();
 
     }
 
