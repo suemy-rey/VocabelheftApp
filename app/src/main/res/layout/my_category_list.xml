@@ -11,7 +11,7 @@
         android:orientation="horizontal"
         >
         <EditText
-            android:id="@+id/sammlungen_input"
+            android:id="@+id/name_category_input"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:hint="@string/editText_name_of_sammlungen"
@@ -20,7 +20,7 @@
             android:textCursorDrawable="@null"
             android:textColor="@color/weiss"/>
         <Button
-            android:id="@+id/todo_edit_button"
+            android:id="@+id/name_category_add_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".4"
@@ -28,7 +28,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/sammlungen_list"
+        android:id="@+id/category_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"

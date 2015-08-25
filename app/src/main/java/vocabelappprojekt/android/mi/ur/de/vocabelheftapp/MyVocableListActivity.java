@@ -36,7 +36,7 @@ public class MyVocableListActivity extends AppCompatActivity {
 
     }
 
-    private void initList() {
+    private void initList(){
             vocNames = new ArrayList<VocItem>();
     }
 
