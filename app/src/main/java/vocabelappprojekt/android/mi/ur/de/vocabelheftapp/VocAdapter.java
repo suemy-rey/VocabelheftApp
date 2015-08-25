@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -38,8 +39,15 @@ public class VocAdapter extends ArrayAdapter<VocItem> {
         TextView nameOfGenus = (TextView)v.findViewById(R.id.textView_language1);
         TextView nameOfGenusTwo = (TextView) v.findViewById(R.id.textView_language2);
 
-        nameOfGenus.setText(vocList.get(position).getName());
-        nameOfGenusTwo.setText(vocList.get(position).getName());
+
+            nameOfGenus.setText(vocList.get(position).getName());
+            nameOfGenusTwo.setText(vocList.get(position).getName_two());
+
+        Spinner spinner_language_one = (Spinner) v.findViewById(R.id.spinner_language1);
+        Spinner spinner_language_two = (Spinner) v.findViewById(R.id.spinner_language2);
+
+
+
 
 
         return v;

@@ -6,28 +6,35 @@ import android.widget.Spinner;
  * Created by Sümeyye on 24.08.2015.
  */
 public class VocItem {
+
+    private long id;
     private String name;
-    private String spinner1;
-    private String spinner2;
+    private String name_two;
+    private String spinnerOfFirstLanguage;
+    private String spinnerOfSecondLanguage;
 
-
-    public VocItem(String name, String spinner_one, String spinner_two) {
-
+    public VocItem(long id, String name,String name_two){ //String spinner_one, String spinner_two) {
+        this.id = id;
         this.name = name;
-        this.spinner1 = spinner_one;
-        this.spinner2 = spinner_two;
+        this.name_two = name_two;
+       // this.spinner1 = spinner_one;
+        //this.spinner2 = spinner_two;
     }
+
+    public long getId() { return id;}
 
     public String getName() {
         return name;
     }
 
-    public String getSpinner1() {
-        return spinner1;
+    public String getName_two() { return name_two; }
+
+    public String getSpinnerOfFirstLanguage() {
+        return spinnerOfFirstLanguage;
     }
 
-    public String getSpinner2() {
-        return spinner2;
+    public String getSpinnerOfSecondLanguage() {
+        return spinnerOfSecondLanguage;
     }
 
 }
