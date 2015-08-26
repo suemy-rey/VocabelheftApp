@@ -35,11 +35,11 @@ public class VocAdapter extends ArrayAdapter<VocItem> {
             v = inflater.inflate(R.layout.my_vocable_list_item,null);
         }
 
-        TextView nameOfGenus = (TextView)v.findViewById(R.id.textView_language1);
-        TextView nameOfGenusTwo = (TextView) v.findViewById(R.id.textView_language2);
+        TextView nameOfGenus_original = (TextView)v.findViewById(R.id.textView_language_original);
+        TextView nameOfGenus_translation = (TextView) v.findViewById(R.id.textView_language_translation);
 
-        nameOfGenus.setText(vocList.get(position).getName());
-        nameOfGenusTwo.setText(vocList.get(position).getName());
+        nameOfGenus_original.setText(vocList.get(position).getOriginal_name());
+        nameOfGenus_translation.setText(vocList.get(position).getTranslation_name());
 
 
         return v;

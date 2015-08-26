@@ -2,6 +2,7 @@ package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,16 +22,18 @@ public class CategoryAdapter extends ArrayAdapter<CategoryItem>  {
 
         private ArrayList<CategoryItem> categoryList;
         private Context context;
+        private OnButtonClicklistener onButtonClicklistener = null;
 
-        public CategoryAdapter(Context context, ArrayList < CategoryItem > categoryItems) {
+        public CategoryAdapter(Context context, ArrayList < CategoryItem > categoryItems, OnButtonClicklistener onButtonClicklistener) {
             super(context, R.layout.my_category_list_item, categoryItems);
 
             this.context = context;
             this.categoryList = categoryItems;
+            this.onButtonClicklistener = onButtonClicklistener;
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, ViewGroup parent) {
 
             View v = convertView;
 
@@ -43,11 +46,15 @@ public class CategoryAdapter extends ArrayAdapter<CategoryItem>  {
             if(categoryItem != null) {
                 Button nameOfGenus = (Button) v.findViewById(R.id.button_category_list_item);
                 nameOfGenus.setText(categoryItem.getName());
+                nameOfGenus.setTag(position);
                 nameOfGenus.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Log.d("hallo", "" + position);
+                        if (onButtonClicklistener != null)
+                            onButtonClicklistener.onButtonClick(position);
 
-                }
+                    }
                 });
 
             }
