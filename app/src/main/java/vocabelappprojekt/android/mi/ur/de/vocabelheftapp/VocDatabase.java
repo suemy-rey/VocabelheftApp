@@ -22,7 +22,7 @@ public class VocDatabase {
     public static final String KEY_ID = "_id";
     public static final String KEY_LANGUAGE_ONE = "voc_one";
     public static final String KEY_LANGUAGE_TWO = "voc_two";
-   // public static final String KEY_NOTES = "voc_notes";
+    //public static final String KEY_NOTES = "voc_notes";
 
     private VocItemHelper dbHelper;
     private SQLiteDatabase db;
