@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity{
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+
         //noinspection SimplifiableIfStatement
         switch (id) {
             case R.id.action_settings:
@@ -96,6 +97,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void searchForVocable() {
+
     }
 
 

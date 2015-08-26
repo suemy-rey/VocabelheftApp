@@ -1,6 +1,6 @@
 package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
@@ -22,9 +22,11 @@ public class MyCategoriesActivity extends AppCompatActivity{
     private ArrayList<CategoryItem> categoryNames;
     private CategoryAdapter category_adapter;
 
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_category_list);
+
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -43,15 +45,16 @@ public class MyCategoriesActivity extends AppCompatActivity{
     }
 
     private void initListAdapter() {
-        ListView list = (ListView) findViewById(R.id.sammlungen_list);
+        ListView list = (ListView) findViewById(R.id.category_list);
         category_adapter = new CategoryAdapter(this, categoryNames);
         list.setAdapter(category_adapter);
 
     }
 
     private void initListView() {
-        ListView list = (ListView) findViewById(R.id.sammlungen_list);
-        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        ListView listview = (ListView) findViewById(R.id.category_list);
+
+        listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view,
                                            int position, long id) {
@@ -62,11 +65,11 @@ public class MyCategoriesActivity extends AppCompatActivity{
     }
 
     private void initButton() {
-        Button addButton = (Button) findViewById(R.id.todo_edit_button);
+        Button addButton = (Button) findViewById(R.id.name_category_add_button);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText edit = (EditText) findViewById(R.id.sammlungen_input);
+                EditText edit = (EditText) findViewById(R.id.name_category_input);
                 String names = edit.getText().toString();
 
                 if (!names.equals("")) {
@@ -76,6 +79,7 @@ public class MyCategoriesActivity extends AppCompatActivity{
             }
         });
 
+
     }
 
     private void addNewNames(String names) {
@@ -83,8 +87,8 @@ public class MyCategoriesActivity extends AppCompatActivity{
             return;
         } else {
 
-            CategoryItem newToDoItem = new CategoryItem(names);
-            categoryNames.add(newToDoItem);
+            CategoryItem newCategoryItem = new CategoryItem(names);
+            categoryNames.add(newCategoryItem);
             category_adapter.notifyDataSetChanged();
         }
 
@@ -92,7 +96,21 @@ public class MyCategoriesActivity extends AppCompatActivity{
 
     private void initList() {
         categoryNames = new ArrayList<CategoryItem>();
+
     }
+
+    private void toDetail(){
+        Button categoryNamesButton = (Button)findViewById(R.id.button_category_list_item);
+        categoryNamesButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent detail_activity_intent  = new Intent(getApplicationContext(), DetailCategoriesActivity.class);
+                startActivity(detail_activity_intent);
+            }
+        });
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

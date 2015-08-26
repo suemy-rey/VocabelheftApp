@@ -52,7 +52,7 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
         voc_database.open();
     }
 
-    private void initList() {
+    private void initList(){
             vocNames = new ArrayList<VocItem>();
     }
 
