@@ -72,7 +72,7 @@ public class VocableListDatabase {
                 cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5));
     }
 
-    public ArrayList<VocItem> getAllFoodieItems(){
+    public ArrayList<VocItem> getAllVocItems(){
         ArrayList<VocItem> voc_items = new ArrayList<VocItem>();
         Cursor cursor = db.query(DATABASE_TABLE, new String[] { KEY_ORIGINAL_NAME, KEY_TRANSLATION_NAME,KEY_ORIGINAL_SPINNER, KEY_TRANSLATION_SPINNER, KEY_NOTES, KEY_CATEGORY}, null, null, null, null, null);
         if(cursor.moveToFirst()){
@@ -84,8 +84,6 @@ public class VocableListDatabase {
                 String notes = cursor.getString(4);
                 String category = cursor.getString(5);
 
-
-                //Log.e("score" ,score);
                 voc_items.add(new VocItem(original_name, translation_name, original_language, translation_language, notes, category));
 
             }while (cursor.moveToNext());
@@ -120,7 +118,7 @@ public class VocableListDatabase {
         return db.update(DATABASE_TABLE,newVocable,"id=?", new String[] {original_name});
     }
     public int deleteVocItem(String name){
-        // Log.e("id", foodieItemID);
+
         return db.delete(DATABASE_TABLE, KEY_ORIGINAL_NAME + " = ? ", new String[] {name});
     }
 
