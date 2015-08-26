@@ -55,7 +55,7 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
         //initText();
 
         initButton();
-        initSpinner();
+       // initSpinner();
     }
 
     private void initSpinner() {
@@ -63,11 +63,11 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
 
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.language_arrays, android.R.layout.simple_spinner_dropdown_item);
         spinnerFirstLanguage.setAdapter(adapter);
-        spinnerFirstLanguage.setOnItemSelectedListener(this);
+      //  spinnerFirstLanguage.setOnItemSelectedListener(this);
 
         spinnerSecondLanguage = (Spinner) findViewById(R.id.language2);
         spinnerSecondLanguage.setAdapter(adapter);
-        spinnerSecondLanguage.setOnItemSelectedListener(this);
+       // spinnerSecondLanguage.setOnItemSelectedListener(this);
     }
 
     private void initButton() {
@@ -153,7 +153,7 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
     }
 
 
-    @Override
+   @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
       //  TextView myText = (TextView) view;
        // Toast.makeText(this,"You Selected"+myText.getText(), Toast.LENGTH_SHORT).show();

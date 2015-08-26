@@ -30,7 +30,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:id="@+id/language1"
-
+        android:entries="@array/language_arrays"
+        android:prompt="@string/country_prompt"
         android:layout_weight="0.25" />
 
     </LinearLayout>
@@ -59,7 +60,7 @@
         android:id="@+id/language2"
         android:layout_weight="0.25"
         android:layout_margin="10dp"
-
+        android:entries="@array/language_arrays"
 
 
         />
