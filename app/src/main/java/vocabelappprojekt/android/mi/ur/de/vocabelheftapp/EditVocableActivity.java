@@ -12,7 +12,7 @@ import android.widget.Spinner;
 
 public class EditVocableActivity extends AppCompatActivity{
 
-    private Spinner spinner1, spinner2;
+    private Spinner spinner_original_language, spinner_translation_language;
     private Button button_sammlungen, button_speichern;
 
 

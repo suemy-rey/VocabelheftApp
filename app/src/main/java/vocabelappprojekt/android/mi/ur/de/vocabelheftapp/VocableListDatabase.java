@@ -19,9 +19,12 @@ public class VocableListDatabase {
 
     private static final String DATABASE_TABLE = "vocableItem";
 
-    public static final String KEY_NAME = "name";
-    public static final String KEY_ORIGINAL = "original_spinner";
-    public static final String KEY_TRANSLATION = "translation_spinner";
+    public static final String KEY_ORIGINAL_NAME = "name";
+    public static final String KEY_TRANSLATION_NAME ="translation_name";
+    public static final String KEY_ORIGINAL_SPINNER = "original_spinner";
+    public static final String KEY_TRANSLATION_SPINNER = "translation_spinner";
+    public static final String KEY_NOTES = "notes";
+    public static final String KEY_CATEGORY = "category";
 
 
     private FoodieItemDBOpenHelper dbHelper;
@@ -46,66 +49,88 @@ public class VocableListDatabase {
     }
 
 
-    public long insertVocableItem(String name, String original_language_spinner, String translation_language_spinner){
+    public long insertVocableItem(String original_name, String translation_name, String original_language_spinner, String translation_language_spinner, String notes, String category){
         ContentValues newVocable = new ContentValues();
 
-        newVocable.put(KEY_NAME, name);
-        newVocable.put(KEY_ORIGINAL, original_language_spinner);
-        newVocable.put(KEY_TRANSLATION, translation_language_spinner);
+        newVocable.put(KEY_ORIGINAL_NAME, original_name);
+        newVocable.put(KEY_ORIGINAL_NAME, translation_name);
+        newVocable.put(KEY_ORIGINAL_SPINNER, original_language_spinner);
+        newVocable.put(KEY_TRANSLATION_SPINNER, translation_language_spinner);
+        newVocable.put(KEY_NOTES, notes);
+        newVocable.put(KEY_CATEGORY, category);
+
         return  db.insert(DATABASE_TABLE, null, newVocable);
     }
 
     public VocItem getVocItem(String name){
-        Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_NAME, KEY_ORIGINAL,KEY_TRANSLATION }, KEY_NAME + "=?",
+        Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_ORIGINAL_NAME, KEY_TRANSLATION_NAME, KEY_ORIGINAL_SPINNER, KEY_TRANSLATION_SPINNER, KEY_NOTES,KEY_CATEGORY}, KEY_ORIGINAL_NAME + "=?",
                 new String[] { name }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
         return new VocItem(
-                cursor.getString(0), cursor.getString(1), cursor.getString(2));
+                cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5));
     }
 
     public ArrayList<VocItem> getAllFoodieItems(){
         ArrayList<VocItem> voc_items = new ArrayList<VocItem>();
-        Cursor cursor = db.query(DATABASE_TABLE, new String[] { KEY_NAME, KEY_ORIGINAL, KEY_TRANSLATION}, null, null, null, null, null);
+        Cursor cursor = db.query(DATABASE_TABLE, new String[] { KEY_ORIGINAL_NAME, KEY_TRANSLATION_NAME,KEY_ORIGINAL_SPINNER, KEY_TRANSLATION_SPINNER, KEY_NOTES, KEY_CATEGORY}, null, null, null, null, null);
         if(cursor.moveToFirst()){
             do{
-                String name= cursor.getString(0);
-                String original_language = cursor.getString(1);
-                String translation_language = cursor.getString(2);
+                String original_name = cursor.getString(0);
+                String translation_name = cursor.getString(1);
+                String original_language = cursor.getString(2);
+                String translation_language = cursor.getString(3);
+                String notes = cursor.getString(4);
+                String category = cursor.getString(5);
 
 
                 //Log.e("score" ,score);
-                voc_items.add(new VocItem(name, original_language, translation_language));
+                voc_items.add(new VocItem(original_name, translation_name, original_language, translation_language, notes, category));
 
             }while (cursor.moveToNext());
         }
         return voc_items;
     }
 
-    public long updateOriginalLanguageSpinner(String name, String original_language){
+    public long updateOriginalLanguageSpinner(String original_name, String original_language){
         ContentValues newVocable = new ContentValues();
-        newVocable.put(KEY_ORIGINAL,original_language);
-        return db.update(DATABASE_TABLE,newVocable, "id=?", new String[]{name});
+        newVocable.put(KEY_ORIGINAL_SPINNER,original_language);
+        return db.update(DATABASE_TABLE,newVocable, "id=?", new String[]{original_name});
     }
 
-    public long updateTranslationLanguageSpinner(String name, String translation_language){
+    public long updateTranslationLanguageSpinner(String original_name, String translation_language){
         ContentValues newVocable = new ContentValues();
-        newVocable.put(KEY_TRANSLATION,translation_language);
-        return db.update(DATABASE_TABLE,newVocable,"id=?", new String[] {name});
+        newVocable.put(KEY_TRANSLATION_SPINNER,translation_language);
+        return db.update(DATABASE_TABLE,newVocable,"id=?", new String[] {original_name});
     }
-
+    public long updateTranslationName(String original_name, String translation_name){
+        ContentValues newVocable = new ContentValues();
+        newVocable.put(KEY_TRANSLATION_NAME,translation_name);
+        return db.update(DATABASE_TABLE,newVocable,"id=?", new String[] {original_name});
+    }
+    public long updateNotes(String original_name, String notes){
+        ContentValues newVocable = new ContentValues();
+        newVocable.put(KEY_TRANSLATION_NAME,notes);
+        return db.update(DATABASE_TABLE,newVocable,"id=?", new String[] {original_name});
+    }
+    public long updateCategory(String original_name, String category){
+        ContentValues newVocable = new ContentValues();
+        newVocable.put(KEY_TRANSLATION_NAME,category);
+        return db.update(DATABASE_TABLE,newVocable,"id=?", new String[] {original_name});
+    }
     public int deleteVocItem(String name){
         // Log.e("id", foodieItemID);
-        return db.delete(DATABASE_TABLE, KEY_NAME + " = ? ", new String[] {name});
+        return db.delete(DATABASE_TABLE, KEY_ORIGINAL_NAME + " = ? ", new String[] {name});
     }
 
     private class FoodieItemDBOpenHelper extends SQLiteOpenHelper {
 
         private static final String DATABASE_CREATE = "create table "
-                + DATABASE_TABLE + " (" + KEY_NAME
-                + " integer primary key autoincrement, " + KEY_NAME
-                + " text not null, " + KEY_ORIGINAL + " text, " + KEY_TRANSLATION + " text);";
+                + DATABASE_TABLE + " (" + KEY_ORIGINAL_NAME
+                + " integer primary key autoincrement, " + KEY_ORIGINAL_NAME
+                + " text not null, " + KEY_TRANSLATION_NAME + " text, " + KEY_ORIGINAL_SPINNER + " text, " + KEY_TRANSLATION_SPINNER + " text, "
+                + KEY_NOTES + " text, " + KEY_CATEGORY + " text);";
 
         public FoodieItemDBOpenHelper(Context c, String dbname,
                                       SQLiteDatabase.CursorFactory factory, int version) {
