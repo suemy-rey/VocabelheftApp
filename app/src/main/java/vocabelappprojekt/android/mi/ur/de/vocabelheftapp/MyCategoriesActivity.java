@@ -21,19 +21,31 @@ public class MyCategoriesActivity extends AppCompatActivity{
 
     private ArrayList<CategoryItem> categoryNames;
     private CategoryAdapter category_adapter;
+    private CategoryDatabase category_database;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_category_list);
 
-
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-
-        initList();
+        initDB();
+        initCategoryList();
         initUI();
+        updateList();
+
+    }
+
+    private void updateList() {
+        categoryNames.clear();
+        categoryNames.addAll(category_database.getAllCategoryItems());
+        category_adapter.notifyDataSetChanged();
+    }
+
+    private void initDB() {
+        category_database = new CategoryDatabase(getApplicationContext());
 
     }
 
@@ -46,10 +58,17 @@ public class MyCategoriesActivity extends AppCompatActivity{
 
     private void initListAdapter() {
         ListView list = (ListView) findViewById(R.id.category_list);
-        category_adapter = new CategoryAdapter(this, categoryNames);
+        category_adapter = new CategoryAdapter(getApplicationContext(),categoryNames, new OnButtonClicklistener() {
+            @Override
+            public void onButtonClick(int position) {
+                Intent detail_activity_intent  = new Intent(getApplicationContext(), DetailCategoriesActivity.class);
+                startActivity(detail_activity_intent);
+            }
+        });
         list.setAdapter(category_adapter);
 
     }
+
 
     private void initListView() {
         ListView listview = (ListView) findViewById(R.id.category_list);
@@ -58,7 +77,7 @@ public class MyCategoriesActivity extends AppCompatActivity{
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view,
                                            int position, long id) {
-
+               removeItemAtPosition(position);
                 return false;
             }
         });
@@ -86,30 +105,30 @@ public class MyCategoriesActivity extends AppCompatActivity{
         if (categoryNames.equals("")) {
             return;
         } else {
-
-            CategoryItem newCategoryItem = new CategoryItem(names);
+            long id = 0;
+            CategoryItem newCategoryItem = new CategoryItem(id, names);
             categoryNames.add(newCategoryItem);
             category_adapter.notifyDataSetChanged();
+            category_database.insertCategoryItem(names);
         }
 
     }
+    private void removeItemAtPosition(int position){
+        if((categoryNames.get(position) == null)){
+            return;
+        }else{
+            CategoryItem categoryItem = categoryNames.get(position);
+            category_database.deleteCategoryItem(categoryItem);
+            updateList();
+        }
+    }
 
-    private void initList() {
+    private void initCategoryList() {
         categoryNames = new ArrayList<CategoryItem>();
 
     }
 
-    private void toDetail(){
-        Button categoryNamesButton = (Button)findViewById(R.id.button_category_list_item);
-        categoryNamesButton.setOnClickListener(new View.OnClickListener(){
 
-            @Override
-            public void onClick(View v) {
-                Intent detail_activity_intent  = new Intent(getApplicationContext(), DetailCategoriesActivity.class);
-                startActivity(detail_activity_intent);
-            }
-        });
-    }
 
 
     @Override
@@ -131,5 +150,12 @@ public class MyCategoriesActivity extends AppCompatActivity{
         }
     }
 
-
+    protected void onDestroy(){
+        category_database.close();
+        super.onDestroy();
+    }
+    protected  void onResume(){
+        super.onResume();
+        updateList();
+    }
 }
