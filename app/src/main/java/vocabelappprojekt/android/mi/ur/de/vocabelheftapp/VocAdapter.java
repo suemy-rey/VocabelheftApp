@@ -44,7 +44,6 @@ public class VocAdapter extends ArrayAdapter<VocItem> {
 
         firstVoc.setText(vocList.get(position).getName());
         secondVoc.setText(vocList.get(position).getName_two());
-
         notes.setText(vocList.get(position).getNotes());
 
         Spinner spinner_language_one = (Spinner) v.findViewById(R.id.spinner_language1);
