@@ -1,47 +1,53 @@
 package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
 
+
 /**
  * Created by Sümeyye on 24.08.2015.
  */
-public class VocItem {
-    private String original_name;
-    private String translation_name;
-    private String original_language_spinner;
-    private String translation_language_spinner;
-    private String notes;
-    private String category;
 
+    public class VocItem {
 
+        private long id;
+        private String name;
+        private String name_two;
+        private String spinnerOfFirstLanguage;
+        private String spinnerOfSecondLanguage;
+        private String notes;
+        private String category;
 
-    public VocItem(String original_name, String translation_name, String original_language_spinner, String translation_language_spinner, String notes, String category) {
+        public VocItem(long id, String name,String name_two, String spinnerOfFirstLanguage, String spinnerOfSecondLanguage, String notes, String category) {
+            this.id = id;
+            this.name = name;
+            this.name_two = name_two;
+            this.spinnerOfFirstLanguage = spinnerOfFirstLanguage;
+            this.spinnerOfSecondLanguage = spinnerOfSecondLanguage;
+            this.notes = notes;
+            this.category = category;
+        }
 
-        this.original_name = original_name;
-        this.translation_name = translation_name;
-        this.original_language_spinner = original_language_spinner;
-        this.translation_language_spinner = translation_language_spinner;
-        this.notes = notes;
-        this.category = category;
+        public long getId() { return id;}
+
+        public String getName() {
+            return name;
+        }
+
+        public String getName_two() { return name_two; }
+
+        public String getSpinnerOfFirstLanguage() {
+            return spinnerOfFirstLanguage;
+        }
+
+        public String getSpinnerOfSecondLanguage() {
+            return spinnerOfSecondLanguage;
+        }
+
+        public String getNotes() { return notes;}
+
+        public String getCategory() { return category;}
     }
 
-    public String getOriginal_name() {
-        return original_name;
-    }
 
-    public  String getTranslation_name(){
-        return  translation_name;
-    }
-    public String getOriginal_language_spinner() {
-        return original_language_spinner;
-    }
 
-    public String getTranslation_language_spinner() {
-        return translation_language_spinner;
-    }
 
-    public String getNotes(){
-        return notes;
-    }
-    public String getCategory(){
-        return category;
-    }
-}
+
+

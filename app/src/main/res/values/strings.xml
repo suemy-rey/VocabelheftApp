@@ -24,7 +24,7 @@
 
     <string name="country_prompt">Wähle eine Sprache</string>
 
-    <string-array name="country_arrays">
+    <string-array name="language_arrays">
         <item>Wähle eine Sprache</item>
         <item>Arabisch</item>
         <item>Deutsch</item>
