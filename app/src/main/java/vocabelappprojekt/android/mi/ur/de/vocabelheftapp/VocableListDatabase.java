@@ -62,7 +62,7 @@ public class VocableListDatabase {
         return  db.insert(DATABASE_TABLE, null, newVocable);
     }
 
-    public VocItem getVocItem(String name){
+  /**  public VocItem getVocItem(String name){
         Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_ORIGINAL_NAME, KEY_TRANSLATION_NAME, KEY_ORIGINAL_SPINNER, KEY_TRANSLATION_SPINNER, KEY_NOTES,KEY_CATEGORY}, KEY_ORIGINAL_NAME + "=?",
                 new String[] { name }, null, null, null, null);
         if (cursor != null)
@@ -91,7 +91,7 @@ public class VocableListDatabase {
             }while (cursor.moveToNext());
         }
         return voc_items;
-    }
+    }**/
 
     public long updateOriginalLanguageSpinner(String original_name, String original_language){
         ContentValues newVocable = new ContentValues();

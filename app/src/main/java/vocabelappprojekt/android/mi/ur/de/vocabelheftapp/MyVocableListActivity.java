@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -24,11 +24,11 @@ import java.util.ArrayList;
  */
 public class MyVocableListActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    private Spinner spinnerFirstLanguage, spinnerSecondLanguage;
+
     private ArrayList<VocItem> vocNames;
     private VocAdapter voc_adapter;
     private VocDatabase voc_database;
-    private TextView show_first_voc, show_sec_voc;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,44 +52,14 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
         voc_database.open();
     }
 
-    private void initList(){
-            vocNames = new ArrayList<VocItem>();
+    private void initList() {
+        vocNames = new ArrayList<VocItem>();
     }
 
     private void initUI() {
         initListView();
         initListAdapter();
-        //initTextView();
-       // initSpinner();
 
-
-
-    }
-
-
-    private void initSpinner() {
-            spinnerFirstLanguage = (Spinner) findViewById(R.id.spinner_language1);
-
-            ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.language_arrays, android.R.layout.simple_spinner_dropdown_item);
-            spinnerFirstLanguage.setAdapter(adapter);
-            spinnerFirstLanguage.setOnItemSelectedListener(this);
-
-            spinnerSecondLanguage = (Spinner) findViewById(R.id.spinner_language2);
-            spinnerSecondLanguage.setAdapter(adapter);
-            spinnerSecondLanguage.setOnItemSelectedListener(this);
-
-    }
-
-    private void initTextView() {
-        show_first_voc = (TextView) findViewById(R.id.textView_language1);
-        show_sec_voc = (TextView) findViewById(R.id.textView_language2);
-
-        Intent i = getIntent();
-        String first_input = i.getStringExtra("Vokabel1");
-        String sec_input = i.getStringExtra("Vokabel2");
-
-        show_first_voc.setText(first_input);
-        show_sec_voc.setText(sec_input);
     }
 
 
@@ -101,19 +71,17 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
     }
 
     private void initListView() {
-       final ListView list = (ListView) findViewById(R.id.listViewOfMyVoc);
+        final ListView list = (ListView) findViewById(R.id.listViewOfMyVoc);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-               // VocItem vocItem = vocNames.get(position);
+                VocItem vocItem = vocNames.get(position);
                 Intent i = new Intent (MyVocableListActivity.this, EditVocableActivity.class);
-               // i.putExtra("voc_item_id", vocItem.getId());
+                i.putExtra("voc_name", vocItem.getName());
                 startActivity(i);
 
             }
         });
-
-
 
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -167,7 +135,7 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
         Intent addNewVoc = new Intent (getApplicationContext(), EditVocableActivity.class);
         startActivity(addNewVoc);
 
-        VocItem vocItem = new VocItem(0, "", "");
+        VocItem vocItem = new VocItem(0, "", "","","","","");
         voc_database.insertVocItem(vocItem);
         updateList();
     }

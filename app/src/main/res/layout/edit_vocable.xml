@@ -12,60 +12,60 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-    <EditText
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_weight="0.75"
-        android:hint="@string/add_voc"
-        android:singleLine="true"
-        android:textColorHint="@color/editTextHint"
-        android:textColor="@color/weiss"
-        android:id="@+id/firstVoc"
-        android:textCursorDrawable="@null"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="0.75"
+            android:hint="@string/add_voc"
+            android:singleLine="true"
+            android:textColorHint="@color/editTextHint"
+            android:textColor="@color/weiss"
+            android:id="@+id/firstVoc"
+            android:textCursorDrawable="@null"/>
 
 
-    <Spinner
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:id="@+id/language1"
-        android:entries="@array/language_arrays"
-        android:prompt="@string/country_prompt"
-        android:layout_weight="0.25" />
+        <Spinner
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/language1"
+            android:entries="@array/language_arrays"
+            android:prompt="@string/country_prompt"
+            android:layout_weight="0.25" />
 
     </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
-    <EditText
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/weiss"
-        android:textColorHint="@color/editTextHint"
-        android:singleLine="true"
-        android:hint="@string/translate_voc"
-        android:layout_weight="0.75"
-        android:layout_margin="10dp"
-        android:id="@+id/secondVoc"
-        android:textCursorDrawable="@null"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/weiss"
+            android:textColorHint="@color/editTextHint"
+            android:singleLine="true"
+            android:hint="@string/translate_voc"
+            android:layout_weight="0.75"
+            android:layout_margin="10dp"
+            android:id="@+id/secondVoc"
+            android:textCursorDrawable="@null"/>
 
-    <Spinner
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/language2"
-        android:layout_weight="0.25"
-        android:layout_margin="10dp"
-        android:entries="@array/language_arrays"
+        <Spinner
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/language2"
+            android:layout_weight="0.25"
+            android:layout_margin="10dp"
+            android:entries="@array/language_arrays"
 
 
-        />
+            />
 
-</LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -87,11 +87,11 @@
             android:scrollHorizontally="false"
             android:scrollbars="vertical"
             android:singleLine="false"
-            android:id="@+id/notes"
+            android:id="@+id/editText_notes"
             android:hint="@string/edit_notes"
             android:textCursorDrawable="@null"/>
 
-</LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -99,25 +99,25 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-    <Button
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.60"
-        android:text="@string/category_button"
-        android:id="@+id/button_category"
-        android:background="@color/material_deep_teal_200"
-        android:layout_margin="5dp"
-        android:layout_gravity="bottom"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.60"
+            android:text="@string/category_button"
+            android:id="@+id/button_category"
+            android:background="@color/material_deep_teal_200"
+            android:layout_margin="5dp"
+            android:layout_gravity="bottom"/>
 
-    <Button
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/save_button"
-        android:id="@+id/button_save"
-        android:background="@color/material_deep_teal_200"
-        android:layout_gravity="bottom"
-        android:layout_margin="5dp"
-        android:layout_weight="0.40" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/save_button"
+            android:id="@+id/button_save"
+            android:background="@color/material_deep_teal_200"
+            android:layout_gravity="bottom"
+            android:layout_margin="5dp"
+            android:layout_weight="0.40" />
 
     </LinearLayout>
 

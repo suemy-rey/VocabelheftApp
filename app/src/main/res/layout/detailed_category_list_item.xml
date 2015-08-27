@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spinner_language1"
-        android:entries="@array/country_arrays"
+        android:entries="@array/language_arrays"
         android:prompt="@string/country_prompt"
         android:layout_alignTop="@+id/textView_language1"
         android:layout_toRightOf="@+id/textView_language1"
@@ -48,7 +48,7 @@
         android:id="@+id/spinner_language2"
         android:layout_toRightOf="@+id/textView_language2"
         android:layout_below="@+id/spinner_language1"
-        android:entries="@array/country_arrays"
+        android:entries="@array/language_arrays"
         android:prompt="@string/country_prompt"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
