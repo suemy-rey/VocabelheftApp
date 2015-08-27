@@ -135,9 +135,6 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
         Intent addNewVoc = new Intent (getApplicationContext(), EditVocableActivity.class);
         startActivity(addNewVoc);
 
-        VocItem vocItem = new VocItem(0, "", "","","","","");
-        voc_database.insertVocItem(vocItem);
-        updateList();
     }
 
     @Override

@@ -123,6 +123,33 @@ public class VocDatabase {
 
     }
 
+    public long updateOriginalLanguageSpinner(String original_name, String original_language){
+        ContentValues newVocable = new ContentValues();
+        newVocable.put(KEY_ORIGINAL_SPINNER,original_language);
+        return db.update(DATABASE_TABLE,newVocable, "id=?", new String[]{original_name});
+    }
+
+    public long updateTranslationLanguageSpinner(String original_name, String translation_language){
+        ContentValues newVocable = new ContentValues();
+        newVocable.put(KEY_TRANSLATION_SPINNER,translation_language);
+        return db.update(DATABASE_TABLE,newVocable,"id=?", new String[] {original_name});
+    }
+
+    public long updateNotes(String original_name, String notes){
+        ContentValues newVocable = new ContentValues();
+        newVocable.put(KEY_NOTES,notes);
+        return db.update(DATABASE_TABLE,newVocable,"id=?", new String[] {original_name});
+    }
+    public long updateCategory(String original_name, String category){
+        ContentValues newVocable = new ContentValues();
+        newVocable.put(KEY_CATEGORY,category);
+        return db.update(DATABASE_TABLE,newVocable,"id=?", new String[] {original_name});
+    }
+    public int deleteVocItem(String name){
+
+        return db.delete(DATABASE_TABLE, KEY_LANGUAGE_ONE + " = ? ", new String[]{name});
+    }
+
     public long updateTitleTwo (String vocItemID, String title_two) {
         ContentValues newTitleValues = new ContentValues();
         newTitleValues.put(KEY_LANGUAGE_TWO,title_two);

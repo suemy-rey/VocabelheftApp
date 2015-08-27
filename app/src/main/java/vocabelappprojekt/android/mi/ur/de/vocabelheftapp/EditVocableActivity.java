@@ -54,7 +54,7 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
 
     private void initUI() {
 
-      //  initText();
+
         initButton();
         // initSpinner();
     }
@@ -68,6 +68,7 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
 
         spinnerSecondLanguage = (Spinner) findViewById(R.id.language2);
         spinnerSecondLanguage.setAdapter(adapter);
+
         // spinnerSecondLanguage.setOnItemSelectedListener(this);
     }
 
@@ -89,25 +90,18 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
                 String voc_two = input_language_two.getText().toString();
                 String note = input_notes.getText().toString();
 
-                if (voc_one.equals("") || voc_two.equals("") || note.equals("")) {
+                if (voc_one.equals("") || voc_two.equals("") ) {
+
                 } else {
                     input_language_one.setText("");
                     input_language_two.setText("");
                     input_notes.setText("");
-
-                //   String input_one = getIntent().getExtras().getString("voc_name");
-                 //  vocItem = voc_database.getVocItem(input_one);
-                 //  input_language_one.setText(vocItem.getName());
-
-                 //  voc_database.updateTitle(vocItem.getName(), voc_one, voc_two);
 
                    addNewVoc(voc_one, voc_two, note);
 
                 }
 
                 Intent i = new Intent(getApplicationContext(), MyVocableListActivity.class);
-                //  i.putExtra("Vokabel1", input_language_one.getText().toString());
-                // i.putExtra("Vokabel2", input_language_two.getText().toString());
                 startActivity(i);
             }
         });
@@ -119,52 +113,13 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
         VocItem newVoc = new VocItem(id,voc_one,voc_two, "", "", note,"");
         voc_database.insertVocItem(newVoc);
        // voc_database.updateTitle(String.valueOf(id),voc_one,voc_two);
-        updateList();
+        //updateList();
     }
 
     private void updateList() {
         vocs.clear();
         vocs.addAll(voc_database.getAllVocItems());
         voc_adapter.notifyDataSetChanged();
-    }
-
-    private void initText() {
-        input_language_one = (EditText) findViewById(R.id.firstVoc);
-        input_language_two = (EditText) findViewById(R.id.secondVoc);
-
-        long voc_item_id = getIntent().getExtras().getLong("voc_item_id");
-        vocItem = voc_database.getVocItem(String.valueOf(voc_item_id));
-
-        input_language_one.setText(vocItem.getName());
-        input_language_two.setText(vocItem.getName_two());
-
-        input_language_one.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String title = input_language_one.getText().toString();
-                String title_two = input_language_two.getText().toString();
-                voc_database.updateTitle(String.valueOf(vocItem.getId()), title, title_two);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                button_speichern = (Button) findViewById(R.id.button_save);
-                button_speichern.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent i = new Intent(getApplicationContext(), MyVocableListActivity.class);
-                        startActivity(i);
-                    }
-                });
-
-            }
-        });
-
     }
 
 
