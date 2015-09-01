@@ -1,12 +1,10 @@
 package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseExpandableListAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -42,8 +40,8 @@ public class VocAdapter extends ArrayAdapter<VocItem> {
         TextView secondVoc= (TextView) v.findViewById(R.id.textView_language2);
         TextView notes = (TextView) v.findViewById(R.id.textView_of_notes);
 
-        firstVoc.setText(vocList.get(position).getName());
-        secondVoc.setText(vocList.get(position).getName_two());
+        firstVoc.setText(vocList.get(position).getVocab());
+        secondVoc.setText(vocList.get(position).getVocabTranslation());
         notes.setText(vocList.get(position).getNotes());
 
         Spinner spinner_language_one = (Spinner) v.findViewById(R.id.spinner_language1);

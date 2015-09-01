@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -51,10 +50,10 @@ public class VocDatabase {
 
         ContentValues vocValues = new ContentValues();
 
-        vocValues.put(KEY_LANGUAGE_ONE, vocItem.getName());
-        vocValues.put(KEY_LANGUAGE_TWO, vocItem.getName_two());
-        vocValues.put(KEY_ORIGINAL_SPINNER, vocItem.getSpinnerOfFirstLanguage());
-        vocValues.put(KEY_TRANSLATION_SPINNER, vocItem.getSpinnerOfSecondLanguage());
+        vocValues.put(KEY_LANGUAGE_ONE, vocItem.getVocab());
+        vocValues.put(KEY_LANGUAGE_TWO, vocItem.getVocabTranslation());
+        vocValues.put(KEY_ORIGINAL_SPINNER, vocItem.getVocabLanguageSetting());
+        vocValues.put(KEY_TRANSLATION_SPINNER, vocItem.getVocabTranslationLanguage());
         vocValues.put(KEY_NOTES, vocItem.getNotes());
         vocValues.put(KEY_CATEGORY, vocItem.getCategory());
 

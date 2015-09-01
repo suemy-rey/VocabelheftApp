@@ -5,17 +5,11 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -41,10 +35,6 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
         initList();
         initUI();
         updateList();
-
-
-
-
     }
 
     private void initDB() {
@@ -59,7 +49,6 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
     private void initUI() {
         initListView();
         initListAdapter();
-
     }
 
 
@@ -67,7 +56,6 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
         ListView list = (ListView) findViewById(R.id.listViewOfMyVoc);
         voc_adapter = new VocAdapter(this, vocNames);
         list.setAdapter(voc_adapter);
-
     }
 
     private void initListView() {
@@ -77,9 +65,8 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 VocItem vocItem = vocNames.get(position);
                 Intent i = new Intent (MyVocableListActivity.this, EditVocableActivity.class);
-                i.putExtra("voc_name", vocItem.getName());
+                i.putExtra("voc_name", vocItem.getVocab());
                 startActivity(i);
-
             }
         });
 
@@ -129,7 +116,6 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
 
     private void searchForVocable() {
     }
-
     //des is beim ActionBar
     private void addVocable() {
         Intent addNewVoc = new Intent (getApplicationContext(), EditVocableActivity.class);
