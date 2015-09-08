@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/material_deep_teal_500"
-    android:weightSum="4">
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/material_deep_teal_500"
+              android:weightSum="4">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -87,38 +87,58 @@
             android:scrollHorizontally="false"
             android:scrollbars="vertical"
             android:singleLine="false"
-            android:id="@+id/editText_notes"
+            android:id="@+id/textView_of_notes"
             android:hint="@string/edit_notes"
             android:textCursorDrawable="@null"/>
 
     </LinearLayout>
 
+
+
+
+
+
     <LinearLayout
+
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <Button
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.60"
-            android:text="@string/category_button"
-            android:id="@+id/button_category"
-            android:background="@color/material_deep_teal_200"
-            android:layout_margin="5dp"
-            android:layout_gravity="bottom"/>
+            android:layout_weight="0.5"
+            android:orientation="vertical"
+            android:layout_gravity="bottom"
+            android:layout_margin="5dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textview_add_to_category"
+                android:id="@+id/textView_add_to_category"
+                android:textSize="12dp"
+                android:layout_above="@+id/spinner_category"
+                />
+            <Spinner
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:id="@+id/spinner_category"
+                android:background="@color/material_deep_teal_200"
+                android:layout_marginBottom="10dp"
+                android:entries="@array/category_arrays"/>
+
+        </LinearLayout>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/save_button"
             android:id="@+id/button_save"
+            android:layout_weight="0.5"
             android:background="@color/material_deep_teal_200"
             android:layout_gravity="bottom"
-            android:layout_margin="5dp"
-            android:layout_weight="0.40" />
-
+            android:layout_margin="5dp" />
     </LinearLayout>
 
 </LinearLayout>
