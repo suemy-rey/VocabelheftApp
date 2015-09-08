@@ -14,7 +14,6 @@ import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
 public class CategoryAdapter extends ArrayAdapter<CategoryItem>
 {
-
     private ArrayList<CategoryItem> categoryList;
     private Context context;
     private OnButtonClicklistener onButtonClicklistener = null;
@@ -54,16 +53,11 @@ public class CategoryAdapter extends ArrayAdapter<CategoryItem>
                     Log.d("hallo", "" + position);
                     if (onButtonClicklistener != null)
                         onButtonClicklistener.onButtonClick(position);
-
-
                 }
 
             });
-
         }
 
         return v;
     }
-
-
 }

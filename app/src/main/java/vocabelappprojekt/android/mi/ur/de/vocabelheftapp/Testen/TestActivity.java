@@ -10,7 +10,6 @@ import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
 public class TestActivity extends AppCompatActivity
 {
-
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);

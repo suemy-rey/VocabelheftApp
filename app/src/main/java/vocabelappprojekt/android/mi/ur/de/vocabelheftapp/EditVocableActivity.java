@@ -43,7 +43,6 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
 
         initDB();
         initUI();
-
     }
 
     private void initUI()
@@ -62,7 +61,6 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
         adapter_original_spinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFirstLanguage.setAdapter(adapter_original_spinner);
         // spinnerFirstLanguage.setOnItemSelectedListener(new MyOnItemSelectedListener());
-
 
         spinnerSecondLanguage = (Spinner) findViewById(R.id.language2);
         ArrayAdapter adapter_translation_spinner = ArrayAdapter.createFromResource(this, R.array.language_arrays, android.R.layout.simple_spinner_dropdown_item);
@@ -101,6 +99,7 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
 
                 if (voc_one.equals("") && voc_two.equals("") && note.equals(""))
                 {
+
                 }
                 else
                 {

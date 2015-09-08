@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
 
-
         initUI();
     }
 
@@ -115,6 +114,5 @@ public class MainActivity extends AppCompatActivity
     {
         Intent addNewVoc = new Intent(getApplicationContext(), EditVocableActivity.class);
         startActivity(addNewVoc);
-
     }
 }

@@ -38,7 +38,6 @@ public class DetailCategoriesActivity extends AppCompatActivity
         initVocableList();
         initUI();
         updateList();
-
     }
 
     private void initDB()
@@ -108,15 +107,14 @@ public class DetailCategoriesActivity extends AppCompatActivity
         }
     }
 
-
     private void searchForVocable()
     {
+
     }
 
     private void addVocable()
     {
         Intent addNewVoc = new Intent(getApplicationContext(), EditVocableActivity.class);
         startActivity(addNewVoc);
-
     }
 }

@@ -47,7 +47,6 @@ public class MyCategoriesActivity extends AppCompatActivity
     private void initDB()
     {
         category_database = new CategoryDatabase(getApplicationContext());
-
     }
 
     private void initUI()

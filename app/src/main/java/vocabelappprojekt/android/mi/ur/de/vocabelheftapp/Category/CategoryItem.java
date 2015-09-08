@@ -6,14 +6,12 @@ public class CategoryItem
     private String name;
     private String vocable;
 
-
     public CategoryItem(long id, String name)
     {
         this.name = name;
         this.id = id;
         this.vocable = vocable;
     }
-
 
     public String getName()
     {

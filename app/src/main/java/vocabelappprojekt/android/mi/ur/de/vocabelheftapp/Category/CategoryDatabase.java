@@ -12,7 +12,6 @@ import java.util.List;
 
 public class CategoryDatabase
 {
-
     private static final String DATABASE_NAME = "categoryItem.db";
     private static final int DATABASE_VERSION = 1;
 
@@ -48,7 +47,6 @@ public class CategoryDatabase
     {
         db.close();
     }
-
 
     public long insertCategoryItem(String name)
     {
@@ -90,7 +88,7 @@ public class CategoryDatabase
     {
         List<String> labels = new ArrayList<String>();
         Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_NAME}, null, null, null, null, null);
-        ;
+
         // looping through all rows and adding to list
         if (cursor.moveToFirst())
         {
@@ -142,6 +140,4 @@ public class CategoryDatabase
 
         }
     }
-
-
 }

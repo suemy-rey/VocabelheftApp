@@ -21,7 +21,6 @@ public class DetailCategoriesAdapter extends ArrayAdapter<VocItem>
     private Context context;
     private VocDatabase vocDatabase;
 
-
     public DetailCategoriesAdapter(Context context, ArrayList<VocItem> vocItems)
     {
         super(context, R.layout.my_vocable_list_item, vocItems);

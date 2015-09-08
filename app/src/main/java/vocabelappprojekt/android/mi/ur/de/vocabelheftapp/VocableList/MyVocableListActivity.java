@@ -28,7 +28,6 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
     private Spinner translation_spinner;
     private String[] string_array;
 
-
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -43,7 +42,6 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
         initUI();
         updateList();
         updateSpinner();
-
 
         //textView_of_notes_long = (TextView)findViewById(R.id.textView_of_notes_long);
         //toggle_contents(textView_of_notes_long);
@@ -96,7 +94,6 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
         initListAdapter();
     }
 
-
     private void initListAdapter()
     {
         ListView list = (ListView) findViewById(R.id.listViewOfMyVoc);
@@ -119,7 +116,6 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
                 startActivity(i);
             }
         });
-
 
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
         {
