@@ -3,7 +3,7 @@ package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Log;
 public class Log
 {
     public static final boolean DEBUG = true;
-    public static final String TAG = "MensaApp";
+    public static final String TAG = "Vocab";
 
     public static void e(String tag, String msg)
     {
