@@ -23,7 +23,7 @@ public class DetailCategoriesAdapter extends ArrayAdapter<VocItem>
 
     public DetailCategoriesAdapter(Context context, ArrayList<VocItem> vocItems)
     {
-        super(context, R.layout.my_vocable_list_item, vocItems);
+        super(context, R.layout.detailed_category_list_item, vocItems);
         this.context = context;
         this.vocList = vocItems;
         vocDatabase = new VocDatabase(context);
@@ -38,7 +38,7 @@ public class DetailCategoriesAdapter extends ArrayAdapter<VocItem>
         if (v == null)
         {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inflater.inflate(R.layout.my_vocable_list_item, null);
+            v = inflater.inflate(R.layout.detailed_category_list_item, null);
         }
 
         TextView original_textView = (TextView) v.findViewById(R.id.textView_original_language);
