@@ -10,6 +10,11 @@ public class VocItem
     private String notes;
     private String category;
 
+    public VocItem(String name)
+    {
+        this.name = name;
+    }
+
     public VocItem(long id, String name, String name_two, String spinnerOfFirstLanguage, String spinnerOfSecondLanguage, String notes, String category)
     {
         this.id = id;
@@ -24,6 +29,11 @@ public class VocItem
     public long getId()
     {
         return id;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
     }
 
     public String getName()
