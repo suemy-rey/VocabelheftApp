@@ -67,7 +67,6 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
         adapter_translation_spinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerSecondLanguage.setAdapter(adapter_translation_spinner);
 
-
         spinnerCatrgory = (Spinner) findViewById(R.id.spinner_category);
         names_category = category_database.getAllLabels();
         ArrayAdapter<String> adapter_spinner_category = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, names_category);
@@ -95,7 +94,6 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
                 // toast.show();
                 String spinner_translation = spinnerSecondLanguage.getSelectedItem().toString();
                 String spinner_category = spinnerCatrgory.getSelectedItem().toString();
-
 
                 if (voc_one.equals("") && voc_two.equals("") && note.equals(""))
                 {

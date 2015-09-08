@@ -60,7 +60,9 @@ public class CategoryDatabase
         Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_NAME}, KEY_ID + "=?",
                 new String[]{category_id}, null, null, null, null);
         if (cursor != null)
+        {
             cursor.moveToFirst();
+        }
 
         return new CategoryItem(Long.parseLong(cursor.getString(0)), cursor.getString(1));
     }
@@ -77,7 +79,6 @@ public class CategoryDatabase
                 String name = cursor.getString(1);
 
                 category_items.add(new CategoryItem(Long.valueOf(id), name));
-
             }
             while (cursor.moveToNext());
         }
@@ -116,7 +117,6 @@ public class CategoryDatabase
 
     private class CategoryDBOpenHelper extends SQLiteOpenHelper
     {
-
         private static final String DATABASE_CREATE = "create table "
                 + DATABASE_TABLE + " (" + KEY_ID
                 + " integer primary key autoincrement, " + KEY_NAME

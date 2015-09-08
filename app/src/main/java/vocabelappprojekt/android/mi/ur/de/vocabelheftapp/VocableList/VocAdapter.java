@@ -27,7 +27,6 @@ public class VocAdapter extends ArrayAdapter<VocItem>
     private VocDatabase vocDatabase;
     private String[] language_array;
 
-
     public VocAdapter(Context context, ArrayList<VocItem> vocItems)
     {
         super(context, R.layout.my_vocable_list_item, vocItems);
@@ -66,7 +65,6 @@ public class VocAdapter extends ArrayAdapter<VocItem>
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
-
         View v = convertView;
 
         if (v == null)

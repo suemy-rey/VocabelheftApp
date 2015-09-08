@@ -30,7 +30,6 @@ public class CategoryAdapter extends ArrayAdapter<CategoryItem>
     @Override
     public View getView(final int position, View convertView, ViewGroup parent)
     {
-
         View v = convertView;
 
         if (v == null)
@@ -52,7 +51,9 @@ public class CategoryAdapter extends ArrayAdapter<CategoryItem>
                 {
                     Log.d("hallo", "" + position);
                     if (onButtonClicklistener != null)
+                    {
                         onButtonClicklistener.onButtonClick(position);
+                    }
                 }
 
             });
