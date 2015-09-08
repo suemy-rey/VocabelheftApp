@@ -123,6 +123,7 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
                 Toast toast = Toast.makeText(getApplicationContext(), "Sie haben ein Vokabel in " + category + "gespeichert", Toast.LENGTH_SHORT);
                 toast.show();
                 voc_database.insertVocItem(newVoc);
+                //TODO: category.addVocabToCategory(int vocabID) if category != empty string
             }
         });
     }
