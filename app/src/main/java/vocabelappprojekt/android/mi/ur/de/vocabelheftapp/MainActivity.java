@@ -12,17 +12,15 @@ import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category.MyCategoriesAc
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Testen.TestActivity;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.MyVocableListActivity;
 
-
-public class MainActivity extends AppCompatActivity{
-
+public class MainActivity extends AppCompatActivity
+{
     private Button button_vocable;
     private Button button_categories;
     private Button button_test;
 
-
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -31,34 +29,39 @@ public class MainActivity extends AppCompatActivity{
 
 
         initUI();
-
-
     }
 
-    private void initUI() {
+    private void initUI()
+    {
         button_vocable = (Button) findViewById(R.id.button_vokabeln);
         button_categories = (Button) findViewById(R.id.button_sammlungen);
         button_test = (Button) findViewById(R.id.button_testen);
 
-        button_vocable.setOnClickListener(new View.OnClickListener() {
+        button_vocable.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent i = new Intent(getApplicationContext(), MyVocableListActivity.class);
                 startActivity(i);
             }
         });
 
-        button_categories.setOnClickListener(new View.OnClickListener() {
+        button_categories.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent i = new Intent(getApplicationContext(), MyCategoriesActivity.class);
                 startActivity(i);
             }
         });
 
-        button_test.setOnClickListener(new View.OnClickListener() {
+        button_test.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent i = new Intent(getApplicationContext(), TestActivity.class);
                 startActivity(i);
             }
@@ -67,7 +70,8 @@ public class MainActivity extends AppCompatActivity{
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         // MenuItem searchItem = menu.findItem(R.id.action_search);
@@ -77,7 +81,8 @@ public class MainActivity extends AppCompatActivity{
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -85,7 +90,8 @@ public class MainActivity extends AppCompatActivity{
 
 
         //noinspection SimplifiableIfStatement
-        switch (id) {
+        switch (id)
+        {
             case R.id.action_settings:
                 return true;
             case R.id.action_add:
@@ -100,13 +106,14 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
-    private void searchForVocable() {
+    private void searchForVocable()
+    {
 
     }
 
-
-    private void addVocable() {
-        Intent addNewVoc = new Intent (getApplicationContext(), EditVocableActivity.class);
+    private void addVocable()
+    {
+        Intent addNewVoc = new Intent(getApplicationContext(), EditVocableActivity.class);
         startActivity(addNewVoc);
 
     }

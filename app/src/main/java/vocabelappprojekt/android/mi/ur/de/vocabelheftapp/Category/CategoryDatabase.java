@@ -10,7 +10,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryDatabase {
+public class CategoryDatabase
+{
 
     private static final String DATABASE_NAME = "categoryItem.db";
     private static final int DATABASE_VERSION = 1;
@@ -24,78 +25,99 @@ public class CategoryDatabase {
 
     private SQLiteDatabase db;
 
-    public CategoryDatabase(Context context) {
+    public CategoryDatabase(Context context)
+    {
         dbHelper = new CategoryDBOpenHelper(context, DATABASE_NAME, null,
                 DATABASE_VERSION);
         open();
     }
-    public void open() throws SQLException {
-        try {
+
+    public void open() throws SQLException
+    {
+        try
+        {
             db = dbHelper.getWritableDatabase();
-        } catch (SQLException e) {
+        }
+        catch (SQLException e)
+        {
             db = dbHelper.getReadableDatabase();
         }
     }
 
-    public void close() {
+    public void close()
+    {
         db.close();
     }
 
 
-    public long insertCategoryItem(String name){
+    public long insertCategoryItem(String name)
+    {
         ContentValues newCategory = new ContentValues();
         newCategory.put(KEY_NAME, name);
-        return  db.insert(DATABASE_TABLE, null, newCategory);
+        return db.insert(DATABASE_TABLE, null, newCategory);
     }
 
-    public CategoryItem getCategoryItem(String category_id){
-        Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_ID, KEY_NAME}, KEY_ID + "=?",
-                new String[] { category_id }, null, null, null, null);
+    public CategoryItem getCategoryItem(String category_id)
+    {
+        Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_NAME}, KEY_ID + "=?",
+                new String[]{category_id}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
-        return new CategoryItem(Long.parseLong(cursor.getString(0)),cursor.getString(1));
+        return new CategoryItem(Long.parseLong(cursor.getString(0)), cursor.getString(1));
     }
 
-    public ArrayList<CategoryItem> getAllCategoryItems(){
+    public ArrayList<CategoryItem> getAllCategoryItems()
+    {
         ArrayList<CategoryItem> category_items = new ArrayList<CategoryItem>();
-        Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_ID, KEY_NAME}, null, null, null, null, null);
-        if(cursor.moveToFirst()){
-            do{
+        Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_NAME}, null, null, null, null, null);
+        if (cursor.moveToFirst())
+        {
+            do
+            {
                 String id = cursor.getString(0);
                 String name = cursor.getString(1);
 
                 category_items.add(new CategoryItem(Long.valueOf(id), name));
 
-            }while (cursor.moveToNext());
+            }
+            while (cursor.moveToNext());
         }
         return category_items;
     }
 
-    public List<String> getAllLabels(){
+    public List<String> getAllLabels()
+    {
         List<String> labels = new ArrayList<String>();
-        Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_ID, KEY_NAME}, null, null, null, null, null);;
+        Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_NAME}, null, null, null, null, null);
+        ;
         // looping through all rows and adding to list
-        if (cursor.moveToFirst()) {
-            do {
+        if (cursor.moveToFirst())
+        {
+            do
+            {
                 labels.add(cursor.getString(1));
-            } while (cursor.moveToNext());
+            }
+            while (cursor.moveToNext());
         }
         // returning lables
         return labels;
     }
 
-    public long updateName(String category_id, String name){
+    public long updateName(String category_id, String name)
+    {
         ContentValues newCategoryValues = new ContentValues();
         newCategoryValues.put(KEY_ID, name);
-        return db.update(DATABASE_TABLE, newCategoryValues,"id=?", new String[] {category_id});
+        return db.update(DATABASE_TABLE, newCategoryValues, "id=?", new String[]{category_id});
     }
 
-    public void deleteCategoryItem(CategoryItem categoryItem){
-        db.delete(DATABASE_TABLE, KEY_ID + " = ? ", new String[] {categoryItem.getName()});
+    public void deleteCategoryItem(CategoryItem categoryItem)
+    {
+        db.delete(DATABASE_TABLE, KEY_ID + " = ? ", new String[]{categoryItem.getName()});
     }
 
-    private class CategoryDBOpenHelper extends SQLiteOpenHelper {
+    private class CategoryDBOpenHelper extends SQLiteOpenHelper
+    {
 
         private static final String DATABASE_CREATE = "create table "
                 + DATABASE_TABLE + " (" + KEY_ID
@@ -103,21 +125,23 @@ public class CategoryDatabase {
                 + " text);";
 
         public CategoryDBOpenHelper(Context c, String dbname,
-                                    SQLiteDatabase.CursorFactory factory, int version) {
+                                    SQLiteDatabase.CursorFactory factory, int version)
+        {
             super(c, dbname, factory, version);
         }
+
         @Override
-        public void onCreate(SQLiteDatabase db) {
+        public void onCreate(SQLiteDatabase db)
+        {
             db.execSQL(DATABASE_CREATE);
         }
 
         @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
+        {
 
         }
     }
 
 
-
 }
-

@@ -9,30 +9,31 @@ import android.view.MenuItem;
 
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
-public class DetailVocableListActivity extends AppCompatActivity {
-
-    protected void onCreate(Bundle savedInstanceState) {
+public class DetailVocableListActivity extends AppCompatActivity
+{
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_category_list);
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-
-
-
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         int id = item.getItemId();
 
-        switch (id) {
+        switch (id)
+        {
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
@@ -40,5 +41,4 @@ public class DetailVocableListActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 }

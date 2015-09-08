@@ -15,14 +15,16 @@ import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocDatabase;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocItem;
 
-public class DetailCategoriesAdapter extends ArrayAdapter<VocItem> {
+public class DetailCategoriesAdapter extends ArrayAdapter<VocItem>
+{
 
     private ArrayList<VocItem> vocList;
     private Context context;
     private VocDatabase vocDatabase;
 
 
-    public DetailCategoriesAdapter(Context context, ArrayList<VocItem> vocItems){
+    public DetailCategoriesAdapter(Context context, ArrayList<VocItem> vocItems)
+    {
         super(context, R.layout.my_vocable_list_item, vocItems);
         this.context = context;
         this.vocList = vocItems;
@@ -31,17 +33,19 @@ public class DetailCategoriesAdapter extends ArrayAdapter<VocItem> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent)
+    {
 
         View v = convertView;
 
-        if (v == null) {
+        if (v == null)
+        {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(R.layout.my_vocable_list_item, null);
         }
 
         TextView original_textView = (TextView) v.findViewById(R.id.textView_original_language);
-        TextView translation_textView= (TextView) v.findViewById(R.id.textView_translation_language);
+        TextView translation_textView = (TextView) v.findViewById(R.id.textView_translation_language);
         TextView notes = (TextView) v.findViewById(R.id.textView_of_notes);
 
         original_textView.setText(vocList.get(position).getName());
@@ -54,10 +58,4 @@ public class DetailCategoriesAdapter extends ArrayAdapter<VocItem> {
 
         return v;
     }
-
-
-
 }
-
-
-

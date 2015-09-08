@@ -20,21 +20,21 @@ import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocAdapter;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocDatabase;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocItem;
 
-public class EditVocableActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
-
+public class EditVocableActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
+{
     //private ArrayList<VocItem> vocs = new ArrayList<VocItem>();
 
     private VocDatabase voc_database;
     private CategoryDatabase category_database;
     private List<String> names_category;
 
-
     private Spinner spinnerFirstLanguage, spinnerSecondLanguage, spinnerCatrgory;
     private Button button_speichern;
     private EditText input_language_original, input_language_translation, input_notes;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_vocable);
 
@@ -46,39 +46,42 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
 
     }
 
-    private void initUI() {
-        input_language_original = (EditText)findViewById(R.id.firstVoc);
-        input_language_translation = (EditText)findViewById(R.id.secondVoc);
-        input_notes = (EditText)findViewById(R.id.textView_of_notes);
+    private void initUI()
+    {
+        input_language_original = (EditText) findViewById(R.id.firstVoc);
+        input_language_translation = (EditText) findViewById(R.id.secondVoc);
+        input_notes = (EditText) findViewById(R.id.textView_of_notes);
         initButton();
         initSpinner();
     }
 
-    private void initSpinner() {
-        spinnerFirstLanguage = (Spinner)findViewById(R.id.language1);
+    private void initSpinner()
+    {
+        spinnerFirstLanguage = (Spinner) findViewById(R.id.language1);
         ArrayAdapter adapter_original_spinner = ArrayAdapter.createFromResource(this, R.array.language_arrays, android.R.layout.simple_spinner_dropdown_item);
         adapter_original_spinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFirstLanguage.setAdapter(adapter_original_spinner);
         // spinnerFirstLanguage.setOnItemSelectedListener(new MyOnItemSelectedListener());
 
 
-        spinnerSecondLanguage = (Spinner)findViewById(R.id.language2);
+        spinnerSecondLanguage = (Spinner) findViewById(R.id.language2);
         ArrayAdapter adapter_translation_spinner = ArrayAdapter.createFromResource(this, R.array.language_arrays, android.R.layout.simple_spinner_dropdown_item);
         adapter_translation_spinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerSecondLanguage.setAdapter(adapter_translation_spinner);
 
 
-        spinnerCatrgory = (Spinner)findViewById(R.id.spinner_category);
+        spinnerCatrgory = (Spinner) findViewById(R.id.spinner_category);
         names_category = category_database.getAllLabels();
-        ArrayAdapter<String> adapter_spinner_category = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, names_category);
+        ArrayAdapter<String> adapter_spinner_category = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, names_category);
         adapter_spinner_category.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCatrgory.setAdapter(adapter_spinner_category);
         spinnerCatrgory.setOnItemSelectedListener(new MyOnItemSelectedListener());
         //spinnerCatrgory.setSelection(0,true);
     }
 
-    private void initButton() {
-        button_speichern = (Button)findViewById(R.id.button_save);
+    private void initButton()
+    {
+        button_speichern = (Button) findViewById(R.id.button_save);
         button_speichern.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -123,12 +126,12 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
                 Toast toast = Toast.makeText(getApplicationContext(), "Sie haben ein Vokabel in " + category + "gespeichert", Toast.LENGTH_SHORT);
                 toast.show();
                 voc_database.insertVocItem(newVoc);
-
             }
         });
     }
 
-    private void initDB() {
+    private void initDB()
+    {
         voc_database = new VocDatabase(this);
         voc_database.open();
         category_database = new CategoryDatabase(this);
@@ -136,23 +139,29 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
+    {
         //  TextView myText = (TextView) view;
         // Toast.makeText(this,"You Selected"+myText.getText(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
+    public void onNothingSelected(AdapterView<?> adapterView)
+    {
 
     }
 
-    private class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListener {
+    private class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListener
+    {
         @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+        {
 
         }
+
         @Override
-        public void onNothingSelected(AdapterView<?> parent) {
+        public void onNothingSelected(AdapterView<?> parent)
+        {
 
         }
     }

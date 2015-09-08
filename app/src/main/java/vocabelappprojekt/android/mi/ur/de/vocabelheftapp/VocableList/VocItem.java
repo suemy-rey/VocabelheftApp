@@ -1,12 +1,7 @@
 package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList;
 
-
-/**
- * Created by Sümeyye on 24.08.2015.
- */
-
-public class VocItem {
-
+public class VocItem
+{
     private long id;
     private String name;
     private String name_two;
@@ -15,7 +10,8 @@ public class VocItem {
     private String notes;
     private String category;
 
-    public VocItem(long id, String name,String name_two, String spinnerOfFirstLanguage, String spinnerOfSecondLanguage, String notes, String category) {
+    public VocItem(long id, String name, String name_two, String spinnerOfFirstLanguage, String spinnerOfSecondLanguage, String notes, String category)
+    {
         this.id = id;
         this.name = name;
         this.name_two = name_two;
@@ -25,23 +21,38 @@ public class VocItem {
         this.category = category;
     }
 
-    public long getId() { return id;}
+    public long getId()
+    {
+        return id;
+    }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public String getName_two() { return name_two; }
+    public String getName_two()
+    {
+        return name_two;
+    }
 
-    public String getSpinnerOfFirstLanguage() {
+    public String getSpinnerOfFirstLanguage()
+    {
         return spinnerOfFirstLanguage;
     }
 
-    public String getSpinnerOfSecondLanguage() {
+    public String getSpinnerOfSecondLanguage()
+    {
         return spinnerOfSecondLanguage;
     }
 
-    public String getNotes() { return notes;}
+    public String getNotes()
+    {
+        return notes;
+    }
 
-    public String getCategory() { return category;}
+    public String getCategory()
+    {
+        return category;
+    }
 }
