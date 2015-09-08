@@ -13,6 +13,11 @@ public class CategoryItem
         this.vocable = vocable;
     }
 
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
     public String getName()
     {
         return name;
