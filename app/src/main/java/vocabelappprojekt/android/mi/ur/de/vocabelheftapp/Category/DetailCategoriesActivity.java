@@ -1,6 +1,5 @@
 package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -8,21 +7,19 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.EditVocableActivity;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
-import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocAdapter;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocDatabase;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocItem;
 
 public class DetailCategoriesActivity extends AppCompatActivity
 {
-    private ArrayList<VocItem> vocNames;
+    private ArrayList<Integer> vocabIDList;
+    private ArrayList<VocItem> vocabList;
     private DetailCategoriesAdapter detailCategoriesAdapter;
     private VocDatabase voc_database;
 
@@ -48,7 +45,8 @@ public class DetailCategoriesActivity extends AppCompatActivity
 
     private void initVocableList()
     {
-        vocNames = new ArrayList<VocItem>();
+        vocabIDList = new ArrayList<Integer>();
+        vocabList = new ArrayList<VocItem>();
     }
 
     private void initUI()
@@ -60,7 +58,7 @@ public class DetailCategoriesActivity extends AppCompatActivity
     private void initListAdapter()
     {
         ListView list = (ListView) findViewById(R.id.list_of_detailed_category_list);
-        detailCategoriesAdapter = new DetailCategoriesAdapter(getApplicationContext(), vocNames);
+        detailCategoriesAdapter = new DetailCategoriesAdapter(getApplicationContext(), vocabList);
         list.setAdapter(detailCategoriesAdapter);
     }
 
@@ -71,8 +69,13 @@ public class DetailCategoriesActivity extends AppCompatActivity
 
     private void updateList()
     {
-        vocNames.clear();
-        vocNames.addAll(voc_database.getAllVocItems());
+        vocabList.clear();
+        //TODO: get vocab from this list
+        for (int i = 0; i < vocabIDList.size(); i++)
+        {
+            //TODO: vocabList.add(vocabDB.getVocabItem(vocabIDList[i]); get vocab by ID
+        }
+        vocabList.addAll(voc_database.getAllVocItems());
         detailCategoriesAdapter.notifyDataSetChanged();
     }
 
@@ -104,6 +107,13 @@ public class DetailCategoriesActivity extends AppCompatActivity
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    //TODO: get vocab from db
+    //TODO: IDs instead of VocItem
+    public void addVocabToCategoryList(int newVocabID)
+    {
+//        vocabList.add(newVocab);
     }
 
     private void searchForVocable()
