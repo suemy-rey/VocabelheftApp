@@ -51,7 +51,6 @@ public class DetailCategoriesAdapter extends ArrayAdapter<VocItem>
         notes.setText(vocList.get(position).getNotes());
 
         Spinner spinner_language_one = (Spinner) v.findViewById(R.id.spinner_original_language);
-
         Spinner spinner_language_two = (Spinner) v.findViewById(R.id.spinner_translation_language);
 
         return v;
