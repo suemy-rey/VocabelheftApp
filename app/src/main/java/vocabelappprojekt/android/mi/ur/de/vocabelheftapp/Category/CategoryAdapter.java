@@ -12,9 +12,6 @@ import java.util.ArrayList;
 
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
-/**
- * Created by Sümeyye on 23.08.2015.
- */
 public class CategoryAdapter extends ArrayAdapter<CategoryItem>  {
 
 
