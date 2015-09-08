@@ -57,7 +57,6 @@ public class DetailCategoriesActivity extends AppCompatActivity
         initListAdapter();
     }
 
-
     private void initListAdapter()
     {
         ListView list = (ListView) findViewById(R.id.list_of_detailed_category_list);

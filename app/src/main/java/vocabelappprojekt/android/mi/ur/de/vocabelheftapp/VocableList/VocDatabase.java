@@ -68,7 +68,6 @@ public class VocDatabase
 
     public VocItem getVocItem(String vocItemID)
     {
-
         Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID,
                         KEY_LANGUAGE_ONE, KEY_LANGUAGE_TWO, KEY_ORIGINAL_SPINNER, KEY_TRANSLATION_SPINNER,
                         KEY_NOTES, KEY_CATEGORY}, KEY_ID + "=?", new String[]{vocItemID},
@@ -122,12 +121,10 @@ public class VocDatabase
 
     public long updateTitle(String vocItemID, String title, String title_two)
     {
-
         ContentValues newTitleValues = new ContentValues();
         newTitleValues.put(KEY_LANGUAGE_ONE, title);
         newTitleValues.put(KEY_LANGUAGE_TWO, title_two);
         return db.update(DATABASE_TABLE, newTitleValues, KEY_ID + "= ?", new String[]{vocItemID});
-
     }
 
     public long updateOriginalLanguageSpinner(String original_name, String original_language)
@@ -170,7 +167,6 @@ public class VocDatabase
         newTitleValues.put(KEY_LANGUAGE_TWO, title_two);
         return db.update(DATABASE_TABLE, newTitleValues, KEY_ID + "= ?", new String[]{vocItemID});
     }
-
 
     private class VocItemHelper extends SQLiteOpenHelper
     {

@@ -77,6 +77,7 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
     //    Slide.slide_down(this, v);
     //     }
     // }
+
     private void initDB()
     {
         voc_database = new VocDatabase(getApplicationContext());

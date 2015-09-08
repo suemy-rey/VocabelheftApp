@@ -35,6 +35,5 @@ public class Slide
                 v.startAnimation(animation);
             }
         }
-
     }
 }
