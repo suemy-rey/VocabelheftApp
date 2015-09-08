@@ -117,6 +117,7 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
 
             private void addNewVoc(String voc_one, String voc_two, String spinner_original, String spinner_translation, String note, String category)
             {
+                //TODO: add add data to DB then get item from DB
                 long id = 0;
                 VocItem newVoc = new VocItem(id, voc_one, voc_two, spinner_original, spinner_translation, note, category);
                 Log.d("vocItem", voc_one + "," + voc_two + "," + spinner_original + "," + spinner_translation + "," + note + "," + category);
