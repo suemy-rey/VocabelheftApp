@@ -1,69 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/material_deep_teal_500"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/material_deep_teal_500"
     >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:padding="10dp"
-            android:gravity="center_vertical"
-            android:id="@+id/textView_language1"
-            android:text="erste Vokabel "
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"
+        android:gravity="center_vertical"
+        android:id="@+id/textView_language1"
+        android:text="erste Vokabel "
+        android:onClick="onClick"
+        android:clickable="true"
 
 
-            />
+        />
 
 
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinner_language1"
-            android:entries="@array/language_arrays"
-            android:prompt="@string/country_prompt"
-            android:layout_alignTop="@+id/textView_language1"
-            android:layout_toRightOf="@+id/textView_language2"
-            android:layout_toEndOf="@+id/textView_language2"
-            android:layout_marginLeft="120dp"
-            android:layout_marginStart="120dp" />
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_language1"
+        android:entries="@array/language_arrays"
+        android:prompt="@string/country_prompt"
+        android:layout_alignTop="@+id/textView_language1"
+        android:layout_toRightOf="@+id/textView_language2"
+        android:layout_toEndOf="@+id/textView_language2"
+        android:layout_marginLeft="120dp"
+        android:layout_marginStart="120dp" />
 
 
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="zweite Vokabel"
-            android:gravity="center_vertical"
-            android:id="@+id/textView_language2"
-            android:layout_below="@+id/spinner_language1"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="zweite Vokabel"
+        android:gravity="center_vertical"
+        android:id="@+id/textView_language2"
+        android:layout_below="@+id/spinner_language1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="onClick"
+        android:clickable="true"
+        />
 
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinner_language2"
-            android:entries="@array/language_arrays"
-            android:prompt="@string/country_prompt"
-            android:layout_alignTop="@+id/textView_language2"
-            android:layout_alignLeft="@+id/spinner_language1"
-            android:layout_alignStart="@+id/spinner_language1" />
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_language2"
+        android:entries="@array/language_arrays"
+        android:prompt="@string/country_prompt"
+        android:layout_alignTop="@+id/textView_language2"
+        android:layout_alignLeft="@+id/spinner_language1"
+        android:layout_alignStart="@+id/spinner_language1" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView_of_notes"
-        android:text="hier kommen notizen rein"
+        android:text=""
         android:layout_below="@+id/spinner_language2"
         android:layout_marginTop="25dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <!-- activity_info layout file -->
+    <!-- Clickable title -->
+    <TextView
+        android:id="@+id/textView_of_notes_title"
+        android:clickable="true"
+        android:onClick="toggle_contents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner_language2"
+        android:layout_marginTop="25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+
+    <!--content to hide/show -->
+    <TextView
+        android:id="@+id/textView_of_notes_long"
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner_language2"
+        android:layout_marginTop="25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
 
 </RelativeLayout>
