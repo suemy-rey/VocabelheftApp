@@ -17,7 +17,6 @@ import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocItem;
 
 public class DetailCategoriesAdapter extends ArrayAdapter<VocItem>
 {
-
     private ArrayList<VocItem> vocList;
     private Context context;
     private VocDatabase vocDatabase;
