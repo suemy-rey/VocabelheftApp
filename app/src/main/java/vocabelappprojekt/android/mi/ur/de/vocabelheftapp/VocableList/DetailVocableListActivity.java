@@ -9,9 +9,6 @@ import android.view.MenuItem;
 
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
-/**
- * Created by S�meyye on 18.08.2015.
- */
 public class DetailVocableListActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
