@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Sümeyye on 25.08.2015.
@@ -50,10 +51,10 @@ public class VocDatabase {
 
         ContentValues vocValues = new ContentValues();
 
-        vocValues.put(KEY_LANGUAGE_ONE, vocItem.getVocab());
-        vocValues.put(KEY_LANGUAGE_TWO, vocItem.getVocabTranslation());
-        vocValues.put(KEY_ORIGINAL_SPINNER, vocItem.getVocabLanguageSetting());
-        vocValues.put(KEY_TRANSLATION_SPINNER, vocItem.getVocabTranslationLanguage());
+        vocValues.put(KEY_LANGUAGE_ONE, vocItem.getName());
+        vocValues.put(KEY_LANGUAGE_TWO, vocItem.getName_two());
+        vocValues.put(KEY_ORIGINAL_SPINNER, vocItem.getSpinnerOfFirstLanguage());
+        vocValues.put(KEY_TRANSLATION_SPINNER, vocItem.getSpinnerOfSecondLanguage());
         vocValues.put(KEY_NOTES, vocItem.getNotes());
         vocValues.put(KEY_CATEGORY, vocItem.getCategory());
 
@@ -62,11 +63,12 @@ public class VocDatabase {
 
 
     //Quelle:http://www.androidhive.info/2011/11/android-sqlite-database-tutorial/
+
     public VocItem getVocItem(String vocItemID) {
 
         Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID,
                         KEY_LANGUAGE_ONE, KEY_LANGUAGE_TWO, KEY_ORIGINAL_SPINNER, KEY_TRANSLATION_SPINNER,
-                 KEY_NOTES, KEY_CATEGORY}, KEY_ID + "=?", new String[]{vocItemID},
+                        KEY_NOTES, KEY_CATEGORY}, KEY_ID + "=?", new String[]{vocItemID},
                 null, null, null, null);
 
         cursor.moveToFirst();
@@ -97,8 +99,6 @@ public class VocDatabase {
                 String notes = cursor.getString(5);
                 String category = cursor.getString(6);
 
-
-
                 vocables.add(new VocItem(Long.valueOf(id), name, name_two, spinner_original_language,
                         spinner_translated_language, notes, category));
 
@@ -107,11 +107,13 @@ public class VocDatabase {
         return vocables;
     }
 
-   // public int deleteFoodieItem(String foodieItemID) {
 
-       // return db.delete(DATABASE_TABLE, KEY_LANGUAGE_TWO + "= ?", new String[]{foodieItemID});
 
-   // }
+    // public int deleteFoodieItem(String foodieItemID) {
+
+    // return db.delete(DATABASE_TABLE, KEY_LANGUAGE_TWO + "= ?", new String[]{foodieItemID});
+
+    // }
 
     public long updateTitle(String vocItemID, String title, String title_two){
 
@@ -120,6 +122,33 @@ public class VocDatabase {
         newTitleValues.put(KEY_LANGUAGE_TWO, title_two);
         return db.update(DATABASE_TABLE, newTitleValues, KEY_ID + "= ?", new String[] {vocItemID});
 
+    }
+
+    public long updateOriginalLanguageSpinner(String original_name, String original_language){
+        ContentValues newVocable = new ContentValues();
+        newVocable.put(KEY_ORIGINAL_SPINNER,original_language);
+        return db.update(DATABASE_TABLE,newVocable, "id=?", new String[]{original_name});
+    }
+
+    public long updateTranslationLanguageSpinner(String original_name, String translation_language){
+        ContentValues newVocable = new ContentValues();
+        newVocable.put(KEY_TRANSLATION_SPINNER,translation_language);
+        return db.update(DATABASE_TABLE,newVocable,"id=?", new String[] {original_name});
+    }
+
+    public long updateNotes(String original_name, String notes){
+        ContentValues newVocable = new ContentValues();
+        newVocable.put(KEY_NOTES,notes);
+        return db.update(DATABASE_TABLE,newVocable,"id=?", new String[] {original_name});
+    }
+    public long updateCategory(String original_name, String category){
+        ContentValues newVocable = new ContentValues();
+        newVocable.put(KEY_CATEGORY,category);
+        return db.update(DATABASE_TABLE,newVocable,"id=?", new String[] {original_name});
+    }
+    public int deleteVocItem(String name){
+
+        return db.delete(DATABASE_TABLE, KEY_LANGUAGE_ONE + " = ? ", new String[]{name});
     }
 
     public long updateTitleTwo (String vocItemID, String title_two) {
@@ -142,7 +171,7 @@ public class VocDatabase {
                         KEY_CATEGORY + " text not null);";
 
         public VocItemHelper(Context c, String dbname,
-                                SQLiteDatabase.CursorFactory factory, int version) {
+                             SQLiteDatabase.CursorFactory factory, int version) {
             super(c, dbname, factory, version);
         }
 
@@ -157,6 +186,3 @@ public class VocDatabase {
         }
     }
 }
-
-
-
