@@ -22,7 +22,6 @@ import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocItem;
 
 public class DetailCategoriesActivity extends AppCompatActivity
 {
-
     private ArrayList<VocItem> vocNames;
     private DetailCategoriesAdapter detailCategoriesAdapter;
     private VocDatabase voc_database;
