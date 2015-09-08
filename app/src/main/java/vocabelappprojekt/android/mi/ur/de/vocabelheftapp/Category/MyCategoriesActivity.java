@@ -16,14 +16,12 @@ import java.util.ArrayList;
 
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
-/**
- * Created by S�meyye on 18.08.2015.
- */
 public class MyCategoriesActivity extends AppCompatActivity{
 
     private ArrayList<CategoryItem> categoryNames;
     private CategoryAdapter category_adapter;
     private CategoryDatabase category_database;
+    private CategoryItem categoryItem;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +61,12 @@ public class MyCategoriesActivity extends AppCompatActivity{
         category_adapter = new CategoryAdapter(getApplicationContext(),categoryNames, new OnButtonClicklistener() {
             @Override
             public void onButtonClick(int position) {
+
                 Intent detail_activity_intent  = new Intent(getApplicationContext(), DetailCategoriesActivity.class);
                 startActivity(detail_activity_intent);
             }
         });
+
         list.setAdapter(category_adapter);
 
     }
@@ -79,7 +79,7 @@ public class MyCategoriesActivity extends AppCompatActivity{
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view,
                                            int position, long id) {
-               removeItemAtPosition(position);
+                removeItemAtPosition(position);
                 return false;
             }
         });
@@ -97,6 +97,7 @@ public class MyCategoriesActivity extends AppCompatActivity{
                     addNewNames(names);
                     edit.setText("");
                 }
+
             }
         });
 
