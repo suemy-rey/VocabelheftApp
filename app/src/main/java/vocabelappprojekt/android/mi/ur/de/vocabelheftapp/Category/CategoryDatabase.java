@@ -8,10 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Created by 1 on 2015/8/26.
- */
 public class CategoryDatabase {
 
     private static final String DATABASE_NAME = "categoryItem.db";
@@ -51,13 +49,13 @@ public class CategoryDatabase {
     }
 
     public CategoryItem getCategoryItem(String category_id){
-               Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_ID, KEY_NAME}, KEY_ID + "=?",
-               new String[] { category_id }, null, null, null, null);
-               if (cursor != null)
-               cursor.moveToFirst();
+        Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_ID, KEY_NAME}, KEY_ID + "=?",
+                new String[] { category_id }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
 
-          return new CategoryItem(Long.parseLong(cursor.getString(0)),cursor.getString(1));
-   }
+        return new CategoryItem(Long.parseLong(cursor.getString(0)),cursor.getString(1));
+    }
 
     public ArrayList<CategoryItem> getAllCategoryItems(){
         ArrayList<CategoryItem> category_items = new ArrayList<CategoryItem>();
@@ -73,10 +71,24 @@ public class CategoryDatabase {
         }
         return category_items;
     }
+
+    public List<String> getAllLabels(){
+        List<String> labels = new ArrayList<String>();
+        Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_ID, KEY_NAME}, null, null, null, null, null);;
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(1));
+            } while (cursor.moveToNext());
+        }
+        // returning lables
+        return labels;
+    }
+
     public long updateName(String category_id, String name){
-          ContentValues newCategoryValues = new ContentValues();
-          newCategoryValues.put(KEY_ID, name);
-          return db.update(DATABASE_TABLE, newCategoryValues,"id=?", new String[] {category_id});
+        ContentValues newCategoryValues = new ContentValues();
+        newCategoryValues.put(KEY_ID, name);
+        return db.update(DATABASE_TABLE, newCategoryValues,"id=?", new String[] {category_id});
     }
 
     public void deleteCategoryItem(CategoryItem categoryItem){
