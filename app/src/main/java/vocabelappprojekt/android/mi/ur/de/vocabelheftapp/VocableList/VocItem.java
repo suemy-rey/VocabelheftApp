@@ -41,6 +41,11 @@ public class VocItem
         return name;
     }
 
+    public void setName_two(String name_two)
+    {
+        this.name_two = name_two;
+    }
+
     public String getName_two()
     {
         return name_two;
