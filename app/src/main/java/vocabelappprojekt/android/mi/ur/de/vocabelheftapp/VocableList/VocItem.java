@@ -1,103 +1,47 @@
 package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList;
 
-public class VocItem
-{
+
+/**
+ * Created by Sümeyye on 24.08.2015.
+ */
+
+public class VocItem {
 
     private long id;
-    private String vocab;
-    private String translation;
-    private String vocabLanguageSetting;
-    private String translationLanguageSetting;
+    private String name;
+    private String name_two;
+    private String spinnerOfFirstLanguage;
+    private String spinnerOfSecondLanguage;
     private String notes;
     private String category;
 
-    public VocItem(long id)
-    {
+    public VocItem(long id, String name,String name_two, String spinnerOfFirstLanguage, String spinnerOfSecondLanguage, String notes, String category) {
         this.id = id;
-    }
-
-    public VocItem(long id, String vocab, String translation)
-    {
-        this.id = id;
-        this.vocab = vocab;
-        this.translation = translation;
-    }
-
-    public VocItem(long id, String vocab, String translation,
-                   String vocabLanguage, String translationLanguage,
-                   String notes, String category)
-    {
-        this.id = id;
-        this.vocab = vocab;
-        this.translation = translation;
-        this.vocabLanguageSetting = vocabLanguage;
-        this.translationLanguageSetting = translationLanguage;
+        this.name = name;
+        this.name_two = name_two;
+        this.spinnerOfFirstLanguage = spinnerOfFirstLanguage;
+        this.spinnerOfSecondLanguage = spinnerOfSecondLanguage;
         this.notes = notes;
         this.category = category;
     }
 
-    public long getId()
-    {
-        return id;
+    public long getId() { return id;}
+
+    public String getName() {
+        return name;
     }
 
-    public void  setVocab(String newVocab)
-    {
-        vocab = newVocab;
+    public String getName_two() { return name_two; }
+
+    public String getSpinnerOfFirstLanguage() {
+        return spinnerOfFirstLanguage;
     }
 
-    public String getVocab()
-    {
-        return vocab;
+    public String getSpinnerOfSecondLanguage() {
+        return spinnerOfSecondLanguage;
     }
 
-    public void setVocabTranslation(String newVocabTranslation)
-    {
-        translation = newVocabTranslation;
-    }
+    public String getNotes() { return notes;}
 
-    public String getVocabTranslation()
-    {
-        return translation;
-    }
-
-    public void setVocabLanguage(String vocabLanguage)
-    {
-        vocabLanguageSetting = vocabLanguage;
-    }
-
-    public String getVocabLanguageSetting()
-    {
-        return vocabLanguageSetting;
-    }
-
-    public void setVocabTranslationLanguage(String vocabTranslation)
-    {
-        translationLanguageSetting = vocabTranslation;
-    }
-
-    public String getVocabTranslationLanguage()
-    {
-        return translationLanguageSetting;
-    }
-
-    public void setNotes(String newNotes)
-    {
-        notes = newNotes;
-    }
-
-    public String getNotes()
-    {
-        return notes;
-    }
-
-    public void setCategory(String newCategory)
-    {
-        category = newCategory;
-    }
-
-    public String getCategory()
-    {
-        return category;
-    }
+    public String getCategory() { return category;}
 }
