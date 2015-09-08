@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.EditVocableActivity;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocAdapter;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocDatabase;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocItem;
 
@@ -20,7 +21,7 @@ public class DetailCategoriesActivity extends AppCompatActivity
 {
     private ArrayList<Integer> vocabIDList;
     private ArrayList<VocItem> vocabList;
-    private DetailCategoriesAdapter detailCategoriesAdapter;
+    private VocAdapter categoriesAdapter;
     private VocDatabase voc_database;
 
     protected void onCreate(Bundle savedInstanceState)
@@ -58,8 +59,8 @@ public class DetailCategoriesActivity extends AppCompatActivity
     private void initListAdapter()
     {
         ListView list = (ListView) findViewById(R.id.list_of_detailed_category_list);
-        detailCategoriesAdapter = new DetailCategoriesAdapter(getApplicationContext(), vocabList);
-        list.setAdapter(detailCategoriesAdapter);
+        categoriesAdapter = new VocAdapter(getApplicationContext(), vocabList);
+        list.setAdapter(categoriesAdapter);
     }
 
     private void initListView()
@@ -76,7 +77,7 @@ public class DetailCategoriesActivity extends AppCompatActivity
             //TODO: vocabList.add(vocabDB.getVocabItem(vocabIDList[i]); get vocab by ID
         }
         vocabList.addAll(voc_database.getAllVocItems());
-        detailCategoriesAdapter.notifyDataSetChanged();
+        categoriesAdapter.notifyDataSetChanged();
     }
 
     @Override
