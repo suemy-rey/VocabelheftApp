@@ -116,7 +116,6 @@ public class CategoryDatabase
 
     private class CategoryDBOpenHelper extends SQLiteOpenHelper
     {
-
         private static final String DATABASE_CREATE = "create table "
                 + DATABASE_TABLE + " (" + KEY_ID
                 + " integer primary key autoincrement, " + KEY_NAME
