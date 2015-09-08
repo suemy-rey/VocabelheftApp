@@ -1,4 +1,4 @@
-package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
+package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.EditVocableActivity;
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
 /**
  * Created by S�meyye on 18.08.2015.

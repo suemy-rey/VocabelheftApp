@@ -1,4 +1,4 @@
-package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
+package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category;
 
 /**
  * Created by Sümeyye on 23.08.2015.

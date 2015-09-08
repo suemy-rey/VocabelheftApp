@@ -8,6 +8,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category.MyCategoriesActivity;
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Testen.TestActivity;
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.MyVocableListActivity;
+
 
 public class MainActivity extends AppCompatActivity{
 

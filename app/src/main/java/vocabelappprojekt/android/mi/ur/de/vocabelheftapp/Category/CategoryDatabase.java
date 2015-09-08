@@ -1,4 +1,4 @@
-package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
+package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category;
 
 import android.content.ContentValues;
 import android.content.Context;

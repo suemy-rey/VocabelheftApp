@@ -1,4 +1,4 @@
-package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
+package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
 /**
  * Created by Sümeyye on 24.08.2015.

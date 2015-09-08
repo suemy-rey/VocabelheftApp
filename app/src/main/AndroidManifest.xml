@@ -24,11 +24,11 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MyVocableListActivity"/>
+                android:value=".VocableList.MyVocableListActivity"/>
 
         </activity>
 
-        <activity android:name=".MyVocableListActivity"
+        <activity android:name=".VocableList.MyVocableListActivity"
             android:label="Meine Vokabelliste">
 
             <meta-data
@@ -38,16 +38,16 @@
         <activity
 
 
-            android:name=".DetailVocableListActivity"
+            android:name=".VocableList.DetailVocableListActivity"
             android:label="Vokabeln ändern">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MyVocableListActivity"/>
+                android:value=".VocableList.MyVocableListActivity"/>
         </activity>
 
 
-        <activity android:name=".MyCategoriesActivity"
+        <activity android:name=".Category.MyCategoriesActivity"
             android:label="Meine Sammlungen">
 
             <meta-data
@@ -58,17 +58,17 @@
         <activity
 
 
-            android:name=".DetailCategoriesActivity"
+            android:name=".Category.DetailCategoriesActivity"
             android:label="Sammlung">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MyCategoriesActivity"/>
+                android:value=".Category.MyCategoriesActivity"/>
         </activity>
 
         <activity
 
-            android:name=".TestActivity"
+            android:name=".Testen.TestActivity"
             android:label="Vokabeln abfragen">
 
             <meta-data

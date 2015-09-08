@@ -1,4 +1,4 @@
-package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
+package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList;
 
 public class VocItem
 {

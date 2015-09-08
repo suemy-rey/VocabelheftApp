@@ -1,4 +1,4 @@
-package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
+package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.EditVocableActivity;
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
 /**
  * Created by S�meyye on 18.08.2015.

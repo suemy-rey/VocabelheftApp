@@ -1,20 +1,21 @@
-package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
+package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Testen;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
+
 /**
- * Created by S�meyye on 18.08.2015.
+ * Created by Sümeyye on 23.08.2015.
  */
-public class DetailVocableListActivity extends AppCompatActivity {
+public class TestActivity extends AppCompatActivity{
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.my_category_list);
+        setContentView(R.layout.my_vocable_list);
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -41,5 +42,4 @@ public class DetailVocableListActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 }

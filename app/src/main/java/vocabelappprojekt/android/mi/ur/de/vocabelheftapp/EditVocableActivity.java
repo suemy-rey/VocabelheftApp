@@ -19,6 +19,11 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.MyVocableListActivity;
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocAdapter;
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocDatabase;
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocItem;
+
 public class EditVocableActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
 

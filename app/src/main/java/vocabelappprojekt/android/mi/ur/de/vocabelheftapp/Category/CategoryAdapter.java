@@ -1,17 +1,16 @@
-package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
+package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
 /**
  * Created by Sümeyye on 23.08.2015.
