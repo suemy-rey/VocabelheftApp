@@ -32,6 +32,7 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
     private Spinner spinnerFirstLanguage, spinnerSecondLanguage, spinnerCatrgory;
     private Button button_speichern;
     private EditText input_language_original, input_language_translation, input_notes;
+    private DetailCategoriesActivity detailCategoriesActivity;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -127,6 +128,12 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
                 voc_database.insertVocItem(newVoc);
                 //TODO: category.addVocabToCategory(int vocabID) if category != empty string
                 if(category != null){
+
+                   long vocId = newVoc.getId();
+                    Log.d("id", ""+vocId);
+                    detailCategoriesActivity = new DetailCategoriesActivity();
+                    detailCategoriesActivity.addVocabToCategoryList((int)vocId);
+
 
                 }
 

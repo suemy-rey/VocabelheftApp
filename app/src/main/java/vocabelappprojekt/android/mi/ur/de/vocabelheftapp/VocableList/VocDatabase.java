@@ -72,18 +72,17 @@ public class VocDatabase
                         KEY_LANGUAGE_ONE, KEY_LANGUAGE_TWO, KEY_ORIGINAL_SPINNER, KEY_TRANSLATION_SPINNER,
                         KEY_NOTES, KEY_CATEGORY}, KEY_ID + "=?", new String[]{vocItemID},
                 null, null, null, null);
+              if(cursor != null)
+                cursor.moveToFirst();
+                String name = cursor.getString(1);
+                String name_two = cursor.getString(2);
+                String spinner_original_language = cursor.getString(3);
+                String spinner_translated_language = cursor.getString(4);
+                String notes = cursor.getString(5);
+                String category = cursor.getString(6);
 
-        cursor.moveToFirst();
-
-        String name = cursor.getString(1);
-        String name_two = cursor.getString(2);
-        String spinner_original_language = cursor.getString(3);
-        String spinner_translated_language = cursor.getString(4);
-        String notes = cursor.getString(5);
-        String category = cursor.getString(6);
-
-        return new VocItem(Long.parseLong(cursor.getString(0)), name, name_two, spinner_original_language,
-                spinner_translated_language, notes, category);
+                return new VocItem(Long.parseLong(cursor.getString(0)), name, name_two, spinner_original_language,
+                        spinner_translated_language, notes, category);
     }
 
     public ArrayList<VocItem> getAllVocItems()

@@ -75,8 +75,9 @@ public class DetailCategoriesActivity extends AppCompatActivity
         for (int i = 0; i < vocabIDList.size(); i++)
         {
             //TODO: vocabList.add(vocabDB.getVocabItem(vocabIDList[i]); get vocab by ID
+           vocabList.add(voc_database.getVocItem(String.valueOf(vocabIDList.get(i))));
         }
-        vocabList.addAll(voc_database.getAllVocItems());
+      //  vocabList.addAll(voc_database.getAllVocItems());
         categoriesAdapter.notifyDataSetChanged();
     }
 
