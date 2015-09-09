@@ -38,7 +38,7 @@ public class VocAdapter extends ArrayAdapter<VocItem>
         vocDatabase.open();
     }
 
-    public int positionOfFirstLanguage(String firstLanguage)
+    public int positionOfLanguage(String firstLanguage)
     {
         for (int i = 0; i < language_array.length; i++)
         {
@@ -50,17 +50,6 @@ public class VocAdapter extends ArrayAdapter<VocItem>
         return 0;
     }
 
-    public int positionOfSecondLanguage(String secondLanguage)
-    {
-        for (int i = 0; i < language_array.length; i++)
-        {
-            if (secondLanguage.equals(language_array[i]))
-            {
-                return i;
-            }
-        }
-        return 0;
-    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
@@ -86,11 +75,10 @@ public class VocAdapter extends ArrayAdapter<VocItem>
         title.setText(vocList.get(position).getNotes());
 
         Spinner spinner_language_one = (Spinner) v.findViewById(R.id.spinner_language1);
-        spinner_language_one.setSelection(positionOfFirstLanguage(vocList.get(position).getSpinnerOfFirstLanguage()), true);
+        spinner_language_one.setSelection(positionOfLanguage(vocList.get(position).getSpinnerOfFirstLanguage()), true);
 
         Spinner spinner_language_two = (Spinner) v.findViewById(R.id.spinner_language2);
-        spinner_language_two.setSelection(positionOfSecondLanguage(vocList.get(position).getSpinnerOfSecondLanguage()), true);
-        //  spinner_language_two.setSelection(6,true);
+        spinner_language_two.setSelection(positionOfLanguage(vocList.get(position).getSpinnerOfSecondLanguage()), true);
 
         return v;
     }

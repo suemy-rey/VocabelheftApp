@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category.CategoryDatabase;
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category.DetailCategoriesActivity;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.MyVocableListActivity;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocAdapter;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocDatabase;
@@ -125,6 +126,10 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
                 toast.show();
                 voc_database.insertVocItem(newVoc);
                 //TODO: category.addVocabToCategory(int vocabID) if category != empty string
+                if(category != null){
+
+                }
+
             }
         });
     }

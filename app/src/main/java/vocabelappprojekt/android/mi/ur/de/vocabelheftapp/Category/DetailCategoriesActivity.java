@@ -114,6 +114,7 @@ public class DetailCategoriesActivity extends AppCompatActivity
     //TODO: IDs instead of VocItem
     public void addVocabToCategoryList(int newVocabID)
     {
+        vocabIDList.add(newVocabID);
 //        vocabList.add(newVocab);
     }
 
