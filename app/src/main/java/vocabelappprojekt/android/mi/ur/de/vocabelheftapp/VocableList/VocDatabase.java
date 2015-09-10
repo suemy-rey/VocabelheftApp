@@ -50,7 +50,7 @@ public class VocDatabase
         db.close();
     }
 
-    public long insertVocItem(VocItem vocItem)
+    public long insertVocItem(VocItem vocItem )
     {
         ContentValues vocValues = new ContentValues();
 

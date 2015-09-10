@@ -52,7 +52,7 @@ public class DetailCategoriesActivity extends AppCompatActivity
 
     private void initUI()
     {
-        initListView();
+        //initListView();
         initListAdapter();
     }
 
@@ -65,7 +65,7 @@ public class DetailCategoriesActivity extends AppCompatActivity
 
     private void initListView()
     {
-        final ListView list = (ListView) findViewById(R.id.list_of_detailed_category_list);
+        ListView list = (ListView) findViewById(R.id.list_of_detailed_category_list);
     }
 
     private void updateList()
@@ -115,6 +115,7 @@ public class DetailCategoriesActivity extends AppCompatActivity
     //TODO: IDs instead of VocItem
     public void addVocabToCategoryList(int newVocabID)
     {
+
         vocabIDList.add(newVocabID);
 //        vocabList.add(newVocab);
     }

@@ -1,5 +1,7 @@
 package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SearchView;
 
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category.MyCategoriesActivity;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Testen.TestActivity;
@@ -72,6 +75,15 @@ public class MainActivity extends AppCompatActivity
     {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
+
+
         // MenuItem searchItem = menu.findItem(R.id.action_search);
         // SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         // return super.onCreateOptionsMenu(menu);
