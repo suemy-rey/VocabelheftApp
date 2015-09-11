@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,12 +15,13 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Log.Log;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.EditVocableActivity;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
 public class MyVocableListActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
-    private ArrayList<VocItem> vocNames;
+    private ArrayList<VocItem> vocItems;
     private VocAdapter voc_adapter;
     private VocDatabase voc_database;
     private Spinner original_spinner;
@@ -52,7 +52,6 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
         original_spinner = (Spinner) findViewById(R.id.spinner_language1);
         //int original_spinner_position = getIntent().getExtras().getInt("firstLanguagePosition");
         int position = getIntent().getIntExtra("firstLanguagePosition", 0);
-        Log.d("position", "" + position);
         //original_spinner.setSelection(original_spinner_position, true);
 
         // translation_spinner = (Spinner)findViewById(R.id.spinner_language2);
@@ -86,7 +85,7 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
 
     private void initVocableList()
     {
-        vocNames = new ArrayList<VocItem>();
+        vocItems = new ArrayList<VocItem>();
     }
 
     private void initUI()
@@ -98,20 +97,21 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
     private void initListAdapter()
     {
         ListView list = (ListView) findViewById(R.id.listViewOfMyVoc);
-        voc_adapter = new VocAdapter(getApplicationContext(), vocNames);
+        voc_adapter = new VocAdapter(this, vocItems);
         list.setAdapter(voc_adapter);
     }
 
     private void initListView()
     {
-        final ListView list = (ListView) findViewById(R.id.listViewOfMyVoc);
+        ListView list = (ListView) findViewById(R.id.listViewOfMyVoc);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                VocItem vocItem = vocNames.get(position);
+                Log.e("clicked");
+                VocItem vocItem = vocItems.get(position);
                 Intent i = new Intent(MyVocableListActivity.this, EditVocableActivity.class);
                 i.putExtra("voc_name", vocItem.getName());
                 startActivity(i);
@@ -124,7 +124,7 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
             public boolean onItemLongClick(AdapterView<?> parent, View view,
                                            int position, long id)
             {
-
+                Log.e("long clicked");
                 return false;
             }
         });
@@ -132,8 +132,8 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
 
     private void updateList()
     {
-        vocNames.clear();
-        vocNames.addAll(voc_database.getAllVocItems());
+        vocItems.clear();
+        vocItems.addAll(voc_database.getAllVocItems());
         voc_adapter.notifyDataSetChanged();
     }
 
