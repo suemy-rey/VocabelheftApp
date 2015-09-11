@@ -41,22 +41,8 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
         initVocableList();
         initUI();
         updateList();
-        updateSpinner();
-
         //textView_of_notes_long = (TextView)findViewById(R.id.textView_of_notes_long);
         //toggle_contents(textView_of_notes_long);
-    }
-
-    private void updateSpinner()
-    {
-        original_spinner = (Spinner) findViewById(R.id.spinner_language1);
-        //int original_spinner_position = getIntent().getExtras().getInt("firstLanguagePosition");
-        int position = getIntent().getIntExtra("firstLanguagePosition", 0);
-        //original_spinner.setSelection(original_spinner_position, true);
-
-        // translation_spinner = (Spinner)findViewById(R.id.spinner_language2);
-        //  int translation_spinner_position = getIntent().getExtras().getInt("secondLanguagePosition");
-        //  translation_spinner.setSelection(translation_spinner_position,true);
     }
 
     /**
@@ -110,10 +96,11 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                Log.e("clicked");
+               // Log.e("clicked");
                 VocItem vocItem = vocItems.get(position);
                 Intent i = new Intent(MyVocableListActivity.this, EditVocableActivity.class);
-                i.putExtra("voc_name", vocItem.getName());
+                //Log.e(""+vocItem.getId());
+               // i.putExtra("voc_id", vocItem.getId());
                 startActivity(i);
             }
         });
@@ -124,10 +111,24 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
             public boolean onItemLongClick(AdapterView<?> parent, View view,
                                            int position, long id)
             {
-                Log.e("long clicked");
+               // Log.e("long clicked");
+                removeItemAtPosition(position);
                 return false;
             }
         });
+
+    }
+
+    private void removeItemAtPosition(int position) {
+        if(vocItems.get(position) == null){
+            return;
+        }else{
+            Log.e("id","" + vocItems.get(position).getId());
+            VocItem item = vocItems.get(position);
+
+            voc_database.deleteVocItem(""+item.getId());
+            updateList();
+        }
     }
 
     private void updateList()

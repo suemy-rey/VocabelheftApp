@@ -3,6 +3,8 @@ package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,11 +29,12 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
     private VocDatabase voc_database;
     private CategoryDatabase category_database;
     private List<String> names_category;
+    private VocItem vocItem;
 
     private Spinner spinnerFirstLanguage, spinnerSecondLanguage, spinnerCategory;
     private Button button_speichern;
     private EditText input_language_original, input_language_translation, input_notes;
-    private DetailCategoriesActivity detailCategoriesActivity;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -44,6 +47,32 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
 
         initDB();
         initUI();
+
+       // Log.d("vocId",""+getIntent().getExtras().getInt("voc_id") );
+        //int voc_id = getIntent().getExtras().getInt("voc_id");
+       // vocItem = voc_database.getVocItem("" + voc_id);
+      // input_language_original.setText(vocItem.getName());
+      //  updateText();
+    }
+
+    private void updateText() {
+        input_language_original.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.d("hallo", input_language_original.getText().toString());
+                 voc_database.updateVocab("" + vocItem.getId(), input_language_original.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     private void initUI()

@@ -75,7 +75,7 @@ public class VocDatabase
                 null, null, null, null);
               if(cursor != null)
                 cursor.moveToFirst();
-
+                String id = cursor.getString(0);
                 String name = cursor.getString(1);
                 String name_two = cursor.getString(2);
                 String spinner_original_language = cursor.getString(3);
@@ -83,7 +83,7 @@ public class VocDatabase
                 String notes = cursor.getString(5);
                 String category = cursor.getString(6);
 
-                return new VocItem(name, name_two, spinner_original_language,
+                return new VocItem(Integer.parseInt(id),name, name_two, spinner_original_language,
                         spinner_translated_language, notes, category);
     }
 
@@ -134,11 +134,6 @@ public class VocDatabase
         return vocables;
     }
 
-    // public int deleteFoodieItem(String foodieItemID) {
-
-    // return db.delete(DATABASE_TABLE, KEY_LANGUAGE_TWO + "= ?", new String[]{foodieItemID});
-
-    // }
 
     private VocItem createItem(Cursor cursor)
     {
@@ -158,12 +153,18 @@ public class VocDatabase
         return item;
     }
 
-    public long updateTitle(String vocItemID, String title, String title_two)
+    public long updateVocab(String vocItemID, String voc)
     {
-        ContentValues newTitleValues = new ContentValues();
-        newTitleValues.put(KEY_LANGUAGE_ONE, title);
-        newTitleValues.put(KEY_LANGUAGE_TWO, title_two);
-        return db.update(DATABASE_TABLE, newTitleValues, KEY_ID + "= ?", new String[]{vocItemID});
+        ContentValues newVocab = new ContentValues();
+        newVocab.put(KEY_LANGUAGE_ONE, voc);
+        return db.update(DATABASE_TABLE, newVocab, KEY_ID + "= ?", new String[]{vocItemID});
+    }
+
+    public long updateTranslation(String vocItemID, String translation)
+    {
+        ContentValues newTranslation = new ContentValues();
+        newTranslation.put(KEY_LANGUAGE_TWO, translation);
+        return  db.update(DATABASE_TABLE, newTranslation, KEY_ID + "= ?", new String[]{vocItemID});
     }
 
     public long updateOriginalLanguageSpinner(String original_name, String original_language)
@@ -194,10 +195,10 @@ public class VocDatabase
         return db.update(DATABASE_TABLE, newVocable, "id=?", new String[]{original_name});
     }
 
-    public int deleteVocItem(String name)
+    public int deleteVocItem(String id)
     {
 
-        return db.delete(DATABASE_TABLE, KEY_LANGUAGE_ONE + " = ? ", new String[]{name});
+        return db.delete(DATABASE_TABLE, KEY_ID + " = ? ", new String[]{id});
     }
 
     public long updateTitleTwo(String vocItemID, String title_two)

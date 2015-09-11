@@ -15,6 +15,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.EditVocableActivity;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Log.Log;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
@@ -153,12 +154,29 @@ public class MyCategoriesActivity extends AppCompatActivity
 
         switch (id)
         {
+            case R.id.action_settings:
+                return true;
+            case R.id.action_add:
+                addVocable();
+                return true;
+            case R.id.action_search:
+                searchForVocable();
+                return true;
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+    private void addVocable()
+    {
+        Intent addNewVoc = new Intent(getApplicationContext(), EditVocableActivity.class);
+        startActivity(addNewVoc);
+    }
+
+    private void searchForVocable() {
+
     }
 
     protected void onDestroy()
