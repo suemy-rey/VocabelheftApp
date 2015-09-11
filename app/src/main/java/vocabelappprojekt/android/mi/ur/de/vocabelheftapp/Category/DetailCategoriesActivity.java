@@ -109,8 +109,6 @@ public class DetailCategoriesActivity extends AppCompatActivity
         }
     }
 
-    //TODO: get vocab from db
-    //TODO: IDs instead of VocItem
 //    public void addVocabToCategoryList(int newVocabID)
 //    {
 //
