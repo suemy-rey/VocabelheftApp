@@ -2,6 +2,7 @@ package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -14,14 +15,16 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Log.Log;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
 public class MyCategoriesActivity extends AppCompatActivity
 {
-    private ArrayList<CategoryItem> categoryNames;
+    public static final String CATEGORY_NAME_EXTRA = "category_name";
+
+    private ArrayList<CategoryItem> categoriesList;
     private CategoryAdapter category_adapter;
     private CategoryDatabase category_database;
-    private CategoryItem categoryItem;
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -39,8 +42,8 @@ public class MyCategoriesActivity extends AppCompatActivity
 
     private void updateList()
     {
-        categoryNames.clear();
-        categoryNames.addAll(category_database.getAllCategoryItems());
+        categoriesList.clear();
+        categoriesList.addAll(category_database.getAllCategoryItems());
         category_adapter.notifyDataSetChanged();
     }
 
@@ -59,12 +62,13 @@ public class MyCategoriesActivity extends AppCompatActivity
     private void initListAdapter()
     {
         ListView list = (ListView) findViewById(R.id.category_list);
-        category_adapter = new CategoryAdapter(getApplicationContext(), categoryNames, new OnButtonClicklistener()
+        category_adapter = new CategoryAdapter(getApplicationContext(), categoriesList, new OnButtonClicklistener()
         {
             @Override
             public void onButtonClick(int position)
             {
                 Intent detail_activity_intent = new Intent(getApplicationContext(), DetailCategoriesActivity.class);
+                detail_activity_intent.putExtra(CATEGORY_NAME_EXTRA, categoriesList.get(position).getName());
                 startActivity(detail_activity_intent);
             }
         });
@@ -97,42 +101,34 @@ public class MyCategoriesActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 EditText edit = (EditText) findViewById(R.id.name_category_input);
-                String names = edit.getText().toString();
+                String name = edit.getText().toString();
 
-                if (!names.equals(""))
+                if (!name.equals(""))
                 {
-                    addNewNames(names);
+                    addNewCategory(name);
                     edit.setText("");
                 }
             }
         });
     }
 
-    private void addNewNames(String names)
+    private void addNewCategory(String categoryName)
     {
-        if (categoryNames.equals(""))
-        {
-            return;
-        }
-        else
-        {
-            long id = 0;
-            CategoryItem newCategoryItem = new CategoryItem(id, names);
-            categoryNames.add(newCategoryItem);
-            category_adapter.notifyDataSetChanged();
-            category_database.insertCategoryItem(names);
-        }
+        CategoryItem newCategoryItem = new CategoryItem(categoryName);
+        categoriesList.add(newCategoryItem);
+        category_adapter.notifyDataSetChanged();
+        category_database.insertCategoryItem(categoryName);
     }
 
     private void removeItemAtPosition(int position)
     {
-        if ((categoryNames.get(position) == null))
+        if ((categoriesList.get(position) == null))
         {
             return;
         }
         else
         {
-            CategoryItem categoryItem = categoryNames.get(position);
+            CategoryItem categoryItem = categoriesList.get(position);
             category_database.deleteCategoryItem(categoryItem);
             updateList();
         }
@@ -140,7 +136,7 @@ public class MyCategoriesActivity extends AppCompatActivity
 
     private void initCategoryList()
     {
-        categoryNames = new ArrayList<CategoryItem>();
+        categoriesList = new ArrayList<CategoryItem>();
     }
 
     @Override

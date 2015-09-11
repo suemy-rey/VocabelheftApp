@@ -17,7 +17,6 @@ import java.util.List;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category.CategoryDatabase;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category.DetailCategoriesActivity;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.MyVocableListActivity;
-import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocAdapter;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocDatabase;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocItem;
 
@@ -29,7 +28,7 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
     private CategoryDatabase category_database;
     private List<String> names_category;
 
-    private Spinner spinnerFirstLanguage, spinnerSecondLanguage, spinnerCatrgory;
+    private Spinner spinnerFirstLanguage, spinnerSecondLanguage, spinnerCategory;
     private Button button_speichern;
     private EditText input_language_original, input_language_translation, input_notes;
     private DetailCategoriesActivity detailCategoriesActivity;
@@ -69,13 +68,13 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
         adapter_translation_spinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerSecondLanguage.setAdapter(adapter_translation_spinner);
 
-        spinnerCatrgory = (Spinner) findViewById(R.id.spinner_category);
+        spinnerCategory = (Spinner) findViewById(R.id.spinner_category);
         names_category = category_database.getAllLabels();
         ArrayAdapter<String> adapter_spinner_category = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, names_category);
         adapter_spinner_category.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCatrgory.setAdapter(adapter_spinner_category);
-        spinnerCatrgory.setOnItemSelectedListener(new MyOnItemSelectedListener());
-        //spinnerCatrgory.setSelection(0,true);
+        spinnerCategory.setAdapter(adapter_spinner_category);
+        spinnerCategory.setOnItemSelectedListener(new MyOnItemSelectedListener());
+        //spinnerCategory.setSelection(0,true);
     }
 
     private void initButton()
@@ -97,7 +96,7 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
                 //Toast toast=Toast.makeText(getApplicationContext(),""+ spinner_original, Toast.LENGTH_SHORT);
                 // toast.show();
                 String spinner_translation = spinnerSecondLanguage.getSelectedItem().toString();
-                String spinner_category = spinnerCatrgory.getSelectedItem().toString();
+                String spinner_category = spinnerCategory.getSelectedItem().toString();
 
                 if (voc_one.equals("") && voc_two.equals("") && note.equals(""))
                 {
@@ -127,17 +126,16 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
                 Toast toast = Toast.makeText(getApplicationContext(), "Sie haben ein Vokabel in " + category + "gespeichert", Toast.LENGTH_SHORT);
                 toast.show();
                 voc_database.insertVocItem(newVoc);
-                //TODO: category.addVocabToCategory(int vocabID) if category != empty string
-                if(category != null){
-
-                    // int vocId =
-                   // Log.d("id", ""+vocId);
-                   // detailCategoriesActivity = new DetailCategoriesActivity();
-                  //  detailCategoriesActivity.addVocabToCategoryList((int)vocId);
-
-
-                }
-
+//                //TODO: category.addVocabToCategory(int vocabID) if category != empty string
+//                if(category != null){
+//
+//                    // int vocId =
+//                   // Log.d("id", ""+vocId);
+//                   // detailCategoriesActivity = new DetailCategoriesActivity();
+//                  //  detailCategoriesActivity.addVocabToCategoryList((int)vocId);
+//
+//
+//                }
             }
         });
     }

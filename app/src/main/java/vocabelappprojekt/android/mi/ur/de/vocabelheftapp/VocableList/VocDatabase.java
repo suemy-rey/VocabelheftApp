@@ -87,6 +87,24 @@ public class VocDatabase
                         spinner_translated_language, notes, category);
     }
 
+    public ArrayList<VocItem> getVocItemsFromCategory(String category)
+    {
+        ArrayList<VocItem> categoryItems = new ArrayList<>();
+        Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID,
+                KEY_LANGUAGE_ONE, KEY_LANGUAGE_TWO, KEY_ORIGINAL_SPINNER, KEY_TRANSLATION_SPINNER,
+                KEY_NOTES, KEY_CATEGORY}, KEY_CATEGORY + "=?", new String[]{category},
+                null, null, null, null);
+        if (cursor.moveToFirst())
+        {
+            do
+            {
+                categoryItems.add(createItem(cursor));
+            }
+            while (cursor.moveToNext());
+        }
+        return categoryItems;
+    }
+
     public ArrayList<VocItem> getAllVocItems()
     {
         ArrayList<VocItem> vocables = new ArrayList<VocItem>();
@@ -97,17 +115,18 @@ public class VocDatabase
         {
             do
             {
-                int id = cursor.getInt(0);
-                Log.d( "id", ""+ id);
-                String name = cursor.getString(1);
-                String name_two = cursor.getString(2);
-                String spinner_original_language = cursor.getString(3);
-                String spinner_translated_language = cursor.getString(4);
-                String notes = cursor.getString(5);
-                String category = cursor.getString(6);
+//                int id = cursor.getInt(0);
+//                Log.d( "id", ""+ id);
+//                String name = cursor.getString(1);
+//                String name_two = cursor.getString(2);
+//                String spinner_original_language = cursor.getString(3);
+//                String spinner_translated_language = cursor.getString(4);
+//                String notes = cursor.getString(5);
+//                String category = cursor.getString(6);
 
-                vocables.add(new VocItem(id, name, name_two, spinner_original_language,
-                        spinner_translated_language, notes, category));
+//                vocables.add(new VocItem(id, name, name_two, spinner_original_language,
+//                        spinner_translated_language, notes, category));
+                vocables.add(createItem(cursor));
 
             }
             while (cursor.moveToNext());
@@ -120,6 +139,24 @@ public class VocDatabase
     // return db.delete(DATABASE_TABLE, KEY_LANGUAGE_TWO + "= ?", new String[]{foodieItemID});
 
     // }
+
+    private VocItem createItem(Cursor cursor)
+    {
+        VocItem item;
+
+        int id = cursor.getInt(0);
+        Log.d( "id", ""+ id);
+        String name = cursor.getString(1);
+        String name_two = cursor.getString(2);
+        String spinner_original_language = cursor.getString(3);
+        String spinner_translated_language = cursor.getString(4);
+        String notes = cursor.getString(5);
+        String category = cursor.getString(6);
+
+        item = new VocItem(id, name, name_two, spinner_original_language, spinner_translated_language, notes, category);
+
+        return item;
+    }
 
     public long updateTitle(String vocItemID, String title, String title_two)
     {

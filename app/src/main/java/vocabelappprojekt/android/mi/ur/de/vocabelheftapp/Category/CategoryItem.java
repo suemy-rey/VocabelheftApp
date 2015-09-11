@@ -4,13 +4,16 @@ public class CategoryItem
 {
     private long id;
     private String name;
-    private String vocable;
+
+    public CategoryItem(String name)
+    {
+        this.name = name;
+    }
 
     public CategoryItem(long id, String name)
     {
         this.name = name;
         this.id = id;
-        this.vocable = vocable;
     }
 
     public void setName(String name)
@@ -26,10 +29,5 @@ public class CategoryItem
     public long getId()
     {
         return id;
-    }
-
-    public String getVocable()
-    {
-        return vocable;
     }
 }

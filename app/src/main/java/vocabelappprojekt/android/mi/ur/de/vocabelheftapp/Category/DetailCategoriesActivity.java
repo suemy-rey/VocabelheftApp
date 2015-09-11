@@ -24,6 +24,8 @@ public class DetailCategoriesActivity extends AppCompatActivity
     private VocAdapter categoriesAdapter;
     private VocDatabase voc_database;
 
+    private String categoryName = "";
+
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,8 @@ public class DetailCategoriesActivity extends AppCompatActivity
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        categoryName = getIntent().getExtras().getString(MyCategoriesActivity.CATEGORY_NAME_EXTRA);
 
         initDB();
         initVocableList();
@@ -71,13 +75,7 @@ public class DetailCategoriesActivity extends AppCompatActivity
     private void updateList()
     {
         vocabList.clear();
-        //TODO: get vocab from this list
-        for (int i = 0; i < vocabIDList.size(); i++)
-        {
-            //TODO: vocabList.add(vocabDB.getVocabItem(vocabIDList[i]); get vocab by ID
-           vocabList.add(voc_database.getVocItem(String.valueOf(vocabIDList.get(i))));
-        }
-      //  vocabList.addAll(voc_database.getAllVocItems());
+        vocabList.addAll(voc_database.getVocItemsFromCategory(categoryName));
         categoriesAdapter.notifyDataSetChanged();
     }
 
@@ -113,12 +111,12 @@ public class DetailCategoriesActivity extends AppCompatActivity
 
     //TODO: get vocab from db
     //TODO: IDs instead of VocItem
-    public void addVocabToCategoryList(int newVocabID)
-    {
-
-        vocabIDList.add(newVocabID);
+//    public void addVocabToCategoryList(int newVocabID)
+//    {
+//
+//        vocabIDList.add(newVocabID);
 //        vocabList.add(newVocab);
-    }
+//    }
 
     private void searchForVocable()
     {
