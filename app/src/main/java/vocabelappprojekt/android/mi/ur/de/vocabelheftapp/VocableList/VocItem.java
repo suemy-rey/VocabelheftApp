@@ -2,7 +2,7 @@ package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList;
 
 public class VocItem
 {
-    private long id;
+    private int id;
     private String name;
     private String name_two;
     private String spinnerOfFirstLanguage;
@@ -15,7 +15,16 @@ public class VocItem
         this.name = name;
     }
 
-    public VocItem(long id, String name, String name_two, String spinnerOfFirstLanguage, String spinnerOfSecondLanguage, String notes, String category)
+    public VocItem(String name, String name_two, String spinnerOfFirstLanguage, String spinnerOfSecondLanguage, String notes, String category){
+        this.name = name;
+        this.name_two = name_two;
+        this.spinnerOfFirstLanguage = spinnerOfFirstLanguage;
+        this.spinnerOfSecondLanguage = spinnerOfSecondLanguage;
+        this.notes = notes;
+        this.category = category;
+    }
+
+    public VocItem(int id, String name, String name_two, String spinnerOfFirstLanguage, String spinnerOfSecondLanguage, String notes, String category)
     {
         this.id = id;
         this.name = name;
@@ -25,8 +34,11 @@ public class VocItem
         this.notes = notes;
         this.category = category;
     }
+    public void setId(int id){
+        this.id = id;
+    }
 
-    public long getId()
+    public int getId()
     {
         return id;
     }

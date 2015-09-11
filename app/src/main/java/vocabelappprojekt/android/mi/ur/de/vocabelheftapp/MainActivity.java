@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.SearchView;
 
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity
     private Button button_vocable;
     private Button button_categories;
     private Button button_test;
+    private ArrayAdapter arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -75,19 +77,37 @@ public class MainActivity extends AppCompatActivity
     {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+       // SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        //SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
 
-        SearchManager searchManager =
-                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView =
-                (SearchView) menu.findItem(R.id.action_search).getActionView();
-        searchView.setSearchableInfo(
-                searchManager.getSearchableInfo(getComponentName()));
+       //earchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        //searchView.setIconifiedByDefault(false);
+       // http://stackoverflow.com/questions/16847514/execute-search-from-action-bar
+        //SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener()
+        //{
+         //   @Override
+          //  public boolean onQueryTextChange(String newText)
+            //{
+                // this is your adapter that will be filtered
+              //  arrayAdapter.getFilter().filter(newText);
+                //return true;
+            //}
+         //   @Override
+           // public boolean onQueryTextSubmit(String query)
+            //{
+                // this is your adapter that will be filtered
+             //   arrayAdapter.getFilter().filter(query);
+              //  return true;
+            //}
+       // };
+        //searchView.setOnQueryTextListener(queryTextListener);
 
+        return true;
 
         // MenuItem searchItem = menu.findItem(R.id.action_search);
         // SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         // return super.onCreateOptionsMenu(menu);
-        return true;
+
     }
 
     @Override

@@ -122,8 +122,7 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
             private void addNewVoc(String voc_one, String voc_two, String spinner_original, String spinner_translation, String note, String category)
             {
                 //TODO: add add data to DB then get item from DB
-      long id = 0;
-                VocItem newVoc = new VocItem(id, voc_one, voc_two, spinner_original, spinner_translation, note, category);
+                VocItem newVoc = new VocItem(voc_one, voc_two, spinner_original, spinner_translation, note, category);
                 Log.d("vocItem", voc_one + "," + voc_two + "," + spinner_original + "," + spinner_translation + "," + note + "," + category);
                 Toast toast = Toast.makeText(getApplicationContext(), "Sie haben ein Vokabel in " + category + "gespeichert", Toast.LENGTH_SHORT);
                 toast.show();
@@ -131,7 +130,7 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
                 //TODO: category.addVocabToCategory(int vocabID) if category != empty string
                 if(category != null){
 
-                 //  long vocId = newVoc.getId();
+                    // int vocId =
                    // Log.d("id", ""+vocId);
                    // detailCategoriesActivity = new DetailCategoriesActivity();
                   //  detailCategoriesActivity.addVocabToCategoryList((int)vocId);

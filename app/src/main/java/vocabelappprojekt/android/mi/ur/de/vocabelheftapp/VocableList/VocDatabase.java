@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +75,7 @@ public class VocDatabase
                 null, null, null, null);
               if(cursor != null)
                 cursor.moveToFirst();
+
                 String name = cursor.getString(1);
                 String name_two = cursor.getString(2);
                 String spinner_original_language = cursor.getString(3);
@@ -81,7 +83,7 @@ public class VocDatabase
                 String notes = cursor.getString(5);
                 String category = cursor.getString(6);
 
-                return new VocItem(Long.parseLong(cursor.getString(0)), name, name_two, spinner_original_language,
+                return new VocItem(name, name_two, spinner_original_language,
                         spinner_translated_language, notes, category);
     }
 
@@ -95,7 +97,8 @@ public class VocDatabase
         {
             do
             {
-                String id = cursor.getString(0);
+                int id = cursor.getInt(0);
+                Log.d( "id", ""+ id);
                 String name = cursor.getString(1);
                 String name_two = cursor.getString(2);
                 String spinner_original_language = cursor.getString(3);
@@ -103,7 +106,7 @@ public class VocDatabase
                 String notes = cursor.getString(5);
                 String category = cursor.getString(6);
 
-                vocables.add(new VocItem(Long.valueOf(id), name, name_two, spinner_original_language,
+                vocables.add(new VocItem(id, name, name_two, spinner_original_language,
                         spinner_translated_language, notes, category));
 
             }
