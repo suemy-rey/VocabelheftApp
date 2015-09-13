@@ -167,45 +167,38 @@ public class VocDatabase
         return  db.update(DATABASE_TABLE, newTranslation, KEY_ID + "= ?", new String[]{vocItemID});
     }
 
-    public long updateOriginalLanguageSpinner(String original_name, String original_language)
+    public long updateOriginalLanguageSpinner(String vocItemID, String original_language)
     {
         ContentValues newVocable = new ContentValues();
         newVocable.put(KEY_ORIGINAL_SPINNER, original_language);
-        return db.update(DATABASE_TABLE, newVocable, "id=?", new String[]{original_name});
+        return db.update(DATABASE_TABLE, newVocable, KEY_ID + "= ?", new String[]{vocItemID});
     }
 
-    public long updateTranslationLanguageSpinner(String original_name, String translation_language)
+    public long updateTranslationLanguageSpinner(String vocItemID, String translation_language)
     {
         ContentValues newVocable = new ContentValues();
         newVocable.put(KEY_TRANSLATION_SPINNER, translation_language);
-        return db.update(DATABASE_TABLE, newVocable, "id=?", new String[]{original_name});
+        return db.update(DATABASE_TABLE, newVocable, KEY_ID + "= ?", new String[]{vocItemID});
     }
 
-    public long updateNotes(String original_name, String notes)
+    public long updateNotes(String vocItemID, String notes)
     {
-        ContentValues newVocable = new ContentValues();
-        newVocable.put(KEY_NOTES, notes);
-        return db.update(DATABASE_TABLE, newVocable, "id=?", new String[]{original_name});
+        ContentValues newNotes = new ContentValues();
+        newNotes.put(KEY_NOTES, notes);
+        return db.update(DATABASE_TABLE, newNotes, KEY_ID + " =? ", new String[]{vocItemID});
     }
 
-    public long updateCategory(String original_name, String category)
+    public long updateCategory(String vocItemID, String category)
     {
         ContentValues newVocable = new ContentValues();
         newVocable.put(KEY_CATEGORY, category);
-        return db.update(DATABASE_TABLE, newVocable, "id=?", new String[]{original_name});
+        return db.update(DATABASE_TABLE, newVocable, KEY_ID + "= ?", new String[]{vocItemID});
     }
 
     public int deleteVocItem(String id)
     {
 
         return db.delete(DATABASE_TABLE, KEY_ID + " = ? ", new String[]{id});
-    }
-
-    public long updateTitleTwo(String vocItemID, String title_two)
-    {
-        ContentValues newTitleValues = new ContentValues();
-        newTitleValues.put(KEY_LANGUAGE_TWO, title_two);
-        return db.update(DATABASE_TABLE, newTitleValues, KEY_ID + "= ?", new String[]{vocItemID});
     }
 
     private class VocItemHelper extends SQLiteOpenHelper

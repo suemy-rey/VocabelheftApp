@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Log.Log;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.EditVocableActivity;
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.ModifyVocableActivity;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
 public class MyVocableListActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
@@ -24,9 +25,6 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
     private ArrayList<VocItem> vocItems;
     private VocAdapter voc_adapter;
     private VocDatabase voc_database;
-    private Spinner original_spinner;
-    private Spinner translation_spinner;
-    private String[] string_array;
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -35,33 +33,12 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        //string_array = getResources().getStringArray(R.array.language_arrays);
-
         initDB();
         initVocableList();
         initUI();
         updateList();
-        //textView_of_notes_long = (TextView)findViewById(R.id.textView_of_notes_long);
-        //toggle_contents(textView_of_notes_long);
-    }
 
-    /**
-     * http://www.javacodegeeks.com/2013/09/android-expandablecollapsible-views.html
-     * <p/>
-     * onClick handler
-     */
-    //  public void toggle_contents(View v){
-    //    v.setVisibility( v.isShown()
-    //          ? View.GONE
-    //         : View.VISIBLE );
-    //   if(v.isShown()){
-    //      Slide.slide_up(this,v);
-    //  v.setVisibility(View.GONE);
-    //}else{
-    //      v.setVisibility(View.VISIBLE);
-    //    Slide.slide_down(this, v);
-    //     }
-    // }
+    }
 
     private void initDB()
     {
@@ -98,9 +75,9 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
             {
                // Log.e("clicked");
                 VocItem vocItem = vocItems.get(position);
-                Intent i = new Intent(MyVocableListActivity.this, EditVocableActivity.class);
+                Intent i = new Intent(MyVocableListActivity.this, ModifyVocableActivity.class);
                 //Log.e(""+vocItem.getId());
-               // i.putExtra("voc_id", vocItem.getId());
+                i.putExtra("voc_id", vocItem.getId());
                 startActivity(i);
             }
         });

@@ -48,31 +48,6 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
         initDB();
         initUI();
 
-       // Log.d("vocId",""+getIntent().getExtras().getInt("voc_id") );
-        //int voc_id = getIntent().getExtras().getInt("voc_id");
-       // vocItem = voc_database.getVocItem("" + voc_id);
-      // input_language_original.setText(vocItem.getName());
-      //  updateText();
-    }
-
-    private void updateText() {
-        input_language_original.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Log.d("hallo", input_language_original.getText().toString());
-                 voc_database.updateVocab("" + vocItem.getId(), input_language_original.getText().toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
     }
 
     private void initUI()
@@ -102,7 +77,7 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
         ArrayAdapter<String> adapter_spinner_category = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, names_category);
         adapter_spinner_category.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategory.setAdapter(adapter_spinner_category);
-        spinnerCategory.setOnItemSelectedListener(new MyOnItemSelectedListener());
+       // spinnerCategory.setOnItemSelectedListener(new MyOnItemSelectedListener());
         //spinnerCategory.setSelection(0,true);
     }
 

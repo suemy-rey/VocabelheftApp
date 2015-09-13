@@ -41,6 +41,16 @@
                 android:value=".VocableList.MyVocableListActivity"/>
 
         </activity>
+        <activity
+
+            android:name=".ModifyVocableActivity"
+            android:label="Vokabeln bearbeiten">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".VocableList.MyVocableListActivity"/>
+
+        </activity>
 
         <activity android:name=".VocableList.MyVocableListActivity"
                   android:label="Meine Vokabelliste">
