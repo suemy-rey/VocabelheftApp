@@ -1,6 +1,8 @@
 
 package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -73,7 +75,7 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-               // Log.e("clicked");
+                // Log.e("clicked");
                 VocItem vocItem = vocItems.get(position);
                 Intent i = new Intent(MyVocableListActivity.this, ModifyVocableActivity.class);
                 //Log.e(""+vocItem.getId());
@@ -88,7 +90,7 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
             public boolean onItemLongClick(AdapterView<?> parent, View view,
                                            int position, long id)
             {
-               // Log.e("long clicked");
+                // Log.e("long clicked");
                 removeItemAtPosition(position);
                 return false;
             }
@@ -119,7 +121,33 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
+        super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        android.support.v7.widget.SearchView searchView = (android.support.v7.widget.SearchView) menu.findItem(R.id.action_search).getActionView();
+
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setIconifiedByDefault(false);
+
+        // http://stackoverflow.com/questions/16847514/execute-search-from-action-bar
+        android.support.v7.widget.SearchView.OnQueryTextListener queryTextListener = new android.support.v7.widget.SearchView.OnQueryTextListener()
+        {
+            @Override
+            public boolean onQueryTextChange(String newText)
+            {
+                searchForVocable(newText);
+                return true;
+            }
+            @Override
+            public boolean onQueryTextSubmit(String query)
+            {
+                searchForVocable(query);
+                return true;
+            }
+        };
+        searchView.setOnQueryTextListener(queryTextListener);
         return true;
     }
 
@@ -147,9 +175,17 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
 
     private void searchForVocable()
     {
-
+        vocItems.clear();
+        vocItems.addAll(voc_database.getAllVocItems());
+        voc_adapter.notifyDataSetChanged();
     }
 
+    private void searchForVocable(String text)
+    {
+        vocItems.clear();
+        vocItems.addAll(voc_database.getVocItemsByMontherLanguage(text));
+        voc_adapter.notifyDataSetChanged();
+    }
     //des is beim ActionBar
     private void addVocable()
     {

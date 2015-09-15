@@ -4,13 +4,14 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.SearchView;
 
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category.MyCategoriesActivity;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Testen.TestActivity;
@@ -76,31 +77,32 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
+        super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu_main, menu);
-       // SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        //SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-
-       //earchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        //searchView.setIconifiedByDefault(false);
-       // http://stackoverflow.com/questions/16847514/execute-search-from-action-bar
-        //SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener()
-        //{
-         //   @Override
-          //  public boolean onQueryTextChange(String newText)
-            //{
-                // this is your adapter that will be filtered
-              //  arrayAdapter.getFilter().filter(newText);
-                //return true;
-            //}
-         //   @Override
-           // public boolean onQueryTextSubmit(String query)
-            //{
-                // this is your adapter that will be filtered
-             //   arrayAdapter.getFilter().filter(query);
-              //  return true;
-            //}
-       // };
-        //searchView.setOnQueryTextListener(queryTextListener);
+//        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+//        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+//
+//       searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+//       searchView.setIconifiedByDefault(false);
+//       // http://stackoverflow.com/questions/16847514/execute-search-from-action-bar
+//        SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener()
+//        {
+//            @Override
+//            public boolean onQueryTextChange(String newText)
+//            {
+//                 //this is your adapter that will be filtered
+//                arrayAdapter.getFilter().filter(newText);
+//                return true;
+//            }
+//            @Override
+//            public boolean onQueryTextSubmit(String query)
+//            {
+////                 this is your adapter that will be filtered
+//                arrayAdapter.getFilter().filter(query);
+//                return true;
+//            }
+//        };
+//        searchView.setOnQueryTextListener(queryTextListener);
 
         return true;
 
@@ -137,7 +139,7 @@ public class MainActivity extends AppCompatActivity
 
     private void searchForVocable()
     {
-
+//        super.onSearchRequested();
     }
 
     private void addVocable()

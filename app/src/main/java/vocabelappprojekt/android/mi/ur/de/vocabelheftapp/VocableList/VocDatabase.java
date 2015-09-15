@@ -104,6 +104,24 @@ public class VocDatabase
         }
         return categoryItems;
     }
+    //Search voc by first language
+    public ArrayList<VocItem> getVocItemsByMontherLanguage(String text)
+    {
+        ArrayList<VocItem> items = new ArrayList<>();
+        Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID,
+                        KEY_LANGUAGE_ONE, KEY_LANGUAGE_TWO, KEY_ORIGINAL_SPINNER, KEY_TRANSLATION_SPINNER,
+                        KEY_NOTES, KEY_CATEGORY}, KEY_LANGUAGE_ONE + " like ?", new String[]{"%"+text+"%"},
+                null, null, null, null);
+        if (cursor.moveToFirst())
+        {
+            do
+            {
+                items.add(createItem(cursor));
+            }
+            while (cursor.moveToNext());
+        }
+        return items;
+    }
 
     public ArrayList<VocItem> getAllVocItems()
     {
