@@ -13,14 +13,16 @@
     <string name="editText_name_of_sammlungen">Name Ihrer Sammlungen</string>
     <string name="button_add">ADD</string>
     <string name="button_add_sammlungen">Sammlungen hinzufügen</string>
+    <string name="textview_add_to_category">zur Sammlung hinzufügen</string>
 
     <string name="add_voc">ADD Vocable</string>
     <string name="translate_voc">Translation</string>
     <string name="edit_notes">Notes</string>
-    <string name="category_button">zur Sammlung hinzufügen</string>
+
     <string name="save_button">Speichern</string>
 
-    <string name="action_search"> </string>
+    <string name="search_hint"> search a word...</string>
+
 
     <string name="country_prompt">Wähle eine Sprache</string>
 
@@ -35,6 +37,10 @@
         <item>Koreanisch</item>
         <item>Türkisch</item>
         <item>Chinesisch</item>
+    </string-array>
+
+    <string-array name="category_arrays">
+        <item>zur Sammlung hinzufügen</item>
     </string-array>
 
 

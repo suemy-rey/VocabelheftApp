@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
 
 
     <item
@@ -10,16 +10,16 @@
         app:showAsAction="never" />
 
     <item android:id="@+id/action_add"
-    android:title="@string/action_add"
-    app:showAsAction="ifRoom"
-    android:icon="@drawable/ic_menu_add" />
+          android:title="@string/action_add"
+          app:showAsAction="ifRoom"
+          android:icon="@drawable/ic_menu_add" />
 
 
     <item android:id="@+id/action_search"
-        android:title="@string/action_search"
-        android:icon="@drawable/ic_menu_search_holo_light"
-        app:showAsAction="ifRoom|collapseActionView"
-        app:actionViewClass="android.support.v7.widget.SearchView" />
+          android:title=""
+          android:icon="@drawable/ic_menu_search_holo_light"
+          app:showAsAction="ifRoom|collapseActionView"
+          android:actionViewClass="android.support.v7.widget.SearchView" />
 
 
 
