@@ -3,6 +3,8 @@ package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,11 +29,12 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
     private VocDatabase voc_database;
     private CategoryDatabase category_database;
     private List<String> names_category;
+    private VocItem vocItem;
 
     private Spinner spinnerFirstLanguage, spinnerSecondLanguage, spinnerCategory;
     private Button button_speichern;
     private EditText input_language_original, input_language_translation, input_notes;
-    private DetailCategoriesActivity detailCategoriesActivity;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -44,6 +47,7 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
 
         initDB();
         initUI();
+
     }
 
     private void initUI()
@@ -73,7 +77,7 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
         ArrayAdapter<String> adapter_spinner_category = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, names_category);
         adapter_spinner_category.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategory.setAdapter(adapter_spinner_category);
-        spinnerCategory.setOnItemSelectedListener(new MyOnItemSelectedListener());
+       // spinnerCategory.setOnItemSelectedListener(new MyOnItemSelectedListener());
         //spinnerCategory.setSelection(0,true);
     }
 

@@ -1,6 +1,8 @@
 
 package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Log.Log;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.EditVocableActivity;
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.ModifyVocableActivity;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
 public class MyVocableListActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
@@ -24,9 +27,6 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
     private ArrayList<VocItem> vocItems;
     private VocAdapter voc_adapter;
     private VocDatabase voc_database;
-    private Spinner original_spinner;
-    private Spinner translation_spinner;
-    private String[] string_array;
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -35,47 +35,12 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        //string_array = getResources().getStringArray(R.array.language_arrays);
-
         initDB();
         initVocableList();
         initUI();
         updateList();
-        updateSpinner();
 
-        //textView_of_notes_long = (TextView)findViewById(R.id.textView_of_notes_long);
-        //toggle_contents(textView_of_notes_long);
     }
-
-    private void updateSpinner()
-    {
-        original_spinner = (Spinner) findViewById(R.id.spinner_language1);
-        //int original_spinner_position = getIntent().getExtras().getInt("firstLanguagePosition");
-        int position = getIntent().getIntExtra("firstLanguagePosition", 0);
-        //original_spinner.setSelection(original_spinner_position, true);
-
-        // translation_spinner = (Spinner)findViewById(R.id.spinner_language2);
-        //  int translation_spinner_position = getIntent().getExtras().getInt("secondLanguagePosition");
-        //  translation_spinner.setSelection(translation_spinner_position,true);
-    }
-
-    /**
-     * http://www.javacodegeeks.com/2013/09/android-expandablecollapsible-views.html
-     * <p/>
-     * onClick handler
-     */
-    //  public void toggle_contents(View v){
-    //    v.setVisibility( v.isShown()
-    //          ? View.GONE
-    //         : View.VISIBLE );
-    //   if(v.isShown()){
-    //      Slide.slide_up(this,v);
-    //  v.setVisibility(View.GONE);
-    //}else{
-    //      v.setVisibility(View.VISIBLE);
-    //    Slide.slide_down(this, v);
-    //     }
-    // }
 
     private void initDB()
     {
@@ -110,10 +75,11 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                Log.e("clicked");
+                // Log.e("clicked");
                 VocItem vocItem = vocItems.get(position);
-                Intent i = new Intent(MyVocableListActivity.this, EditVocableActivity.class);
-                i.putExtra("voc_name", vocItem.getName());
+                Intent i = new Intent(MyVocableListActivity.this, ModifyVocableActivity.class);
+                //Log.e(""+vocItem.getId());
+                i.putExtra("voc_id", vocItem.getId());
                 startActivity(i);
             }
         });
@@ -124,10 +90,24 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
             public boolean onItemLongClick(AdapterView<?> parent, View view,
                                            int position, long id)
             {
-                Log.e("long clicked");
+                // Log.e("long clicked");
+                removeItemAtPosition(position);
                 return false;
             }
         });
+
+    }
+
+    private void removeItemAtPosition(int position) {
+        if(vocItems.get(position) == null){
+            return;
+        }else{
+            Log.e("id","" + vocItems.get(position).getId());
+            VocItem item = vocItems.get(position);
+
+            voc_database.deleteVocItem(""+item.getId());
+            updateList();
+        }
     }
 
     private void updateList()
@@ -141,7 +121,33 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
+        super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        android.support.v7.widget.SearchView searchView = (android.support.v7.widget.SearchView) menu.findItem(R.id.action_search).getActionView();
+
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setIconifiedByDefault(false);
+
+        // http://stackoverflow.com/questions/16847514/execute-search-from-action-bar
+        android.support.v7.widget.SearchView.OnQueryTextListener queryTextListener = new android.support.v7.widget.SearchView.OnQueryTextListener()
+        {
+            @Override
+            public boolean onQueryTextChange(String newText)
+            {
+                searchForVocable(newText);
+                return true;
+            }
+            @Override
+            public boolean onQueryTextSubmit(String query)
+            {
+                searchForVocable(query);
+                return true;
+            }
+        };
+        searchView.setOnQueryTextListener(queryTextListener);
         return true;
     }
 
@@ -169,9 +175,17 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
 
     private void searchForVocable()
     {
-
+        vocItems.clear();
+        vocItems.addAll(voc_database.getAllVocItems());
+        voc_adapter.notifyDataSetChanged();
     }
 
+    private void searchForVocable(String text)
+    {
+        vocItems.clear();
+        vocItems.addAll(voc_database.getVocItemsByMontherLanguage(text));
+        voc_adapter.notifyDataSetChanged();
+    }
     //des is beim ActionBar
     private void addVocable()
     {
