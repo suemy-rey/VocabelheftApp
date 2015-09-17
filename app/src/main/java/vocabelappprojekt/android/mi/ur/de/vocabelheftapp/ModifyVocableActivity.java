@@ -35,7 +35,6 @@ public class ModifyVocableActivity extends AppCompatActivity {
         private EditText input_language_original, input_language_translation, input_notes;
         private String[] language_array;
 
-
         @Override
         public void onCreate(Bundle savedInstanceState)
         {
@@ -61,7 +60,6 @@ public class ModifyVocableActivity extends AppCompatActivity {
             updateTranslation();
             updateNotes();
             updateSpinner();
-         
         }
 
     private int getPositionOfCategorySpinner(String category) {
