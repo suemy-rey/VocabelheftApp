@@ -20,9 +20,6 @@ import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.MyVocableLi
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocDatabase;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocItem;
 
-/**
- * Created by 1 on 2015/9/13.
- */
 public class ModifyVocableActivity extends AppCompatActivity {
 
         private VocDatabase voc_database;
