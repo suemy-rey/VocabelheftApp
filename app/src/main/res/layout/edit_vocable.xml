@@ -9,14 +9,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.25"
         android:orientation="horizontal">
 
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:layout_weight="0.75"
+            android:layout_gravity="center"
             android:hint="@string/add_voc"
             android:singleLine="true"
             android:textColorHint="@color/editTextHint"
@@ -28,8 +29,9 @@
         <Spinner
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginBottom="7dp"
             android:id="@+id/language1"
+            android:layout_gravity="center"
             android:entries="@array/language_arrays"
             android:prompt="@string/country_prompt"
             android:layout_weight="0.25" />
@@ -39,7 +41,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.25"
         android:orientation="horizontal">
 
         <EditText
@@ -48,9 +50,10 @@
             android:textColor="@color/weiss"
             android:textColorHint="@color/editTextHint"
             android:singleLine="true"
+            android:layout_gravity="center"
             android:hint="@string/translate_voc"
             android:layout_weight="0.75"
-            android:layout_margin="10dp"
+            android:layout_margin="7dp"
             android:id="@+id/secondVoc"
             android:textCursorDrawable="@null"/>
 
@@ -59,8 +62,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/language2"
             android:layout_weight="0.25"
-            android:layout_margin="10dp"
-            android:entries="@array/language_arrays"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center"
+
 
 
             />
@@ -70,10 +74,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_weight="1.5"
+        android:orientation="vertical"
+       >
 
 
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Notizen:"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -88,7 +99,7 @@
             android:scrollbars="vertical"
             android:singleLine="false"
             android:id="@+id/textView_of_notes"
-            android:hint="@string/edit_notes"
+            android:hint=""
             android:textCursorDrawable="@null"/>
 
     </LinearLayout>
@@ -102,7 +113,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:orientation="horizontal">
 
         <LinearLayout

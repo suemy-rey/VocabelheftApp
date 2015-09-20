@@ -105,7 +105,7 @@ public class VocDatabase
         return categoryItems;
     }
     //Search voc by first language
-    public ArrayList<VocItem> getVocItemsByMontherLanguage(String text)
+    public ArrayList<VocItem> getVocItemsByMotherLanguage(String text)
     {
         ArrayList<VocItem> items = new ArrayList<>();
         Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID,
@@ -218,6 +218,8 @@ public class VocDatabase
 
         return db.delete(DATABASE_TABLE, KEY_ID + " = ? ", new String[]{id});
     }
+
+
 
     private class VocItemHelper extends SQLiteOpenHelper
     {

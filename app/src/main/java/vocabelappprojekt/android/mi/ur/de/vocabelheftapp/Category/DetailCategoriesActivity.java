@@ -99,7 +99,6 @@ public class DetailCategoriesActivity extends AppCompatActivity
                 addVocable();
                 return true;
             case R.id.action_search:
-                searchForVocable();
                 return true;
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
@@ -116,10 +115,7 @@ public class DetailCategoriesActivity extends AppCompatActivity
 //        vocabList.add(newVocab);
 //    }
 
-    private void searchForVocable()
-    {
 
-    }
 
     private void addVocable()
     {

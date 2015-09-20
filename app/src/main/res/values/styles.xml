@@ -12,6 +12,9 @@
         //parent="@android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">@color/actionbarcolor</item>
         <item name="background">@color/actionbarcolor</item>
+        <item name="android:displayOptions">showHome|homeAsUp|showTitle</item>
+        <item name="displayOptions">showHome|homeAsUp|showTitle</item>
+
 
     </style>
 

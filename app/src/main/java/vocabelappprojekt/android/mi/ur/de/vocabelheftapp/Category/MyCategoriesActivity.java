@@ -1,9 +1,11 @@
 package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Debug;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,6 +36,9 @@ public class MyCategoriesActivity extends AppCompatActivity
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        actionBar.setIcon(new ColorDrawable(getResources().getColor(android.R.color.white)));
+
 
         initDB();
         initCategoryList();
@@ -81,16 +86,16 @@ public class MyCategoriesActivity extends AppCompatActivity
     {
         ListView listview = (ListView) findViewById(R.id.category_list);
 
-        listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
-        {
+        listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view,
-                                           int position, long id)
-            {
+                                           int position, long id) {
                 removeItemAtPosition(position);
                 return false;
             }
         });
+
+
     }
 
     private void initButton()
@@ -140,44 +145,6 @@ public class MyCategoriesActivity extends AppCompatActivity
         categoriesList = new ArrayList<CategoryItem>();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        int id = item.getItemId();
-
-        switch (id)
-        {
-            case R.id.action_settings:
-                return true;
-            case R.id.action_add:
-                addVocable();
-                return true;
-            case R.id.action_search:
-                searchForVocable();
-                return true;
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-    private void addVocable()
-    {
-        Intent addNewVoc = new Intent(getApplicationContext(), EditVocableActivity.class);
-        startActivity(addNewVoc);
-    }
-
-    private void searchForVocable() {
-
-    }
 
     protected void onDestroy()
     {

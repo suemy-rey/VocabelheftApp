@@ -3,6 +3,7 @@ package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
+        actionBar.setHomeButtonEnabled(false);
+        actionBar.setIcon(null);
 
         initUI();
     }
@@ -79,6 +82,7 @@ public class MainActivity extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
 //        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 //        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
 //
@@ -128,18 +132,10 @@ public class MainActivity extends AppCompatActivity
             case R.id.action_add:
                 addVocable();
                 return true;
-            case R.id.action_search:
-                searchForVocable();
-                return true;
 
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    private void searchForVocable()
-    {
-//        super.onSearchRequested();
     }
 
     private void addVocable()

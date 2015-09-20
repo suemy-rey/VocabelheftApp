@@ -15,8 +15,8 @@
     <string name="button_add_sammlungen">Sammlungen hinzufügen</string>
     <string name="textview_add_to_category">zur Sammlung hinzufügen</string>
 
-    <string name="add_voc">ADD Vocable</string>
-    <string name="translate_voc">Translation</string>
+    <string name="add_voc">Vokabel eintippen</string>
+    <string name="translate_voc">Übersetzung eintippen</string>
     <string name="edit_notes">Notes</string>
 
     <string name="save_button">Speichern</string>
@@ -28,15 +28,95 @@
 
     <string-array name="language_arrays">
         <item>Wähle eine Sprache</item>
+        <item>Afrikaans</item>
+        <item>Albanisch</item>
         <item>Arabisch</item>
+        <item>Armenisch</item>
+        <item>Aserbaidschanisch</item>
+        <item>Baskisch</item>
+        <item>Bengalisch</item>
+        <item>Bosnisch</item>
+        <item>Bulgarisch</item>
+        <item>Burmesisch</item>
+        <item>Cebuano</item>
+        <item>Chichewa</item>
+        <item>Chinesisch</item>
+        <item>Dänisch</item>
         <item>Deutsch</item>
         <item>Englisch</item>
+        <item>Esperanto</item>
+        <item>Estnisch</item>
+        <item>Finnisch</item>
         <item>Französisch</item>
+        <item>Galizisch</item>
+        <item>Georgisch</item>
+        <item>Griechisch</item>
+        <item>Gujarati</item>
+        <item>Haitianisch</item>
+        <item>Hausa</item>
+        <item>Hebräisch</item>
+        <item>Hindi</item>
+        <item>Hmong</item>
+        <item>Igbo</item>
+        <item>Indonesisch</item>
+        <item>Irisch</item>
+        <item>Isländisch</item>
+        <item>Italienisch</item>
         <item>Japanisch</item>
-        <item>Indisch</item>
+        <item>Javanesisch</item>
+        <item>Jiddisch</item>
+        <item>Kannada</item>
+        <item>Kasachisch</item>
+        <item>Katalanisch</item>
+        <item>Khmer</item>
         <item>Koreanisch</item>
+        <item>Kroatisch</item>
+        <item>Lao</item>
+        <item>Lateinisch</item>
+        <item>Litauisch</item>
+        <item>Malabarisch</item>
+        <item>Malagasy</item>
+        <item>Malaysisch</item>
+        <item>Maltesisch</item>
+        <item>Maori</item>
+        <item>Marathisch</item>
+        <item>Mazedonisch</item>
+        <item>Mongolisch</item>
+        <item>Nepalisch</item>
+        <item>Niederländisch</item>
+        <item>Norwegisch</item>
+        <item>Persisch</item>
+        <item>Polnisch</item>
+        <item>Portugiesisch</item>
+        <item>Punjabi</item>
+        <item>Rumänisch</item>
+        <item>Russisch</item>
+        <item>Schwedisch</item>
+        <item>Serbisch</item>
+        <item>Sesotho</item>
+        <item>Singhalesisch</item>
+        <item>Slowakisch</item>
+        <item>Slowenisch</item>
+        <item>Somali</item>
+        <item>Spanisch</item>
+        <item>Suaheli</item>
+        <item>Sundanesisch</item>
+        <item>Tadschikisch</item>
+        <item>Tagalog</item>
+        <item>Tamil</item>
+        <item>Telugu</item>
+        <item>Thailändisch</item>
+        <item>Tschechisch</item>
         <item>Türkisch</item>
-        <item>Chinesisch</item>
+        <item>Ukrainisch</item>
+        <item>Ungarisch</item>
+        <item>Urdu</item>
+        <item>Usbekisch</item>
+        <item>Vietnamesisch</item>
+        <item>Walisisch</item>
+        <item>Weißrussisch</item>
+        <item>Yoruba</item>
+        <item>Zulu</item>
     </string-array>
 
     <string-array name="category_arrays">

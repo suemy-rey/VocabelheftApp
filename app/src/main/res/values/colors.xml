@@ -7,4 +7,5 @@
     <color name="background_color">#009688</color>
     <color name="actionbarcolor">#004D40</color>
     <color name="weiss">#F3E5F5</color>
+    <color name="transparent">#00000000</color>
 </resources>

@@ -100,9 +100,10 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
                 //Toast toast=Toast.makeText(getApplicationContext(),""+ spinner_original, Toast.LENGTH_SHORT);
                 // toast.show();
                 String spinner_translation = spinnerSecondLanguage.getSelectedItem().toString();
+
                 String spinner_category = spinnerCategory.getSelectedItem().toString();
 
-                if (voc_one.equals("") && voc_two.equals("") && note.equals(""))
+                if (voc_one.equals("") || voc_two.equals("") )
                 {
 
                 }
@@ -111,9 +112,15 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
                     input_language_original.setText("");
                     input_language_translation.setText("");
                     input_notes.setText("");
+
+
                 }
 
-                addNewVoc(voc_one, voc_two, spinner_original, spinner_translation, note, spinner_category);
+
+
+                 addNewVoc(voc_one, voc_two, spinner_original, spinner_translation, note, spinner_category);
+
+
 
                 Intent i = new Intent(getApplicationContext(), MyVocableListActivity.class);
                 Log.d("", "Spinner1: " + spinnerFirstLanguage + " position: " + spinnerFirstLanguage.getSelectedItemPosition());
@@ -127,9 +134,11 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
                 //TODO: add add data to DB then get item from DB
                 VocItem newVoc = new VocItem(voc_one, voc_two, spinner_original, spinner_translation, note, category);
                 Log.d("vocItem", voc_one + "," + voc_two + "," + spinner_original + "," + spinner_translation + "," + note + "," + category);
-                Toast toast = Toast.makeText(getApplicationContext(), "Sie haben ein Vokabel in " + category + "gespeichert", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(getApplicationContext(), "Sie haben ein Vokabel in " + category + " gespeichert", Toast.LENGTH_SHORT);
                 toast.show();
                 voc_database.insertVocItem(newVoc);
+
+
 //                //TODO: category.addVocabToCategory(int vocabID) if category != empty string
 //                if(category != null){
 //
@@ -165,7 +174,7 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
 
     }
 
-    private class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListener
+/**    private class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListener
     {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
@@ -178,5 +187,5 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
         {
 
         }
-    }
+    }**/
 }

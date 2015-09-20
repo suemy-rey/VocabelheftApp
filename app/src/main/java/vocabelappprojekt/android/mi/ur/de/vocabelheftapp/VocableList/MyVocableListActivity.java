@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Spinner;
 
 import java.util.ArrayList;
 
@@ -183,7 +182,7 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
     private void searchForVocable(String text)
     {
         vocItems.clear();
-        vocItems.addAll(voc_database.getVocItemsByMontherLanguage(text));
+        vocItems.addAll(voc_database.getVocItemsByMotherLanguage(text));
         voc_adapter.notifyDataSetChanged();
     }
     //des is beim ActionBar

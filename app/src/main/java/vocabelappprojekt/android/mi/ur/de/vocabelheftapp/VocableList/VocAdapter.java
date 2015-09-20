@@ -57,16 +57,15 @@ public class VocAdapter extends ArrayAdapter<VocItem> {
 
         TextView firstVoc = (TextView) v.findViewById(R.id.textView_language1);
         TextView secondVoc = (TextView) v.findViewById(R.id.textView_language2);
+        firstVoc.setText(vocList.get(position).getName());
+        secondVoc.setText(vocList.get(position).getName_two());
+
+
         final TextView textView_of_notes_long = (TextView) v.findViewById(R.id.textView_of_notes_long);
         final TextView title = (TextView) v.findViewById(R.id.textView_of_notes_title);
 
-
-        firstVoc.setText(vocList.get(position).getName());
-        secondVoc.setText(vocList.get(position).getName_two());
-        // textView_of_notes_long.setVisibility(View.GONE);
-        String note = vocList.get(position).getNotes();
         textView_of_notes_long.setText(vocList.get(position).getNotes());
-        //title.setText(vocList.get(position).getNotes());
+
 
         Spinner spinner_language_one = (Spinner) v.findViewById(R.id.spinner_language1);
         spinner_language_one.setSelection(positionOfLanguage(vocList.get(position).getSpinnerOfFirstLanguage()), true);
@@ -76,12 +75,12 @@ public class VocAdapter extends ArrayAdapter<VocItem> {
 
 
         //Setting brief note is title, taking the first two words
-        if (note == null || note.isEmpty() || note.split(" ").length < 3) {
+      /**  if (note == null || note.isEmpty() || note.split(" ").length < 3) {
             title.setText(vocList.get(position).getNotes());
         } else {
             String[] noteArray = note.split(" ");
             title.setText(noteArray[0] + " " + noteArray[1] + "...");
-        }
+        }**/
         //Toggle title and notes
         title.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="horizontal"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/material_deep_teal_500"
@@ -8,11 +8,15 @@
     >
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:padding="10dp"
+
         android:gravity="center_vertical"
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+
         android:id="@+id/textView_language1"
         android:text="erste Vokabel "
         android:focusable="false"
@@ -26,27 +30,27 @@
         android:id="@+id/spinner_language1"
         android:entries="@array/language_arrays"
         android:prompt="@string/country_prompt"
-        android:layout_alignTop="@+id/textView_language1"
-        android:layout_toRightOf="@+id/textView_language2"
-        android:layout_toEndOf="@+id/textView_language2"
-        android:layout_marginLeft="120dp"
-        android:layout_marginStart="120dp"
-        android:focusable="false"
 
+        android:focusable="false"
+        android:paddingTop="10dp"
         android:focusableInTouchMode="false"
-        />
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/textView_language1"
+        android:layout_toEndOf="@+id/textView_language1"
+        android:layout_marginLeft="91dp"
+        android:layout_marginStart="91dp" />
 
 
 
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="zweite Vokabel"
         android:gravity="center_vertical"
         android:id="@+id/textView_language2"
-        android:layout_below="@+id/spinner_language1"
+        android:layout_below="@+id/textView_language1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:focusable="false"
@@ -60,40 +64,30 @@
         android:id="@+id/spinner_language2"
         android:entries="@array/language_arrays"
         android:prompt="@string/country_prompt"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:layout_alignTop="@+id/textView_language2"
         android:layout_alignLeft="@+id/spinner_language1"
         android:layout_alignStart="@+id/spinner_language1"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        />
+        android:layout_alignParentRight="true"
+        android:paddingTop="10dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView_of_notes"
-        android:text=""
-        android:layout_below="@+id/spinner_language2"
-        android:layout_marginTop="25dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:focusable="false"
-        android:clickable="false"
-        android:focusableInTouchMode="false"/>
 
     <!-- activity_info layout file -->
     <!-- Clickable title -->
     <TextView
         android:id="@+id/textView_of_notes_title"
         android:onClick="toggle_contents"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner_language2"
-        android:layout_marginTop="25dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/textView_language2"
+        android:typeface="monospace"
+        android:paddingTop="10dp"
         android:focusable="false"
         android:clickable="false"
-        android:focusableInTouchMode="false"/>
+        android:focusableInTouchMode="false"
+        android:text="▼klicke hier für mehr "
+        />
 
 
     <!--content to hide/show -->
@@ -103,7 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/spinner_language2"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:focusable="false"

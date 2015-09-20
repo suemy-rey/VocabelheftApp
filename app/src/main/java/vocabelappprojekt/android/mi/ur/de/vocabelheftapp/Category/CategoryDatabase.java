@@ -99,7 +99,7 @@ public class CategoryDatabase
             }
             while (cursor.moveToNext());
         }
-        // returning lables
+
         return labels;
     }
 
