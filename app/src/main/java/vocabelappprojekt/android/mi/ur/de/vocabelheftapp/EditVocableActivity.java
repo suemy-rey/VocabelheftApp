@@ -18,18 +18,21 @@ import java.util.List;
 
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category.CategoryDatabase;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category.DetailCategoriesActivity;
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category.MyCategoriesActivity;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.MyVocableListActivity;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocDatabase;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocItem;
 
 public class EditVocableActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
-    //private ArrayList<VocItem> vocs = new ArrayList<VocItem>();
+
 
     private VocDatabase voc_database;
     private CategoryDatabase category_database;
     private List<String> names_category;
     private VocItem vocItem;
+
+    String spinner_category;
 
     private Spinner spinnerFirstLanguage, spinnerSecondLanguage, spinnerCategory;
     private Button button_speichern;
@@ -65,7 +68,6 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
         ArrayAdapter adapter_original_spinner = ArrayAdapter.createFromResource(this, R.array.language_arrays, android.R.layout.simple_spinner_dropdown_item);
         adapter_original_spinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFirstLanguage.setAdapter(adapter_original_spinner);
-        // spinnerFirstLanguage.setOnItemSelectedListener(new MyOnItemSelectedListener());
 
         spinnerSecondLanguage = (Spinner) findViewById(R.id.language2);
         ArrayAdapter adapter_translation_spinner = ArrayAdapter.createFromResource(this, R.array.language_arrays, android.R.layout.simple_spinner_dropdown_item);
@@ -77,8 +79,13 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
         ArrayAdapter<String> adapter_spinner_category = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, names_category);
         adapter_spinner_category.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategory.setAdapter(adapter_spinner_category);
-       // spinnerCategory.setOnItemSelectedListener(new MyOnItemSelectedListener());
-        //spinnerCategory.setSelection(0,true);
+
+        if(adapter_spinner_category.isEmpty()){
+            spinner_category = "";
+        }else {
+            spinner_category = spinnerCategory.getSelectedItem().toString();
+        }
+
     }
 
     private void initButton()
@@ -87,25 +94,19 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
         button_speichern.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v)
-            {
-
-
+            public void onClick(View v) {
                 String voc_one = input_language_original.getText().toString();
-                Log.d("bunela", voc_one);
                 String voc_two = input_language_translation.getText().toString();
                 String note = input_notes.getText().toString();
 
                 String spinner_original = spinnerFirstLanguage.getSelectedItem().toString();
-                //Toast toast=Toast.makeText(getApplicationContext(),""+ spinner_original, Toast.LENGTH_SHORT);
-                // toast.show();
                 String spinner_translation = spinnerSecondLanguage.getSelectedItem().toString();
 
-                String spinner_category = spinnerCategory.getSelectedItem().toString();
 
-                if (voc_one.equals("") || voc_two.equals("") )
+                if (voc_one.equals("") || voc_two.equals("") || spinner_original.equals("Wähle eine Sprache") || spinner_translation.equals("Wähle eine Sprache") )
                 {
-
+                    Toast toast = Toast.makeText(getApplicationContext(), "Geben Sie zuerst die Vokabeln ein und wählen Sie die Sprachen aus", Toast.LENGTH_LONG);
+                    toast.show();
                 }
                 else
                 {
@@ -114,45 +115,32 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
                     input_notes.setText("");
 
 
+                    addNewVoc(voc_one, voc_two, spinner_original, spinner_translation, note, spinner_category);
+
+
+                    Intent i = new Intent(getApplicationContext(), MyVocableListActivity.class);
+                    Log.d("", "Spinner1: " + spinnerFirstLanguage + " position: " + spinnerFirstLanguage.getSelectedItemPosition());
+                    i.putExtra("firstLanguagePosition", spinnerFirstLanguage.getSelectedItemPosition());
+                    i.putExtra("secondLanguagePosition", spinnerSecondLanguage.getSelectedItemPosition());
+                    startActivity(i);
+
                 }
 
 
-
-                 addNewVoc(voc_one, voc_two, spinner_original, spinner_translation, note, spinner_category);
-
-
-
-                Intent i = new Intent(getApplicationContext(), MyVocableListActivity.class);
-                Log.d("", "Spinner1: " + spinnerFirstLanguage + " position: " + spinnerFirstLanguage.getSelectedItemPosition());
-                i.putExtra("firstLanguagePosition", spinnerFirstLanguage.getSelectedItemPosition());
-                i.putExtra("secondLanguagePosition", spinnerSecondLanguage.getSelectedItemPosition());
-                startActivity(i);
             }
 
-            private void addNewVoc(String voc_one, String voc_two, String spinner_original, String spinner_translation, String note, String category)
-            {
-                //TODO: add add data to DB then get item from DB
-                VocItem newVoc = new VocItem(voc_one, voc_two, spinner_original, spinner_translation, note, category);
-                Log.d("vocItem", voc_one + "," + voc_two + "," + spinner_original + "," + spinner_translation + "," + note + "," + category);
-                Toast toast = Toast.makeText(getApplicationContext(), "Sie haben ein Vokabel in " + category + " gespeichert", Toast.LENGTH_SHORT);
-                toast.show();
-                voc_database.insertVocItem(newVoc);
-
-
-//                //TODO: category.addVocabToCategory(int vocabID) if category != empty string
-//                if(category != null){
-//
-//                    // int vocId =
-//                   // Log.d("id", ""+vocId);
-//                   // detailCategoriesActivity = new DetailCategoriesActivity();
-//                  //  detailCategoriesActivity.addVocabToCategoryList((int)vocId);
-//
-//
-//                }
-            }
         });
     }
 
+
+    private void addNewVoc(String voc_one, String voc_two, String spinner_original, String spinner_translation, String note, String category)
+    {
+
+        VocItem newVoc = new VocItem(voc_one, voc_two, spinner_original, spinner_translation, note, category);
+        voc_database.insertVocItem(newVoc);
+
+
+    }
     private void initDB()
     {
         voc_database = new VocDatabase(this);
@@ -164,8 +152,7 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
     {
-        //  TextView myText = (TextView) view;
-        // Toast.makeText(this,"You Selected"+myText.getText(), Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -174,18 +161,4 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
 
     }
 
-/**    private class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListener
-    {
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-        {
-
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> parent)
-        {
-
-        }
-    }**/
 }

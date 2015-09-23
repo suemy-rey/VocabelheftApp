@@ -7,7 +7,10 @@ import android.os.Debug;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.SparseBooleanArray;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,8 +24,8 @@ import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.EditVocableActivity;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Log.Log;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
-public class MyCategoriesActivity extends AppCompatActivity
-{
+public class MyCategoriesActivity extends AppCompatActivity  {
+
     public static final String CATEGORY_NAME_EXTRA = "category_name";
 
     private ArrayList<CategoryItem> categoriesList;
@@ -38,6 +41,9 @@ public class MyCategoriesActivity extends AppCompatActivity
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         actionBar.setIcon(new ColorDrawable(getResources().getColor(android.R.color.white)));
+
+
+
 
 
         initDB();
@@ -86,6 +92,8 @@ public class MyCategoriesActivity extends AppCompatActivity
     {
         ListView listview = (ListView) findViewById(R.id.category_list);
 
+
+
         listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view,
@@ -97,6 +105,8 @@ public class MyCategoriesActivity extends AppCompatActivity
 
 
     }
+
+
 
     private void initButton()
     {
@@ -116,6 +126,8 @@ public class MyCategoriesActivity extends AppCompatActivity
                 }
             }
         });
+
+
     }
 
     private void addNewCategory(String categoryName)
@@ -135,7 +147,7 @@ public class MyCategoriesActivity extends AppCompatActivity
         else
         {
             CategoryItem categoryItem = categoriesList.get(position);
-            category_database.deleteCategoryItem(categoryItem);
+            category_database.deleteCategoryItem(String.valueOf(categoryItem.getId()));
             updateList();
         }
     }

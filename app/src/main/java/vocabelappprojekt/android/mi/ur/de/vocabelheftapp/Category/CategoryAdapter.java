@@ -18,6 +18,8 @@ public class CategoryAdapter extends ArrayAdapter<CategoryItem>
     private Context context;
     private OnButtonClicklistener onButtonClicklistener = null;
 
+
+
     public CategoryAdapter(Context context, ArrayList<CategoryItem> categoryItems, OnButtonClicklistener onButtonClicklistener)
     {
         super(context, R.layout.my_category_list_item, categoryItems);
@@ -41,7 +43,7 @@ public class CategoryAdapter extends ArrayAdapter<CategoryItem>
         CategoryItem categoryItem = categoryList.get(position);
         if (categoryItem != null)
         {
-            Button nameOfGenus = (Button) v.findViewById(R.id.button_category_list_item);
+            final Button nameOfGenus = (Button) v.findViewById(R.id.button_category_list_item);
             nameOfGenus.setText(categoryItem.getName());
             nameOfGenus.setTag(position);
             nameOfGenus.setOnClickListener(new View.OnClickListener()
@@ -56,6 +58,16 @@ public class CategoryAdapter extends ArrayAdapter<CategoryItem>
                     }
                 }
 
+            });
+
+
+
+          nameOfGenus.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View arg0) {
+                    nameOfGenus.setVisibility(View.GONE);
+                    notifyDataSetChanged();
+                    return true;
+                }
             });
         }
 

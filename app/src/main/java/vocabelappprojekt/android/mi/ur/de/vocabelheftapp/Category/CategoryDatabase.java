@@ -110,9 +110,9 @@ public class CategoryDatabase
         return db.update(DATABASE_TABLE, newCategoryValues, "id=?", new String[]{category_id});
     }
 
-    public void deleteCategoryItem(CategoryItem categoryItem)
+    public void deleteCategoryItem(String id)
     {
-        db.delete(DATABASE_TABLE, KEY_ID + " = ? ", new String[]{categoryItem.getName()});
+        db.delete(DATABASE_TABLE, KEY_ID + " = ? ", new String[] {id});
     }
 
     private class CategoryDBOpenHelper extends SQLiteOpenHelper
