@@ -91,7 +91,7 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
             {
                 // Log.e("long clicked");
                 removeItemAtPosition(position);
-                return false;
+                return true;
             }
         });
 

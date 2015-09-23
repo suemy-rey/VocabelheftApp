@@ -32,6 +32,8 @@ public class MyCategoriesActivity extends AppCompatActivity  {
     private CategoryAdapter category_adapter;
     private CategoryDatabase category_database;
 
+    private ListView list;
+
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -39,11 +41,6 @@ public class MyCategoriesActivity extends AppCompatActivity  {
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-
-        actionBar.setIcon(new ColorDrawable(getResources().getColor(android.R.color.white)));
-
-
-
 
 
         initDB();
@@ -73,7 +70,7 @@ public class MyCategoriesActivity extends AppCompatActivity  {
 
     private void initListAdapter()
     {
-        ListView list = (ListView) findViewById(R.id.category_list);
+         list = (ListView) findViewById(R.id.category_list);
         category_adapter = new CategoryAdapter(getApplicationContext(), categoriesList, new OnButtonClicklistener()
         {
             @Override
@@ -82,45 +79,65 @@ public class MyCategoriesActivity extends AppCompatActivity  {
                 Intent detail_activity_intent = new Intent(getApplicationContext(), DetailCategoriesActivity.class);
                 detail_activity_intent.putExtra(CATEGORY_NAME_EXTRA, categoriesList.get(position).getName());
                 startActivity(detail_activity_intent);
+
+                list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> parent, View view,
+                                                   int position, long id) {
+
+                        removeItemAtPosition(position);
+                        return true;
+                    }
+                });
+
             }
         });
 
         list.setAdapter(category_adapter);
+
+
     }
 
     private void initListView()
     {
-        ListView listview = (ListView) findViewById(R.id.category_list);
-
-
-
+        final ListView listview = (ListView) findViewById(R.id.category_list);
         listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view,
                                            int position, long id) {
+                listview.removeViewAt(position);
                 removeItemAtPosition(position);
-                return false;
+                return true;
             }
         });
 
 
     }
 
-
+    private void removeItemAtPosition(int position)
+    {
+        //if ((categoriesList.get(position) == null))
+        //{
+          //  return;
+        //}
+       // else
+       // {
+            CategoryItem categoryItem = categoriesList.get(position);
+            category_database.deleteCategoryItem(String.valueOf(categoryItem.getId()));
+            updateList();
+       // }
+    }
 
     private void initButton()
     {
         Button addButton = (Button) findViewById(R.id.name_category_add_button);
-        addButton.setOnClickListener(new View.OnClickListener()
-        {
+        addButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EditText edit = (EditText) findViewById(R.id.name_category_input);
                 String name = edit.getText().toString();
 
-                if (!name.equals(""))
-                {
+                if (!name.equals("")) {
                     addNewCategory(name);
                     edit.setText("");
                 }
@@ -138,19 +155,7 @@ public class MyCategoriesActivity extends AppCompatActivity  {
         category_database.insertCategoryItem(categoryName);
     }
 
-    private void removeItemAtPosition(int position)
-    {
-        if ((categoriesList.get(position) == null))
-        {
-            return;
-        }
-        else
-        {
-            CategoryItem categoryItem = categoriesList.get(position);
-            category_database.deleteCategoryItem(String.valueOf(categoryItem.getId()));
-            updateList();
-        }
-    }
+
 
     private void initCategoryList()
     {

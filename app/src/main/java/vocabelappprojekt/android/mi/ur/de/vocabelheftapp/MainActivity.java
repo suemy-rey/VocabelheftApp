@@ -33,8 +33,7 @@ public class MainActivity extends AppCompatActivity
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
-        actionBar.setHomeButtonEnabled(false);
-        actionBar.setIcon(null);
+
 
         initUI();
     }
@@ -83,36 +82,10 @@ public class MainActivity extends AppCompatActivity
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-//        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-//        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-//
-//       searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-//       searchView.setIconifiedByDefault(false);
-//       // http://stackoverflow.com/questions/16847514/execute-search-from-action-bar
-//        SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener()
-//        {
-//            @Override
-//            public boolean onQueryTextChange(String newText)
-//            {
-//                 //this is your adapter that will be filtered
-//                arrayAdapter.getFilter().filter(newText);
-//                return true;
-//            }
-//            @Override
-//            public boolean onQueryTextSubmit(String query)
-//            {
-////                 this is your adapter that will be filtered
-//                arrayAdapter.getFilter().filter(query);
-//                return true;
-//            }
-//        };
-//        searchView.setOnQueryTextListener(queryTextListener);
+        MenuItem item = menu.findItem(R.id.action_search);
+        item.setVisible(false);
 
         return true;
-
-        // MenuItem searchItem = menu.findItem(R.id.action_search);
-        // SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        // return super.onCreateOptionsMenu(menu);
 
     }
 

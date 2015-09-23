@@ -46,12 +46,12 @@ public class CategoryAdapter extends ArrayAdapter<CategoryItem>
             final Button nameOfGenus = (Button) v.findViewById(R.id.button_category_list_item);
             nameOfGenus.setText(categoryItem.getName());
             nameOfGenus.setTag(position);
+
             nameOfGenus.setOnClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)
                 {
-                    Log.d("hallo", "" + position);
                     if (onButtonClicklistener != null)
                     {
                         onButtonClicklistener.onButtonClick(position);
@@ -62,9 +62,10 @@ public class CategoryAdapter extends ArrayAdapter<CategoryItem>
 
 
 
-          nameOfGenus.setOnLongClickListener(new View.OnLongClickListener() {
+         nameOfGenus.setOnLongClickListener(new View.OnLongClickListener() {
                 public boolean onLongClick(View arg0) {
-                    nameOfGenus.setVisibility(View.GONE);
+
+                 nameOfGenus.setVisibility(View.GONE);
                     notifyDataSetChanged();
                     return true;
                 }

@@ -36,7 +36,7 @@ public class DetailCategoriesActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailed_category_list);
 
-        ActionBar actionBar = getSupportActionBar();
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         categoryName = getIntent().getExtras().getString(MyCategoriesActivity.CATEGORY_NAME_EXTRA);
@@ -95,7 +95,7 @@ public class DetailCategoriesActivity extends AppCompatActivity
                                            int position, long id) {
                 // Log.e("long clicked");
                 removeItemAtPosition(position);
-                return false;
+                return true;
             }
         });
 
@@ -124,9 +124,14 @@ public class DetailCategoriesActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
+        super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        MenuItem item  = menu.findItem(R.id.action_search);
+        item.setVisible(false);
         return true;
     }
+
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -138,8 +143,6 @@ public class DetailCategoriesActivity extends AppCompatActivity
                 return true;
             case R.id.action_add:
                 addVocable();
-                return true;
-            case R.id.action_search:
                 return true;
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
