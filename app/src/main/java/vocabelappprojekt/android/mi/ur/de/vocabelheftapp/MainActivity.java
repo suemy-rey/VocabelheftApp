@@ -100,8 +100,7 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         switch (id)
         {
-            case R.id.action_settings:
-                return true;
+
             case R.id.action_add:
                 addVocable();
                 return true;

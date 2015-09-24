@@ -156,8 +156,7 @@ public class MyVocableListActivity extends AppCompatActivity implements AdapterV
 
         switch (id)
         {
-            case R.id.action_settings:
-                return true;
+
             case R.id.action_add:
                 addVocable();
                 return true;
