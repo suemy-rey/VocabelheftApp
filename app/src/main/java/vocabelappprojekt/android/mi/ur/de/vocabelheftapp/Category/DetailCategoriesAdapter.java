@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -45,8 +44,8 @@ public class DetailCategoriesAdapter extends ArrayAdapter<VocItem>
         TextView translation_textView = (TextView) v.findViewById(R.id.textView_translation_language);
         TextView notes = (TextView) v.findViewById(R.id.textView_of_notes);
 
-        original_textView.setText(vocList.get(position).getName());
-        translation_textView.setText(vocList.get(position).getName_two());
+        original_textView.setText(vocList.get(position).getVocab());
+        translation_textView.setText(vocList.get(position).getTranslation());
         notes.setText(vocList.get(position).getNotes());
 
         Spinner spinner_language_one = (Spinner) v.findViewById(R.id.spinner_original_language);

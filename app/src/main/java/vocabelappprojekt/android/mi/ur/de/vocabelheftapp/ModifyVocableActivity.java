@@ -47,11 +47,11 @@ public class ModifyVocableActivity extends AppCompatActivity {
             // Log.d("vocId",""+getIntent().getExtras().getInt("voc_id") );
             int voc_id = getIntent().getExtras().getInt("voc_id");
             vocItem = voc_database.getVocItem("" + voc_id);
-            input_language_original.setText(vocItem.getName());
-            input_language_translation.setText(vocItem.getName_two());
+            input_language_original.setText(vocItem.getVocab());
+            input_language_translation.setText(vocItem.getTranslation());
             input_notes.setText(vocItem.getNotes());
-            spinnerFirstLanguage.setSelection(getPositionOfLanguageSpinner(vocItem.getSpinnerOfFirstLanguage()), true);
-            spinnerSecondLanguage.setSelection(getPositionOfLanguageSpinner(vocItem.getSpinnerOfSecondLanguage()),true);
+            spinnerFirstLanguage.setSelection(getPositionOfLanguageSpinner(vocItem.getVocabLanguage()), true);
+            spinnerSecondLanguage.setSelection(getPositionOfLanguageSpinner(vocItem.getTranslationLanguage()),true);
             spinnerCategory.setSelection(getPositionOfCategorySpinner(vocItem.getCategory()),true);
             updateVocable();
             updateTranslation();

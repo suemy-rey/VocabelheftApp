@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class VocDatabase
 {
@@ -55,10 +54,10 @@ public class VocDatabase
     {
         ContentValues vocValues = new ContentValues();
 
-        vocValues.put(KEY_LANGUAGE_ONE, vocItem.getName());
-        vocValues.put(KEY_LANGUAGE_TWO, vocItem.getName_two());
-        vocValues.put(KEY_ORIGINAL_SPINNER, vocItem.getSpinnerOfFirstLanguage());
-        vocValues.put(KEY_TRANSLATION_SPINNER, vocItem.getSpinnerOfSecondLanguage());
+        vocValues.put(KEY_LANGUAGE_ONE, vocItem.getVocab());
+        vocValues.put(KEY_LANGUAGE_TWO, vocItem.getTranslation());
+        vocValues.put(KEY_ORIGINAL_SPINNER, vocItem.getVocabLanguage());
+        vocValues.put(KEY_TRANSLATION_SPINNER, vocItem.getTranslationLanguage());
         vocValues.put(KEY_NOTES, vocItem.getNotes());
         vocValues.put(KEY_CATEGORY, vocItem.getCategory());
 

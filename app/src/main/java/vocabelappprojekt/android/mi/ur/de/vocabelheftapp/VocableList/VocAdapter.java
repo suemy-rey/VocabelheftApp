@@ -1,22 +1,15 @@
 package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.net.ResponseCache;
-import java.sql.DatabaseMetaData;
 import java.util.ArrayList;
 
-import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.EditVocableActivity;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
 public class VocAdapter extends ArrayAdapter<VocItem> {
@@ -57,8 +50,8 @@ public class VocAdapter extends ArrayAdapter<VocItem> {
 
         TextView firstVoc = (TextView) v.findViewById(R.id.textView_language1);
         TextView secondVoc = (TextView) v.findViewById(R.id.textView_language2);
-        firstVoc.setText(vocList.get(position).getName());
-        secondVoc.setText(vocList.get(position).getName_two());
+        firstVoc.setText(vocList.get(position).getVocab());
+        secondVoc.setText(vocList.get(position).getTranslation());
 
 
         final TextView textView_of_notes_long = (TextView) v.findViewById(R.id.textView_of_notes_long);
@@ -68,10 +61,10 @@ public class VocAdapter extends ArrayAdapter<VocItem> {
 
 
         Spinner spinner_language_one = (Spinner) v.findViewById(R.id.spinner_language1);
-        spinner_language_one.setSelection(positionOfLanguage(vocList.get(position).getSpinnerOfFirstLanguage()), true);
+        spinner_language_one.setSelection(positionOfLanguage(vocList.get(position).getVocabLanguage()), true);
 
         Spinner spinner_language_two = (Spinner) v.findViewById(R.id.spinner_language2);
-        spinner_language_two.setSelection(positionOfLanguage(vocList.get(position).getSpinnerOfSecondLanguage()), true);
+        spinner_language_two.setSelection(positionOfLanguage(vocList.get(position).getTranslationLanguage()), true);
 
 
         //Setting brief note is title, taking the first two words

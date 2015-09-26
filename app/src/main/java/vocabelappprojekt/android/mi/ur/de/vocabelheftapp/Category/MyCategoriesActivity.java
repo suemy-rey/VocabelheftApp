@@ -64,68 +64,46 @@ public class MyCategoriesActivity extends AppCompatActivity  {
     private void initUI()
     {
         initButton();
-        initListView();
         initListAdapter();
+        initListView();
     }
 
     private void initListAdapter()
     {
-         list = (ListView) findViewById(R.id.category_list);
-        category_adapter = new CategoryAdapter(getApplicationContext(), categoriesList, new OnButtonClicklistener()
-        {
-            @Override
-            public void onButtonClick(int position)
-            {
-                Intent detail_activity_intent = new Intent(getApplicationContext(), DetailCategoriesActivity.class);
-                detail_activity_intent.putExtra(CATEGORY_NAME_EXTRA, categoriesList.get(position).getName());
-                startActivity(detail_activity_intent);
-
-                list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                    @Override
-                    public boolean onItemLongClick(AdapterView<?> parent, View view,
-                                                   int position, long id) {
-
-                        removeItemAtPosition(position);
-                        return true;
-                    }
-                });
-
-            }
-        });
-
+        list = (ListView) findViewById(R.id.category_list);
+        category_adapter = new CategoryAdapter(getApplicationContext(), categoriesList);
         list.setAdapter(category_adapter);
-
-
     }
 
     private void initListView()
     {
-        final ListView listview = (ListView) findViewById(R.id.category_list);
-        listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view,
-                                           int position, long id) {
-                listview.removeViewAt(position);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                Intent goToDetailCategoryListView = new Intent(getApplicationContext(), DetailCategoriesActivity.class);
+                goToDetailCategoryListView.putExtra(CATEGORY_NAME_EXTRA, categoriesList.get(position).getName());
+                startActivity(goToDetailCategoryListView);
+            }
+        });
+
+        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+        {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id)
+            {
                 removeItemAtPosition(position);
                 return true;
             }
         });
-
-
     }
 
     private void removeItemAtPosition(int position)
     {
-        //if ((categoriesList.get(position) == null))
-        //{
-          //  return;
-        //}
-       // else
-       // {
-            CategoryItem categoryItem = categoriesList.get(position);
-            category_database.deleteCategoryItem(String.valueOf(categoryItem.getId()));
-            updateList();
-       // }
+        CategoryItem categoryItem = categoriesList.get(position);
+        category_database.deleteCategoryItem(String.valueOf(categoryItem.getId()));
+        updateList();
     }
 
     private void initButton()

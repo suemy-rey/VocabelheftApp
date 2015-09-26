@@ -3,27 +3,27 @@ package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category;
 public class CategoryItem
 {
     private long id;
-    private String name;
+    private String categoryName;
 
     public CategoryItem(String name)
     {
-        this.name = name;
+        this.categoryName = name;
     }
 
-    public CategoryItem(long id, String name)
+    public CategoryItem(long id, String categoryName)
     {
-        this.name = name;
+        this.categoryName = categoryName;
         this.id = id;
     }
 
-    public void setName(String name)
+    public void setName(String categoryName)
     {
-        this.name = name;
+        this.categoryName = categoryName;
     }
 
     public String getName()
     {
-        return name;
+        return categoryName;
     }
 
     public long getId()

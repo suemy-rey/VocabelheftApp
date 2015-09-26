@@ -58,7 +58,8 @@
 
 
         <activity android:name=".Category.MyCategoriesActivity"
-            android:label="Meine Sammlungen">
+            android:label="Meine Sammlungen"
+            android:screenOrientation="portrait">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -68,7 +69,8 @@
         <activity
 
             android:name=".Category.DetailCategoriesActivity"
-            android:label="Sammlung">
+            android:label="Sammlung"
+            android:screenOrientation="portrait">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -76,17 +78,25 @@
         </activity>
 
         <activity
-
-            android:name=".Testen.TestActivity"
-            android:label="Vokabeln abfragen">
+            android:name=".Testen.TestSetupActivity"
+            android:label="@string/testsetupactivity">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
+
         </activity>
 
+        <activity
 
+            android:name=".Testen.TestActivity"
+            android:label="Vokabeln abfragen"
+            android:screenOrientation="portrait">
 
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Testen.TestSetupActivity"/>
+        </activity>
 
     </application>
 

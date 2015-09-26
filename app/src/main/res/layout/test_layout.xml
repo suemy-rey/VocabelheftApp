@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/material_deep_teal_500">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/test_score_view"
+        android:text="@string/score_text"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/test_errors_view"
+        android:text="@string/errors_text"
+        android:textSize="25sp"
+        android:layout_below="@+id/test_score_view"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/display_next_vocab"
+        android:id="@+id/vocab_view"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textSize="35sp"
+        android:layout_below="@+id/test_errors_view"
+        android:layout_above="@+id/requested_language_view"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/requested_language_view"
+        android:text="@string/requested_language"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_above="@+id/answer_input"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/answer_input"
+        android:hint="@string/answer_input_hint"
+        android:background="@color/material_deep_teal_200"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/enter_answer_button"
+        android:layout_toLeftOf="@+id/enter_answer_button"
+        android:layout_toStartOf="@+id/enter_answer_button"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/enter_answer_button"
+        android:background="@color/background_color"
+        android:gravity="center"
+        android:text="@string/enter_answer"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+</RelativeLayout>

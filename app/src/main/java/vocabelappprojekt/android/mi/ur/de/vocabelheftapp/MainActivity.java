@@ -1,21 +1,15 @@
 package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category.MyCategoriesActivity;
-import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Testen.TestActivity;
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Testen.TestSetupActivity;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.MyVocableListActivity;
 
 public class MainActivity extends AppCompatActivity
@@ -23,7 +17,6 @@ public class MainActivity extends AppCompatActivity
     private Button button_vocable;
     private Button button_categories;
     private Button button_test;
-    private ArrayAdapter arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -69,7 +62,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                Intent i = new Intent(getApplicationContext(), TestActivity.class);
+                Intent i = new Intent(getApplicationContext(), TestSetupActivity.class);
                 startActivity(i);
             }
         });

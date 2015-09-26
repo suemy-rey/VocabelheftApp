@@ -1,33 +1,44 @@
 <resources>
-    <string name="app_name">VocabelheftApp</string>
+    <string name="app_name">VocabBook</string>
 
-    <string name="hello_world"> Hello Vocab</string>
-    <string name="action_settings">Settings</string>
-    <string name="action_add">Add</string>
+    <string name="testsetupactivity">Test Einstellungen</string>
+
+    <string name="action_add">Hinzufügen</string>
 
     <string name="add_vocabels">Vokabeln hinzufügen</string>
 
     <string name="button_vokabeln">Meine Vokabeln</string>
     <string name="button_sammlungen">Meine Sammlungen</string>
     <string name="button_test">Testen</string>
-    <string name="editText_name_of_sammlungen">Name Ihrer Sammlungen</string>
-    <string name="button_add">ADD</string>
-    <string name="button_add_sammlungen">Sammlungen hinzufügen</string>
+
+    <string name="editText_name_of_sammlungen">Neue Sammlung...</string>
+    <string name="button_add">Hinzufügen</string>
+    <string name="button_add_sammlungen">Sammlung hinzufügen</string>
     <string name="textview_add_to_category">zur Sammlung hinzufügen</string>
 
-    <string name="add_voc">Vokabel eintippen</string>
-    <string name="translate_voc">Übersetzung eintippen</string>
-    <string name="edit_notes">Notes</string>
+    <string name="add_voc">Neue Vokabel</string>
+    <string name="translate_voc">Übersetzung</string>
+    <string name="edit_notes">Notizen</string>
+    <string name="open_notes">▼Notizen anzeigen...</string>
 
     <string name="save_button">Speichern</string>
 
-    <string name="search_hint"> search a word...</string>
+    <string name="search_hint"> Suche...</string>
 
+    <string name="country_prompt">Sprache</string>
 
-    <string name="country_prompt">Wähle eine Sprache</string>
+    <string name="start_test_button_text">TestOut</string>
+    <string name="test_mode_button_text">Modus: Vokabeln abfragen</string>
+
+    <string name="display_next_vocab">Nächste Vokabel wird geladen</string>
+    <string name="requested_language">Antworte in folgender Sprache: </string>
+    <string name="enter_answer">Eingabe</string>
+    <string name="answer_input_hint">Antwort eingeben...</string>
+    <string name="score_text">Punkte: </string>
+    <string name="errors_text">Fehler: </string>
 
     <string-array name="language_arrays">
-        <item>Wähle eine Sprache</item>
+        <item>Sprache</item>
         <item>Afrikaans</item>
         <item>Albanisch</item>
         <item>Arabisch</item>

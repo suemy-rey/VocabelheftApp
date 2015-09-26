@@ -28,7 +28,6 @@ public class DetailCategoriesActivity extends AppCompatActivity
     private VocAdapter categoriesAdapter;
     private VocDatabase voc_database;
 
-
     private String categoryName = "";
 
     protected void onCreate(Bundle savedInstanceState)
@@ -80,10 +79,8 @@ public class DetailCategoriesActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                // Log.e("clicked");
                 VocItem vocItem = vocabList.get(position);
                 Intent i = new Intent(DetailCategoriesActivity.this, ModifyVocableActivity.class);
-                //Log.e(""+vocItem.getId());
                 i.putExtra("voc_id", vocItem.getId());
                 startActivity(i);
             }
@@ -93,7 +90,6 @@ public class DetailCategoriesActivity extends AppCompatActivity
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view,
                                            int position, long id) {
-                // Log.e("long clicked");
                 removeItemAtPosition(position);
                 return true;
             }
@@ -132,7 +128,6 @@ public class DetailCategoriesActivity extends AppCompatActivity
         return true;
     }
 
-
     public boolean onOptionsItemSelected(MenuItem item)
     {
         int id = item.getItemId();
@@ -150,15 +145,6 @@ public class DetailCategoriesActivity extends AppCompatActivity
                 return super.onOptionsItemSelected(item);
         }
     }
-
-//    public void addVocabToCategoryList(int newVocabID)
-//    {
-//
-//        vocabIDList.add(newVocabID);
-//        vocabList.add(newVocab);
-//    }
-
-
 
     private void addVocable()
     {
