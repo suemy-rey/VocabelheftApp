@@ -12,20 +12,30 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/start_test_button"
-        android:text="@string/start_test_button_text"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:background="@color/material_deep_teal_200"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/set_test_mode_button"
         android:text="@string/test_mode_button_text"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:background="@color/material_deep_teal_200"/>
+        android:background="@color/material_deep_teal_200"
+        android:layout_margin="10sp"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/category_to_test_spinner"
+        android:layout_gravity="center"
+        android:layout_margin="10sp"
+        android:padding="10sp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/start_test_button"
+        android:text="@string/start_test_button_text"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:background="@color/material_deep_teal_200"
+        android:layout_margin="10sp"/>
 
 </LinearLayout>
 

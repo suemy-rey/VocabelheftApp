@@ -42,6 +42,7 @@ public class TestActivity extends AppCompatActivity
     private VocItem currentVocab;
     private Toast shortToast;
 
+    private String categoryName;
     private String enteredAnswer;
 
     private int score;
@@ -54,6 +55,8 @@ public class TestActivity extends AppCompatActivity
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        categoryName = getIntent().getExtras().getString(TestSetupActivity.CATEGORY_NAME_EXTRA);
 
         initUI();
         initDB();
@@ -113,7 +116,7 @@ public class TestActivity extends AppCompatActivity
     {
         vocabList = new ArrayList<VocItem>();
 
-        vocabList.addAll(vocabDB.getAllVocItems());
+        vocabList.addAll(vocabDB.getVocItemsFromCategory(categoryName));
     }
 
     private void checkAnswerForVocabTest(String currentVocabAnswer)

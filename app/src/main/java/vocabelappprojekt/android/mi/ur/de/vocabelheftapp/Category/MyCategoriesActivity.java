@@ -42,7 +42,6 @@ public class MyCategoriesActivity extends AppCompatActivity  {
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-
         initDB();
         initCategoryList();
         initUI();
@@ -121,8 +120,6 @@ public class MyCategoriesActivity extends AppCompatActivity  {
                 }
             }
         });
-
-
     }
 
     private void addNewCategory(String categoryName)
@@ -133,13 +130,10 @@ public class MyCategoriesActivity extends AppCompatActivity  {
         category_database.insertCategoryItem(categoryName);
     }
 
-
-
     private void initCategoryList()
     {
         categoriesList = new ArrayList<CategoryItem>();
     }
-
 
     protected void onDestroy()
     {
