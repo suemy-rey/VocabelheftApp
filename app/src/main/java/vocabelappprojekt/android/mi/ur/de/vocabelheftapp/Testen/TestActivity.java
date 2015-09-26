@@ -162,7 +162,6 @@ public class TestActivity extends AppCompatActivity
 
         while (currentVocab.equals(previousVocab))
         {
-            Log.e("same vocab as before searching new one");
             currentVocab = vocabList.get(r.nextInt(vocabList.size()));
         }
 

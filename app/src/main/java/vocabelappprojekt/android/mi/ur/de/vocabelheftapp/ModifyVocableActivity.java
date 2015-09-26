@@ -39,7 +39,7 @@ public class ModifyVocableActivity extends AppCompatActivity {
             setContentView(R.layout.edit_vocable);
 
             android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setDisplayHomeAsUpEnabled(true);
 
             initDB();
             initUI();

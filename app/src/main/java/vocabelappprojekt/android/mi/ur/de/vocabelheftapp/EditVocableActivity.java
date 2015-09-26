@@ -3,8 +3,6 @@ package vocabelappprojekt.android.mi.ur.de.vocabelheftapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,8 +15,6 @@ import android.widget.Toast;
 import java.util.List;
 
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category.CategoryDatabase;
-import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category.DetailCategoriesActivity;
-import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category.MyCategoriesActivity;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.MyVocableListActivity;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocDatabase;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocItem;
@@ -45,9 +41,11 @@ public class EditVocableActivity extends AppCompatActivity implements AdapterVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_vocable);
 
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         initDB();
         initUI();
-
     }
 
     private void initUI()

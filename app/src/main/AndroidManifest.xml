@@ -45,9 +45,8 @@
             <!--end-->
 
         </activity>
+
         <activity
-
-
             android:name=".ModifyVocableActivity"
             android:label="Vokabeln ändern">
 
