@@ -29,6 +29,7 @@ public class MyVocabListActivity extends AppCompatActivity
     private VocabAdapter vocabAdapter;
     private VocabDatabase vocabDB;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,13 @@ public class MyVocabListActivity extends AppCompatActivity
         initVocabList();
         initUI();
         updateVocabList();
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        vocabDB.close();
+        super.onDestroy();
     }
 
     private void initDB()
@@ -188,11 +196,5 @@ public class MyVocabListActivity extends AppCompatActivity
     {
         Intent addNewVoc = new Intent(getApplicationContext(), CreateVocabActivity.class);
         startActivity(addNewVoc);
-    }
-
-    protected void onDestroy()
-    {
-        vocabDB.close();
-        super.onDestroy();
     }
 }

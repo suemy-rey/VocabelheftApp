@@ -28,6 +28,7 @@ public class CategoryContentsActivity extends AppCompatActivity
 
     private String categoryName = "";
 
+    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -39,9 +40,16 @@ public class CategoryContentsActivity extends AppCompatActivity
         categoryName = getIntent().getExtras().getString(MyCategoriesListActivity.CATEGORY_NAME_EXTRA);
 
         initDB();
-        initVocableList();
+        initVocabList();
         initUI();
         updateList();
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        vocabDB.close();
+        super.onDestroy();
     }
 
     private void initDB()
@@ -50,7 +58,7 @@ public class CategoryContentsActivity extends AppCompatActivity
         vocabDB.open();
     }
 
-    private void initVocableList()
+    private void initVocabList()
     {
         vocabList = new ArrayList<VocabItem>();
     }

@@ -11,7 +11,9 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import vocabbook.android.mi.ur.de.vocabbook.Log.Log;
 import vocabbook.android.mi.ur.de.vocabbook.MyCategories.CategoryDatabase;
+import vocabbook.android.mi.ur.de.vocabbook.MyVocabList.VocabDatabase;
 import vocabbook.android.mi.ur.de.vocabbook.R;
 
 public class VocabTestSetupActivity extends AppCompatActivity
@@ -19,6 +21,7 @@ public class VocabTestSetupActivity extends AppCompatActivity
     public final static String CATEGORY_NAME_EXTRA = "category_name";
 
     private final static String NO_CATEGORIES_FEEDBACK = "Keine Sammlung zu Abfrage verfügbar!";
+    private final static String NO_VOCAB_FEEDBACK = "Es gibt noch keine Vokabeleinträge!";
     private final static String TEST_MODE = "Modus: ";
     private final static String VOCAB_TEST = "Vokabeln abfragen";
     private final static String TRANSLATE_TEST = "Übersetzung abfragen";
@@ -27,11 +30,13 @@ public class VocabTestSetupActivity extends AppCompatActivity
     private Button testModeButton;
     private Spinner categoryChooser;
 
+    private VocabDatabase vocabDB;
     private CategoryDatabase categoryDB;
     private List<String> categoryList;
 
     private String currentModeText = TEST_MODE + VOCAB_TEST;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -41,8 +46,10 @@ public class VocabTestSetupActivity extends AppCompatActivity
         initUI();
     }
 
+    @Override
     protected void onDestroy()
     {
+        vocabDB.close();
         categoryDB.close();
         super.onDestroy();
     }
@@ -63,19 +70,27 @@ public class VocabTestSetupActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                Intent startTestOut = new Intent(getApplicationContext(), VocabTestActivity.class);
-                String categoryToTest = "";
-                if (categoryChooser.getSelectedItem() != null)
+                if (!vocabDB.getAllVocItems().isEmpty())
                 {
-                    categoryToTest = categoryChooser.getSelectedItem().toString();
+                    Intent startTestOut = new Intent(getApplicationContext(), VocabTestActivity.class);
+                    String categoryToTest = "";
+                    if (categoryChooser.getSelectedItem() != null)
+                    {
+                        categoryToTest = categoryChooser.getSelectedItem().toString();
+                    }
+                    else
+                    {
+                        Toast noCategoriesToast = Toast.makeText(getApplicationContext(), NO_CATEGORIES_FEEDBACK, Toast.LENGTH_SHORT);
+                        noCategoriesToast.show();
+                    }
+                    startTestOut.putExtra(CATEGORY_NAME_EXTRA, categoryToTest);
+                    startActivity(startTestOut);
                 }
                 else
                 {
-                    Toast toast = Toast.makeText(getApplicationContext(), NO_CATEGORIES_FEEDBACK, Toast.LENGTH_SHORT);
-                    toast.show();
+                    Toast noVocabToast = Toast.makeText(getApplicationContext(), NO_VOCAB_FEEDBACK, Toast.LENGTH_SHORT);
+                    noVocabToast.show();
                 }
-                startTestOut.putExtra(CATEGORY_NAME_EXTRA, categoryToTest);
-                startActivity(startTestOut);
             }
         });
 
@@ -101,6 +116,9 @@ public class VocabTestSetupActivity extends AppCompatActivity
 
     private void initDB()
     {
+        vocabDB = new VocabDatabase(this);
+        vocabDB.open();
+
         categoryDB = new CategoryDatabase(this);
         categoryDB.open();
     }

@@ -25,6 +25,7 @@ public class MyCategoriesListActivity extends AppCompatActivity
 
     private ListView categoriesView;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -37,6 +38,20 @@ public class MyCategoriesListActivity extends AppCompatActivity
         initCategoryList();
         initUI();
         updateList();
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        updateList();
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        categoryDB.close();
+        super.onDestroy();
     }
 
     private void updateList()
@@ -130,17 +145,5 @@ public class MyCategoriesListActivity extends AppCompatActivity
     private void initCategoryList()
     {
         categoriesList = new ArrayList<CategoryItem>();
-    }
-
-    protected void onDestroy()
-    {
-        categoryDB.close();
-        super.onDestroy();
-    }
-
-    protected void onResume()
-    {
-        super.onResume();
-        updateList();
     }
 }

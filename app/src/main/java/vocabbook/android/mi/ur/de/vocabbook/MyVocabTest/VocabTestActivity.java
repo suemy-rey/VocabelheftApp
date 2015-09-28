@@ -47,6 +47,7 @@ public class VocabTestActivity extends AppCompatActivity
     private int score;
     private int errors;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -64,6 +65,7 @@ public class VocabTestActivity extends AppCompatActivity
         startVocabTest();
     }
 
+    @Override
     protected void onDestroy()
     {
         vocabDB.close();

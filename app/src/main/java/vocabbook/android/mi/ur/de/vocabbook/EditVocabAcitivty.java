@@ -38,7 +38,7 @@ public class EditVocabAcitivty extends AppCompatActivity
     private String[] languageArray;
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
+    protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vocab);
@@ -53,6 +53,14 @@ public class EditVocabAcitivty extends AppCompatActivity
 
         setupVocabDisplay();
         updateVocab();
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        vocabDB.close();
+        categoryDB.close();
+        super.onDestroy();
     }
 
     private void initUI()
