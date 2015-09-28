@@ -157,11 +157,15 @@ public class VocabTestActivity extends AppCompatActivity
             previousVocab = currentVocab;
         }
 
-        currentVocab = vocabList.get(r.nextInt(vocabList.size()));
+        int randomVocabIndex = r.nextInt(vocabList.size());
+        currentVocab = vocabList.get(randomVocabIndex);
 
-        while (currentVocab.equals(previousVocab))
+        if (vocabList.size() > 1)
         {
-            currentVocab = vocabList.get(r.nextInt(vocabList.size()));
+            while (currentVocab.equals(previousVocab))
+            {
+                currentVocab = vocabList.get(r.nextInt(vocabList.size()));
+            }
         }
 
         if (VocabTestMode.isVocabTest())

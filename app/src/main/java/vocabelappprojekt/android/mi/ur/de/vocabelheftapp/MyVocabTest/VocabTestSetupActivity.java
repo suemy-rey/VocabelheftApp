@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -16,6 +17,8 @@ import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 public class VocabTestSetupActivity extends AppCompatActivity
 {
     public final static String CATEGORY_NAME_EXTRA = "category_name";
+
+    private final static String NO_CATEGORIES_FEEDBACK = "Keine Sammlung zu Abfrage verfügbar!";
     private final static String TEST_MODE = "Modus: ";
     private final static String VOCAB_TEST = "Vokabeln abfragen";
     private final static String TRANSLATE_TEST = "Übersetzung abfragen";
@@ -61,7 +64,17 @@ public class VocabTestSetupActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 Intent startTestOut = new Intent(getApplicationContext(), VocabTestActivity.class);
-                startTestOut.putExtra(CATEGORY_NAME_EXTRA, categoryChooser.getSelectedItem().toString());
+                String categoryToTest = "";
+                if (categoryChooser.getSelectedItem() != null)
+                {
+                    categoryToTest = categoryChooser.getSelectedItem().toString();
+                }
+                else
+                {
+                    Toast toast = Toast.makeText(getApplicationContext(), NO_CATEGORIES_FEEDBACK, Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+                startTestOut.putExtra(CATEGORY_NAME_EXTRA, categoryToTest);
                 startActivity(startTestOut);
             }
         });
