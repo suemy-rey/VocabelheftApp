@@ -14,7 +14,7 @@
             android:id="@+id/name_category_input"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:hint="@string/editText_name_of_sammlungen"
+            android:hint="@string/hint_create_category"
             android:layout_weight=".6"
             android:singleLine="true"
             android:textCursorDrawable="@null"

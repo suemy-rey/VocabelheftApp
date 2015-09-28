@@ -18,7 +18,7 @@
             android:layout_margin="5dp"
             android:layout_weight="0.65"
             android:layout_gravity="center"
-            android:hint="@string/add_voc"
+            android:hint="@string/hint_word_input"
             android:singleLine="true"
             android:textColorHint="@color/editTextHint"
             android:textColor="@color/weiss"
@@ -32,7 +32,7 @@
             android:id="@+id/language1"
             android:layout_gravity="center"
             android:entries="@array/language_arrays"
-            android:prompt="@string/country_prompt"
+            android:prompt="@string/prompt_language"
             android:layout_weight="0.35" />
     </LinearLayout>
 
@@ -49,7 +49,7 @@
             android:textColorHint="@color/editTextHint"
             android:singleLine="true"
             android:layout_gravity="center"
-            android:hint="@string/translate_voc"
+            android:hint="@string/hint_translation_input"
             android:layout_weight="0.65"
             android:layout_margin="7dp"
             android:id="@+id/secondVoc"
@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18dp"
-            android:text="Notizen:"/>
+            android:text="@string/label_input_notes"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -89,7 +89,7 @@
             android:scrollbars="vertical"
             android:singleLine="false"
             android:id="@+id/textView_of_notes"
-            android:hint=""
+            android:hint="@string/hint_add_notes"
             android:textCursorDrawable="@null"/>
     </LinearLayout>
 
@@ -110,7 +110,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/textview_add_to_category"
+                android:text="@string/label_add_vocab_to_category"
                 android:id="@+id/textView_add_to_category"
                 android:textSize="12dp"
                 android:layout_above="@+id/spinner_category"/>
@@ -126,7 +126,7 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/save_button"
+            android:text="@string/button_save"
             android:id="@+id/button_save"
             android:layout_weight="0.5"
             android:background="@color/material_deep_teal_200"

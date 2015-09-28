@@ -10,11 +10,10 @@
               android:orientation="vertical"
               android:background="@color/material_deep_teal_500">
 
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="@string/button_vokabeln"
+        android:text="@string/button_goto_vocab"
         android:id="@+id/button_vokabeln"
         android:textSize="22dp"
         android:layout_marginTop="120dp"
@@ -24,7 +23,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="@string/button_sammlungen"
+        android:text="@string/button_goto_categories"
         android:id="@+id/button_sammlungen"
         android:textSize="22dp"
         android:layout_marginTop="50dp"
@@ -34,7 +33,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="@string/button_test"
+        android:text="@string/button_goto_vocab_test"
         android:id="@+id/button_testen"
         android:textSize="22dp"
         android:layout_marginTop="50dp"

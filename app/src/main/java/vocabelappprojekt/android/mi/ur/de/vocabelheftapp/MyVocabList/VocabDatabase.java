@@ -1,4 +1,4 @@
-package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList;
+package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.MyVocabList;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,11 +6,10 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.util.ArrayList;
 
-public class VocDatabase
+public class VocabDatabase
 {
     private static final String DATABASE_NAME = "voclist.db";
     private static final int DATABASE_VERSION = 1;
@@ -28,7 +27,7 @@ public class VocDatabase
     private VocItemHelper dbHelper;
     private SQLiteDatabase db;
 
-    public VocDatabase(Context context)
+    public VocabDatabase(Context context)
     {
         dbHelper = new VocItemHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -50,23 +49,21 @@ public class VocDatabase
         db.close();
     }
 
-    public long insertVocItem(VocItem vocItem )
+    public long insertVocItem(VocabItem vocabItem)
     {
         ContentValues vocValues = new ContentValues();
 
-        vocValues.put(KEY_LANGUAGE_ONE, vocItem.getVocab());
-        vocValues.put(KEY_LANGUAGE_TWO, vocItem.getTranslation());
-        vocValues.put(KEY_ORIGINAL_SPINNER, vocItem.getVocabLanguage());
-        vocValues.put(KEY_TRANSLATION_SPINNER, vocItem.getTranslationLanguage());
-        vocValues.put(KEY_NOTES, vocItem.getNotes());
-        vocValues.put(KEY_CATEGORY, vocItem.getCategory());
+        vocValues.put(KEY_LANGUAGE_ONE, vocabItem.getVocab());
+        vocValues.put(KEY_LANGUAGE_TWO, vocabItem.getTranslation());
+        vocValues.put(KEY_ORIGINAL_SPINNER, vocabItem.getVocabLanguage());
+        vocValues.put(KEY_TRANSLATION_SPINNER, vocabItem.getTranslationLanguage());
+        vocValues.put(KEY_NOTES, vocabItem.getNotes());
+        vocValues.put(KEY_CATEGORY, vocabItem.getCategory());
 
         return db.insert(DATABASE_TABLE, null, vocValues);
     }
 
-    //Quelle:http://www.androidhive.info/2011/11/android-sqlite-database-tutorial/
-
-    public VocItem getVocItem(String vocItemID)
+    public VocabItem getVocItem(String vocItemID)
     {
         Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID,
                         KEY_LANGUAGE_ONE, KEY_LANGUAGE_TWO, KEY_ORIGINAL_SPINNER, KEY_TRANSLATION_SPINNER,
@@ -82,13 +79,13 @@ public class VocDatabase
                 String notes = cursor.getString(5);
                 String category = cursor.getString(6);
 
-                return new VocItem(Integer.parseInt(id),name, name_two, spinner_original_language,
+                return new VocabItem(Integer.parseInt(id),name, name_two, spinner_original_language,
                         spinner_translated_language, notes, category);
     }
 
-    public ArrayList<VocItem> getVocItemsFromCategory(String category)
+    public ArrayList<VocabItem> getVocItemsFromCategory(String category)
     {
-        ArrayList<VocItem> categoryItems = new ArrayList<>();
+        ArrayList<VocabItem> categoryItems = new ArrayList<>();
         Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID,
                 KEY_LANGUAGE_ONE, KEY_LANGUAGE_TWO, KEY_ORIGINAL_SPINNER, KEY_TRANSLATION_SPINNER,
                 KEY_NOTES, KEY_CATEGORY}, KEY_CATEGORY + "=?", new String[]{category},
@@ -103,10 +100,10 @@ public class VocDatabase
         }
         return categoryItems;
     }
-    //Search voc by first language
-    public ArrayList<VocItem> getVocItemsByMotherLanguage(String text)
+
+    public ArrayList<VocabItem> getVocItemsByMotherLanguage(String text)
     {
-        ArrayList<VocItem> items = new ArrayList<>();
+        ArrayList<VocabItem> items = new ArrayList<>();
         Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID,
                         KEY_LANGUAGE_ONE, KEY_LANGUAGE_TWO, KEY_ORIGINAL_SPINNER, KEY_TRANSLATION_SPINNER,
                         KEY_NOTES, KEY_CATEGORY}, KEY_LANGUAGE_ONE + " like ?", new String[]{"%"+text+"%"},
@@ -122,9 +119,9 @@ public class VocDatabase
         return items;
     }
 
-    public ArrayList<VocItem> getAllVocItems()
+    public ArrayList<VocabItem> getAllVocItems()
     {
-        ArrayList<VocItem> vocables = new ArrayList<VocItem>();
+        ArrayList<VocabItem> vocables = new ArrayList<VocabItem>();
         Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID,
                 KEY_LANGUAGE_ONE, KEY_LANGUAGE_TWO, KEY_ORIGINAL_SPINNER, KEY_TRANSLATION_SPINNER,
                 KEY_NOTES, KEY_CATEGORY}, null, null, null, null, null, null);
@@ -132,19 +129,7 @@ public class VocDatabase
         {
             do
             {
-//                int id = cursor.getInt(0);
-//                Log.d( "id", ""+ id);
-//                String name = cursor.getString(1);
-//                String name_two = cursor.getString(2);
-//                String spinner_original_language = cursor.getString(3);
-//                String spinner_translated_language = cursor.getString(4);
-//                String notes = cursor.getString(5);
-//                String category = cursor.getString(6);
-
-//                vocables.add(new VocItem(id, name, name_two, spinner_original_language,
-//                        spinner_translated_language, notes, category));
                 vocables.add(createItem(cursor));
-
             }
             while (cursor.moveToNext());
         }
@@ -152,12 +137,11 @@ public class VocDatabase
     }
 
 
-    private VocItem createItem(Cursor cursor)
+    private VocabItem createItem(Cursor cursor)
     {
-        VocItem item;
+        VocabItem item;
 
         int id = cursor.getInt(0);
-        Log.d( "id", ""+ id);
         String name = cursor.getString(1);
         String name_two = cursor.getString(2);
         String spinner_original_language = cursor.getString(3);
@@ -165,7 +149,7 @@ public class VocDatabase
         String notes = cursor.getString(5);
         String category = cursor.getString(6);
 
-        item = new VocItem(id, name, name_two, spinner_original_language, spinner_translated_language, notes, category);
+        item = new VocabItem(id, name, name_two, spinner_original_language, spinner_translated_language, notes, category);
 
         return item;
     }
@@ -214,7 +198,6 @@ public class VocDatabase
 
     public int deleteVocItem(String id)
     {
-
         return db.delete(DATABASE_TABLE, KEY_ID + " = ? ", new String[]{id});
     }
 
@@ -222,9 +205,8 @@ public class VocDatabase
 
     private class VocItemHelper extends SQLiteOpenHelper
     {
-        private static final String DATABASE_CREATE =
-                //"drop table " + DATABASE_TABLE + "; " +
-                "create table " + DATABASE_TABLE + " (" +
+        private static final String DATABASE_CREATE = "create table " +
+                        DATABASE_TABLE + " (" +
                         KEY_ID + " integer primary key autoincrement, " +
                         KEY_LANGUAGE_ONE + " text not null, " +
                         KEY_LANGUAGE_TWO + " text not null, " +

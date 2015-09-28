@@ -1,4 +1,4 @@
-package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Testen;
+package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.MyVocabTest;
 
 public class VocabTestMode
 {

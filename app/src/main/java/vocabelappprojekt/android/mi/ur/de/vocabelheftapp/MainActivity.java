@@ -8,15 +8,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category.MyCategoriesActivity;
-import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Testen.TestSetupActivity;
-import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.MyVocableListActivity;
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.MyCategories.MyCategoriesListActivity;
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.MyVocabTest.VocabTestSetupActivity;
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.MyVocabList.MyVocabListActivity;
 
 public class MainActivity extends AppCompatActivity
 {
-    private Button button_vocable;
-    private Button button_categories;
-    private Button button_test;
+    private Button gotoVocabButton;
+    private Button gotoCategoriesButton;
+    private Button gotoVocabTestButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -27,43 +27,42 @@ public class MainActivity extends AppCompatActivity
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
 
-
-        initUI();
+        initButtons();
     }
 
-    private void initUI()
+    private void initButtons()
     {
-        button_vocable = (Button) findViewById(R.id.button_vokabeln);
-        button_categories = (Button) findViewById(R.id.button_sammlungen);
-        button_test = (Button) findViewById(R.id.button_testen);
+        gotoVocabButton = (Button) findViewById(R.id.button_vokabeln);
+        gotoCategoriesButton = (Button) findViewById(R.id.button_sammlungen);
+        gotoVocabTestButton = (Button) findViewById(R.id.button_testen);
 
-        button_vocable.setOnClickListener(new View.OnClickListener()
+        gotoVocabButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                Intent i = new Intent(getApplicationContext(), MyVocableListActivity.class);
-                startActivity(i);
+                Intent gotoVocabList = new Intent(getApplicationContext(), MyVocabListActivity.class);
+                startActivity(gotoVocabList);
             }
         });
 
-        button_categories.setOnClickListener(new View.OnClickListener()
+        gotoCategoriesButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                Intent i = new Intent(getApplicationContext(), MyCategoriesActivity.class);
-                startActivity(i);
+                Intent gotoCategoriesList = new Intent(getApplicationContext(), MyCategoriesListActivity.class);
+                startActivity(gotoCategoriesList);
             }
         });
 
-        button_test.setOnClickListener(new View.OnClickListener()
+        gotoVocabTestButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                Intent i = new Intent(getApplicationContext(), TestSetupActivity.class);
-                startActivity(i);
+                Intent gotoVocabTest = new Intent(getApplicationContext(), VocabTestSetupActivity.class);
+                startActivity(gotoVocabTest);
             }
         });
     }
@@ -79,7 +78,6 @@ public class MainActivity extends AppCompatActivity
         item.setVisible(false);
 
         return true;
-
     }
 
     @Override
@@ -90,22 +88,19 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         switch (id)
         {
-
             case R.id.action_add:
-                addVocable();
+                createNewVocab();
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    private void addVocable()
+    private void createNewVocab()
     {
-        Intent addNewVoc = new Intent(getApplicationContext(), EditVocableActivity.class);
+        Intent addNewVoc = new Intent(getApplicationContext(), CreateVocabActivity.class);
         startActivity(addNewVoc);
     }
 }

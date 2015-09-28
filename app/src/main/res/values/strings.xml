@@ -1,41 +1,50 @@
 <resources>
     <string name="app_name">VocabBook</string>
 
-    <string name="testsetupactivity">Test Einstellungen</string>
+    <!-- ACTIVITIES -->
+    <string name="create_new_vocab_activity">Neue Vokabel erstellen</string>
+    <string name="edit_vocab_activity">Vokabel ändern</string>
+    <string name="my_vocab_activity">Meine Vokabeln</string>
+    <string name="my_categories_activity">Meine Sammlungen</string>
+    <string name="category_contents_activity">Sammlung</string>
+    <string name="vocab_test_activity">Vokabel Test</string>
+    <string name="vocab_test_setup_activity">Test Einstellungen</string>
 
-    <string name="action_add">Hinzufügen</string>
+    <!-- ACTIONS -->
+    <string name="action_create_vocab">Neue Vokabel erstellen</string>
 
-    <string name="add_vocabels">Vokabeln hinzufügen</string>
+    <!-- BUTTONS -->
+    <string name="button_goto_vocab">Meine Vokabeln</string>
+    <string name="button_goto_categories">Meine Sammlungen</string>
+    <string name="button_goto_vocab_test">Vokabel Test</string>
 
-    <string name="button_vokabeln">Meine Vokabeln</string>
-    <string name="button_sammlungen">Meine Sammlungen</string>
-    <string name="button_test">Testen</string>
-
-    <string name="editText_name_of_sammlungen">Neue Sammlung...</string>
     <string name="button_add">Hinzufügen</string>
-    <string name="button_add_sammlungen">Sammlung hinzufügen</string>
-    <string name="textview_add_to_category">zur Sammlung hinzufügen</string>
+    <string name="button_save">Speichern</string>
 
-    <string name="add_voc">Neue Vokabel</string>
-    <string name="translate_voc">Übersetzung</string>
-    <string name="edit_notes">Notizen</string>
-    <string name="open_notes">▼Notizen anzeigen...</string>
+    <string name="button_testout">TestOut</string>
+    <string name="button_test_mode">Modus: Vokabeln abfragen</string>
+    <string name="button_confirm_input">Eingabe</string>
 
-    <string name="save_button">Speichern</string>
+    <!-- HINTS -->
+    <string name="hint_create_category">Neue Sammlung...</string>
+    <string name="hint_word_input">Neues Wort</string>
+    <string name="hint_translation_input">Übersetzung</string>
+    <string name="hint_add_notes">Notizen eintragen...</string>
+    <string name="hint_search_vocab"> Suche nach Vokabel...</string>
+    <string name="hint_answer_input">Antwort eingeben...</string>
 
-    <string name="search_hint"> Suche...</string>
+    <!-- LABELS -->
+    <string name="label_input_notes">Notizen</string>
+    <string name="label_add_vocab_to_category">zu einer Sammlung hinzufügen</string>
+    <string name="label_expand_notes">▼Notizen anzeigen...</string>
 
-    <string name="country_prompt">Sprache</string>
+    <string name="label_requested_language">Antworte in folgender Sprache: </string>
+    <string name="label_score">Punkte: </string>
+    <string name="label_errors">Fehler: </string>
 
-    <string name="start_test_button_text">TestOut</string>
-    <string name="test_mode_button_text">Modus: Vokabeln abfragen</string>
+    <string name="label_loading_next_vocab">Nächste Vokabel wird geladen</string>
 
-    <string name="display_next_vocab">Nächste Vokabel wird geladen</string>
-    <string name="requested_language">Antworte in folgender Sprache: </string>
-    <string name="enter_answer">Eingabe</string>
-    <string name="answer_input_hint">Antwort eingeben...</string>
-    <string name="score_text">Punkte: </string>
-    <string name="errors_text">Fehler: </string>
+    <string name="prompt_language">Sprache</string>
 
     <string-array name="language_arrays">
         <item>Sprache</item>

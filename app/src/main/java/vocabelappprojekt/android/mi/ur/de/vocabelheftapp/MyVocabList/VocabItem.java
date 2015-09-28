@@ -1,6 +1,6 @@
-package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList;
+package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.MyVocabList;
 
-public class VocItem
+public class VocabItem
 {
     private int id;
     private String vocab;
@@ -10,12 +10,13 @@ public class VocItem
     private String notes;
     private String category;
 
-    public VocItem(String vocab)
+    public VocabItem(String vocab)
     {
         this.vocab = vocab;
     }
 
-    public VocItem(String vocab, String translation, String vocabLanguage, String translationLanguage, String notes, String category){
+    public VocabItem(String vocab, String translation, String vocabLanguage, String translationLanguage, String notes, String category)
+    {
         this.vocab = vocab;
         this.translation = translation;
         this.vocabLanguage = vocabLanguage;
@@ -24,7 +25,7 @@ public class VocItem
         this.category = category;
     }
 
-    public VocItem(int id, String vocab, String translation, String vocabLanguage, String translationLanguage, String notes, String category)
+    public VocabItem(int id, String vocab, String translation, String vocabLanguage, String translationLanguage, String notes, String category)
     {
         this.id = id;
         this.vocab = vocab;
@@ -35,7 +36,8 @@ public class VocItem
         this.category = category;
     }
 
-    public void setId(int id){
+    public void setId(int id)
+    {
         this.id = id;
     }
 

@@ -1,4 +1,4 @@
-package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList;
+package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.MyVocabList;
 
 import android.content.Context;
 import android.view.View;
@@ -9,7 +9,7 @@ import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
 public class Slide
 {
-    public static void slide_down(Context context, View v)
+    public static void slideDown(Context context, View v)
     {
         Animation animation = AnimationUtils.loadAnimation(context, R.anim.slide_down);
         if (animation != null)
@@ -23,7 +23,7 @@ public class Slide
         }
     }
 
-    public static void slide_up(Context context, View v)
+    public static void slideUp(Context context, View v)
     {
         Animation animation = AnimationUtils.loadAnimation(context, R.anim.slide_up);
         if (animation != null)

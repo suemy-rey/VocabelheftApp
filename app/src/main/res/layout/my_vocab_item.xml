@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/material_deep_teal_500"
-                android:descendantFocusability="blocksDescendants"
-    >
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/material_deep_teal_500"
+    android:descendantFocusability="blocksDescendants">
 
     <TextView
         android:layout_width="100dp"
@@ -18,20 +17,19 @@
         android:layout_alignParentStart="true"
 
         android:id="@+id/textView_language1"
-        android:text="@string/add_voc"
+        android:text=""
         android:textStyle="bold"
         android:focusable="false"
         android:clickable="false"
         android:focusableInTouchMode="false"
         android:textColor="@color/weiss"/>
 
-
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spinner_language1"
         android:entries="@array/language_arrays"
-        android:prompt="@string/country_prompt"
+        android:prompt="@string/prompt_language"
 
         android:focusable="false"
         android:paddingTop="10dp"
@@ -40,16 +38,13 @@
         android:layout_toRightOf="@+id/textView_language1"
         android:layout_toEndOf="@+id/textView_language1"
         android:layout_marginLeft="91dp"
-        android:layout_marginStart="91dp" />
-
-
-
+        android:layout_marginStart="91dp"/>
 
     <TextView
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="@string/translate_voc"
+        android:text=""
         android:textStyle="italic"
         android:gravity="center_vertical"
         android:id="@+id/textView_language2"
@@ -66,7 +61,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/spinner_language2"
         android:entries="@array/language_arrays"
-        android:prompt="@string/country_prompt"
+        android:prompt="@string/prompt_language"
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:layout_alignTop="@+id/textView_language2"
@@ -75,9 +70,6 @@
         android:layout_alignParentRight="true"
         android:paddingTop="10dp"/>
 
-
-    <!-- activity_info layout file -->
-    <!-- Clickable title -->
     <TextView
         android:id="@+id/textView_of_notes_title"
         android:onClick="toggle_contents"
@@ -89,11 +81,9 @@
         android:focusable="false"
         android:clickable="false"
         android:focusableInTouchMode="false"
-        android:text="@string/open_notes"
+        android:text="@string/label_expand_notes"
         android:textColor="@color/weiss"/>
 
-
-    <!--content to hide/show -->
     <TextView
         android:id="@+id/textView_of_notes_long"
         android:text=""
@@ -106,6 +96,5 @@
         android:focusable="false"
         android:clickable="false"
         android:focusableInTouchMode="false"/>
-
 
 </RelativeLayout>

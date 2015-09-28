@@ -10,21 +10,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/test_score_view"
-        android:text="@string/score_text"
+        android:text="@string/label_score"
         android:textSize="25sp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/test_errors_view"
-        android:text="@string/errors_text"
+        android:text="@string/label_errors"
         android:textSize="25sp"
         android:layout_below="@+id/test_score_view"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/display_next_vocab"
+        android:text="@string/label_loading_next_vocab"
         android:id="@+id/vocab_view"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/requested_language_view"
-        android:text="@string/requested_language"
+        android:text="@string/label_requested_language"
         android:textSize="20sp"
         android:gravity="center"
         android:layout_above="@+id/answer_input"/>
@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/answer_input"
-        android:hint="@string/answer_input_hint"
+        android:hint="@string/hint_answer_input"
         android:background="@color/material_deep_teal_200"
         android:layout_gravity="center_horizontal"
         android:gravity="center_vertical"
@@ -62,7 +62,7 @@
         android:id="@+id/enter_answer_button"
         android:background="@color/background_color"
         android:gravity="center"
-        android:text="@string/enter_answer"
+        android:text="@string/button_confirm_input"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>

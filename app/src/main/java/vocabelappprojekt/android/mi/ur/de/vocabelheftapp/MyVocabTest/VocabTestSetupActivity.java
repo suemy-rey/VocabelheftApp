@@ -1,4 +1,4 @@
-package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Testen;
+package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.MyVocabTest;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,11 +10,10 @@ import android.widget.Spinner;
 
 import java.util.List;
 
-import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Category.CategoryDatabase;
-import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Log.Log;
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.MyCategories.CategoryDatabase;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
 
-public class TestSetupActivity extends AppCompatActivity
+public class VocabTestSetupActivity extends AppCompatActivity
 {
     public final static String CATEGORY_NAME_EXTRA = "category_name";
     private final static String TEST_MODE = "Modus: ";
@@ -47,7 +46,7 @@ public class TestSetupActivity extends AppCompatActivity
 
     private void initUI()
     {
-        setContentView(R.layout.test_setup_layout);
+        setContentView(R.layout.activity_vocab_test_setup);
 
         initButton();
         initSpinner();
@@ -61,7 +60,7 @@ public class TestSetupActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                Intent startTestOut = new Intent(getApplicationContext(), TestActivity.class);
+                Intent startTestOut = new Intent(getApplicationContext(), VocabTestActivity.class);
                 startTestOut.putExtra(CATEGORY_NAME_EXTRA, categoryChooser.getSelectedItem().toString());
                 startActivity(startTestOut);
             }

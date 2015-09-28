@@ -1,4 +1,4 @@
-package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Testen;
+package vocabelappprojekt.android.mi.ur.de.vocabelheftapp.MyVocabTest;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,12 +13,11 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Random;
 
-import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.Log.Log;
 import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.R;
-import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocDatabase;
-import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.VocableList.VocItem;
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.MyVocabList.VocabDatabase;
+import vocabelappprojekt.android.mi.ur.de.vocabelheftapp.MyVocabList.VocabItem;
 
-public class TestActivity extends AppCompatActivity
+public class VocabTestActivity extends AppCompatActivity
 {
     private final static String CORRECT_FEEDBACK = " ist Richtig!";
     private final static String WRONG_FEEDBACK = " is Falsch!";
@@ -35,11 +34,11 @@ public class TestActivity extends AppCompatActivity
     private EditText answerInput;
     private Button enterButton;
 
-    private VocDatabase vocabDB;
-    private ArrayList<VocItem> vocabList;
+    private VocabDatabase vocabDB;
+    private ArrayList<VocabItem> vocabList;
 
-    private VocItem previousVocab;
-    private VocItem currentVocab;
+    private VocabItem previousVocab;
+    private VocabItem currentVocab;
     private Toast shortToast;
 
     private String categoryName;
@@ -51,12 +50,12 @@ public class TestActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test_layout);
+        setContentView(R.layout.activity_vocab_test);
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        categoryName = getIntent().getExtras().getString(TestSetupActivity.CATEGORY_NAME_EXTRA);
+        categoryName = getIntent().getExtras().getString(VocabTestSetupActivity.CATEGORY_NAME_EXTRA);
 
         initUI();
         initDB();
@@ -108,13 +107,13 @@ public class TestActivity extends AppCompatActivity
 
     private void initDB()
     {
-        vocabDB = new VocDatabase(getApplicationContext());
+        vocabDB = new VocabDatabase(getApplicationContext());
         vocabDB.open();
     }
 
     private void initVocabs()
     {
-        vocabList = new ArrayList<VocItem>();
+        vocabList = new ArrayList<VocabItem>();
 
         vocabList.addAll(vocabDB.getVocItemsFromCategory(categoryName));
     }

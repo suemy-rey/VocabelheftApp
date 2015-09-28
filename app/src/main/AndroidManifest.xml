@@ -19,46 +19,45 @@
         </activity>
 
         <activity
-
-            android:name=".EditVocableActivity"
-            android:label="@string/add_vocabels">
+            android:name=".CreateVocabActivity"
+            android:label="@string/create_new_vocab_activity">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".VocableList.MyVocableListActivity"/>
-
+                android:value=".MyVocabList.MyVocabListActivity"/>
         </activity>
 
-        <activity android:name=".VocableList.MyVocableListActivity"
-            android:label="Meine Vokabelliste">
+        <activity
+            android:name=".MyVocabList.MyVocabListActivity"
+            android:label="@string/my_vocab_activity">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
 
-            <!--setting search start-->
             <intent-filter>
-                <action android:name="android.intent.action.SEARCH"/>
+                <action
+                    android:name="android.intent.action.SEARCH"/>
             </intent-filter>
-            <meta-data android:name="android.app.searchable"
+            <meta-data
+                android:name="android.app.searchable"
                 android:resource="@xml/searchable"/>
-            <!--end-->
-
         </activity>
 
         <activity
-            android:name=".ModifyVocableActivity"
-            android:label="Vokabeln ändern">
+            android:name=".EditVocabAcitivty"
+            android:label="@string/edit_vocab_activity">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".VocableList.MyVocableListActivity"/>
+                android:value=".MyVocabList.MyVocabListActivity"/>
         </activity>
 
 
-        <activity android:name=".Category.MyCategoriesActivity"
-            android:label="Meine Sammlungen"
-            android:screenOrientation="portrait">
+        <activity android:name=".MyCategories.MyCategoriesListActivity"
+            android:label="@string/my_categories_activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -66,35 +65,32 @@
         </activity>
 
         <activity
-
-            android:name=".Category.DetailCategoriesActivity"
-            android:label="Sammlung"
+            android:name=".MyCategories.CategoryContentsActivity"
+            android:label="@string/category_contents_activity"
             android:screenOrientation="portrait">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Category.MyCategoriesActivity"/>
+                android:value=".MyCategories.MyCategoriesListActivity"/>
         </activity>
 
         <activity
-            android:name=".Testen.TestSetupActivity"
-            android:label="@string/testsetupactivity">
+            android:name=".MyVocabTest.VocabTestSetupActivity"
+            android:label="@string/vocab_test_setup_activity">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
-
         </activity>
 
         <activity
-
-            android:name=".Testen.TestActivity"
-            android:label="Vokabeln abfragen"
+            android:name=".MyVocabTest.VocabTestActivity"
+            android:label="@string/vocab_test_activity"
             android:screenOrientation="portrait">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Testen.TestSetupActivity"/>
+                android:value=".MyVocabTest.VocabTestSetupActivity"/>
         </activity>
 
     </application>
