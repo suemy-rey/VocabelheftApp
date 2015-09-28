@@ -5,7 +5,7 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "vocabelappprojekt.android.mi.ur.de.vocabelheftapp"
+        applicationId "vocabbook.android.mi.ur.de.vocabbook"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
