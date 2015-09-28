@@ -25,7 +25,8 @@
         android:id="@+id/category_to_test_spinner"
         android:layout_gravity="center"
         android:layout_margin="10sp"
-        android:padding="10sp"/>
+        android:padding="10sp"
+        android:prompt="@string/prompt_test_all_vocab"/>
 
     <Button
         android:layout_width="match_parent"

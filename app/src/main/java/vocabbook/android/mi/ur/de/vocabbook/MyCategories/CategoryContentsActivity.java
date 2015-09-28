@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import vocabbook.android.mi.ur.de.vocabbook.CreateVocabActivity;
 import vocabbook.android.mi.ur.de.vocabbook.EditVocabAcitivty;
+import vocabbook.android.mi.ur.de.vocabbook.Log.Log;
 import vocabbook.android.mi.ur.de.vocabbook.R;
 import vocabbook.android.mi.ur.de.vocabbook.MyVocabList.MyVocabListActivity;
 import vocabbook.android.mi.ur.de.vocabbook.MyVocabList.VocabAdapter;

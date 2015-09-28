@@ -44,7 +44,9 @@
 
     <string name="label_loading_next_vocab">Nächste Vokabel wird geladen</string>
 
+    <!-- PROMPTS -->
     <string name="prompt_language">Sprache</string>
+    <string name="prompt_test_all_vocab">Alle Vokabeln abfragen</string>
 
     <string-array name="language_arrays">
         <item>Sprache</item>

@@ -21,7 +21,8 @@ public class VocabTestSetupActivity extends AppCompatActivity
     public final static String CATEGORY_NAME_EXTRA = "category_name";
 
     private final static String NO_CATEGORIES_FEEDBACK = "Keine Sammlung zu Abfrage verfügbar!";
-    private final static String NO_VOCAB_FEEDBACK = "Es gibt noch keine Vokabeleinträge!";
+    private final static String NO_VOCAB_FEEDBACK = "Es gibt keine Vokabeleinträge!";
+    private final static String EMPTY_CATEGORY_TOAST = "Die Sammlung ist Leer.\nTest für alle Vokabeln wird gestartet!";
     private final static String TEST_MODE = "Modus: ";
     private final static String VOCAB_TEST = "Vokabeln abfragen";
     private final static String TRANSLATE_TEST = "Übersetzung abfragen";
@@ -70,6 +71,7 @@ public class VocabTestSetupActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
+                //Don't start vocab test if no vocab available. Test all vocab if category empty
                 if (!vocabDB.getAllVocItems().isEmpty())
                 {
                     Intent startTestOut = new Intent(getApplicationContext(), VocabTestActivity.class);
@@ -77,6 +79,11 @@ public class VocabTestSetupActivity extends AppCompatActivity
                     if (categoryChooser.getSelectedItem() != null)
                     {
                         categoryToTest = categoryChooser.getSelectedItem().toString();
+                        if (vocabDB.getVocItemsFromCategory(categoryToTest).isEmpty())
+                        {
+                            Toast emptyCategoryToast = Toast.makeText(getApplicationContext(), EMPTY_CATEGORY_TOAST, Toast.LENGTH_SHORT);
+                            emptyCategoryToast.show();
+                        }
                     }
                     else
                     {

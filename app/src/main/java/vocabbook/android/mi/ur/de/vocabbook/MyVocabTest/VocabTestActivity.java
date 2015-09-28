@@ -13,6 +13,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Random;
 
+import vocabbook.android.mi.ur.de.vocabbook.MyCategories.CategoryDatabase;
 import vocabbook.android.mi.ur.de.vocabbook.R;
 import vocabbook.android.mi.ur.de.vocabbook.MyVocabList.VocabDatabase;
 import vocabbook.android.mi.ur.de.vocabbook.MyVocabList.VocabItem;
@@ -34,6 +35,7 @@ public class VocabTestActivity extends AppCompatActivity
     private EditText answerInput;
     private Button enterButton;
 
+    private CategoryDatabase categoryDB;
     private VocabDatabase vocabDB;
     private ArrayList<VocabItem> vocabList;
 
@@ -69,6 +71,7 @@ public class VocabTestActivity extends AppCompatActivity
     protected void onDestroy()
     {
         vocabDB.close();
+        categoryDB.close();
         super.onDestroy();
     }
 
@@ -101,7 +104,7 @@ public class VocabTestActivity extends AppCompatActivity
                     checkAnswerForTranslationTest(currentTranslationTestAnswer);
                 }
 
-                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
             }
         });
@@ -111,36 +114,22 @@ public class VocabTestActivity extends AppCompatActivity
     {
         vocabDB = new VocabDatabase(getApplicationContext());
         vocabDB.open();
+
+        categoryDB = new CategoryDatabase(getApplicationContext());
+        categoryDB.open();
     }
 
     private void initVocabs()
     {
         vocabList = new ArrayList<VocabItem>();
 
-        vocabList.addAll(vocabDB.getVocItemsFromCategory(categoryName));
-    }
-
-    private void checkAnswerForVocabTest(String currentVocabAnswer)
-    {
-        if (currentVocabAnswer.equals(enteredAnswer))
+        if (vocabDB.getVocItemsFromCategory(categoryName).isEmpty())
         {
-            correctAnswer();
+            vocabList.addAll(vocabDB.getAllVocItems());
         }
         else
         {
-            wrongAnswer();
-        }
-    }
-
-    private void checkAnswerForTranslationTest(String currentTranslationAnswer)
-    {
-        if (currentTranslationAnswer.equals(enteredAnswer))
-        {
-            correctAnswer();
-        }
-        else
-        {
-            wrongAnswer();
+            vocabList.addAll(vocabDB.getVocItemsFromCategory(categoryName));
         }
     }
 
@@ -186,6 +175,30 @@ public class VocabTestActivity extends AppCompatActivity
         languageView.setText(LANGUAGE_TEXT + languageToTranslateTo);
 
         answerInput.setText("");
+    }
+
+    private void checkAnswerForVocabTest(String currentVocabAnswer)
+    {
+        if (currentVocabAnswer.equals(enteredAnswer))
+        {
+            correctAnswer();
+        }
+        else
+        {
+            wrongAnswer();
+        }
+    }
+
+    private void checkAnswerForTranslationTest(String currentTranslationAnswer)
+    {
+        if (currentTranslationAnswer.equals(enteredAnswer))
+        {
+            correctAnswer();
+        }
+        else
+        {
+            wrongAnswer();
+        }
     }
 
     private void correctAnswer()

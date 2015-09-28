@@ -14,6 +14,7 @@ import android.widget.Spinner;
 
 import java.util.List;
 
+import vocabbook.android.mi.ur.de.vocabbook.Log.Log;
 import vocabbook.android.mi.ur.de.vocabbook.MyCategories.CategoryDatabase;
 import vocabbook.android.mi.ur.de.vocabbook.MyVocabList.MyVocabListActivity;
 import vocabbook.android.mi.ur.de.vocabbook.MyVocabList.VocabDatabase;
@@ -106,6 +107,7 @@ public class EditVocabAcitivty extends AppCompatActivity
             public void onClick(View v)
             {
                 Intent returnToVocabList = new Intent(getApplicationContext(), MyVocabListActivity.class);
+                updateSpinner();
                 startActivity(returnToVocabList);
             }
         });
@@ -168,9 +170,13 @@ public class EditVocabAcitivty extends AppCompatActivity
 
     private void updateSpinner()
     {
-        wordLanguageSpinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
-        translationLanguageSpinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
-        categorySpinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
+        vocabDB.updateOriginalLanguageSpinner("" + vocabItem.getId(), wordLanguageSpinner.getSelectedItem().toString());
+        vocabDB.updateTranslationLanguageSpinner("" + vocabItem.getId(), translationLanguageSpinner.getSelectedItem().toString());
+        if (categorySpinner.getSelectedItem() != null)
+        {
+            Log.e("updating cat");
+            vocabDB.updateCategory("" + vocabItem.getId(), categorySpinner.getSelectedItem().toString());
+        }
     }
 
     private void updateNotes()
@@ -243,31 +249,5 @@ public class EditVocabAcitivty extends AppCompatActivity
 
             }
         });
-    }
-
-    private class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListener
-    {
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-        {
-            if (parent.getId() == R.id.language1)
-            {
-                vocabDB.updateOriginalLanguageSpinner("" + vocabItem.getId(), parent.getSelectedItem().toString());
-            }
-            else if (parent.getId() == R.id.language2)
-            {
-                vocabDB.updateTranslationLanguageSpinner("" + vocabItem.getId(), parent.getSelectedItem().toString());
-            }
-            else
-            {
-                vocabDB.updateCategory("" + vocabItem.getId(), parent.getSelectedItem().toString());
-            }
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> parent)
-        {
-
-        }
     }
 }

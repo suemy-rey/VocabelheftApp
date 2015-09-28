@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
+import vocabbook.android.mi.ur.de.vocabbook.Log.Log;
+
 public class VocabDatabase
 {
     private static final String DATABASE_NAME = "voclist.db";
@@ -156,6 +158,7 @@ public class VocabDatabase
 
     public long updateVocab(String vocItemID, String voc)
     {
+        Log.e("updating word");
         ContentValues newVocab = new ContentValues();
         newVocab.put(KEY_LANGUAGE_ONE, voc);
         return db.update(DATABASE_TABLE, newVocab, KEY_ID + "= ?", new String[]{vocItemID});
@@ -191,6 +194,7 @@ public class VocabDatabase
 
     public long updateCategory(String vocItemID, String category)
     {
+        Log.e("updating category");
         ContentValues newVocable = new ContentValues();
         newVocable.put(KEY_CATEGORY, category);
         return db.update(DATABASE_TABLE, newVocable, KEY_ID + "= ?", new String[]{vocItemID});
